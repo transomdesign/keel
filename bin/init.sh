@@ -84,15 +84,16 @@ echo "🔄 Replacing tokens..."
 
 for FILE in "${FILES[@]}"; do
   [[ -f "$FILE" ]] || continue
-  # Case-sensitive slug replacements — most specific first
-  sed -i '' \
-    "s/keel-secondary/${SLUG}-secondary/g;
-     s/keel-tertiary/${SLUG}-tertiary/g;
-     s/keel-fourth/${SLUG}-fourth/g;
-     s/\bkeel\b/${SLUG}/g" \
-    "$FILE"
-  # Display name (may contain spaces — use a distinct pattern)
-  sed -i '' "s/Keel/${DISPLAY}/g" "$FILE"
+  INIT_SLUG="$SLUG" INIT_DISPLAY="$DISPLAY" perl -0pi -e '
+    my $slug = $ENV{INIT_SLUG};
+    my $display = $ENV{INIT_DISPLAY};
+    s/keel-secondary/$slug-secondary/g;
+    s/keel-tertiary/$slug-tertiary/g;
+    s/keel-fourth/$slug-fourth/g;
+    s/\bkeel\b/$slug/g;
+    s/CRAFT_SYSTEM_NAME=Keel/qq{CRAFT_SYSTEM_NAME="$display"}/ge;
+    s/Keel/$display/g;
+  ' "$FILE"
 done
 
 # ── Rename CSS files ──────────────────────────────────────────────────────────
@@ -109,7 +110,7 @@ git -C "$ROOT" init -q
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
-echo "🎉 ${DISPLAY} is ready."
+echo "✅ Project files personalized for ${DISPLAY}."
 echo ""
 echo "  ddev start          # starts containers — composer + bun install run automatically"
 echo "  ddev craft install  # first-time Craft setup (admin account, site name)"

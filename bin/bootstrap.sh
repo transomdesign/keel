@@ -8,18 +8,11 @@
 
 set -euo pipefail
 
-# Wrap everything in a function so bash parses the entire script before
-# executing. Without this, `exec </dev/tty` would replace stdin mid-read
-# and bash would hang waiting on the terminal for the rest of the script.
 bootstrap() {
-  # When piped through bash (e.g. curl | bash), stdin is the pipe, not the terminal.
-  # Reopen stdin from /dev/tty so interactive prompts work correctly.
-  [[ -t 0 ]] || exec </dev/tty
-
   SLUG="${1:-}"
 
   if [[ -z "$SLUG" ]]; then
-    read -rp "Project slug (lowercase, hyphens ok): " SLUG
+    read -rp "Project slug (e.g. \"my-new-site\"): " SLUG </dev/tty
   fi
 
   REPO="https://github.com/transomdesign/keel.git"
@@ -50,13 +43,13 @@ bootstrap() {
   # First-time Craft setup
   echo ""
   echo "⚙️  Running Craft install wizard..."
-  ddev craft install
+  ddev craft install </dev/tty
 
   echo ""
   echo "🎉 Your project is running at https://${SLUG}.ddev.site"
   echo ""
-  echo "  cd ${SLUG}"
-  echo "  make dev   # start Vite dev server with hot reload"
+  echo "Get started with local dev:"
+  echo "  cd ${SLUG} && make dev"
 }
 
 bootstrap "$@"

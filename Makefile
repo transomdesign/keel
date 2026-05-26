@@ -42,21 +42,21 @@ fmt: up
 
 ## ⬇️  db-pull: Downloads database from production server
 db-pull:
-	@if [ -z "$(MAKE_PROD_USER)" ] || [ -z "$(MAKE_PROD_HOST)" ] || [ -z "$(MAKE_PROD_PATH)" ]; then \
+	@if [ -z "$(DEPLOY_PROD_USER)" ] || [ -z "$(DEPLOY_PROD_HOST)" ] || [ -z "$(DEPLOY_PROD_PATH)" ]; then \
 		echo "❌ Missing required .env variables for db-pull:"; \
-		[ -z "$(MAKE_PROD_USER)" ] && echo "   • MAKE_PROD_USER"; \
-		[ -z "$(MAKE_PROD_HOST)" ] && echo "   • MAKE_PROD_HOST"; \
-		[ -z "$(MAKE_PROD_PATH)" ] && echo "   • MAKE_PROD_PATH"; \
+		[ -z "$(DEPLOY_PROD_USER)" ] && echo "   • DEPLOY_PROD_USER"; \
+		[ -z "$(DEPLOY_PROD_HOST)" ] && echo "   • DEPLOY_PROD_HOST"; \
+		[ -z "$(DEPLOY_PROD_PATH)" ] && echo "   • DEPLOY_PROD_PATH"; \
 		echo "💡 Add these to your .env file (see .env.example)"; \
 		exit 1; \
 	fi
 	@echo "📥 Pulling database from production..."
 	@echo "🔄 Creating backup on remote server..."; \
 	mkdir -p storage/backups; \
-	ssh $(MAKE_PROD_USER)@$(MAKE_PROD_HOST) "cd $(MAKE_PROD_PATH) && php craft db/backup" && \
+	ssh $(DEPLOY_PROD_USER)@$(DEPLOY_PROD_HOST) "cd $(DEPLOY_PROD_PATH) && php craft db/backup" && \
 	echo "📥 Downloading most recent backup..."; \
-	LATEST_REMOTE=$$(ssh $(MAKE_PROD_USER)@$(MAKE_PROD_HOST) "ls -t $(MAKE_PROD_PATH)/storage/backups/*.{sql,zip} 2>/dev/null | head -1"); \
-	scp $(MAKE_PROD_USER)@$(MAKE_PROD_HOST):$$LATEST_REMOTE ./storage/backups/ && \
+	LATEST_REMOTE=$$(ssh $(DEPLOY_PROD_USER)@$(DEPLOY_PROD_HOST) "ls -t $(DEPLOY_PROD_PATH)/storage/backups/*.{sql,zip} 2>/dev/null | head -1"); \
+	scp $(DEPLOY_PROD_USER)@$(DEPLOY_PROD_HOST):$$LATEST_REMOTE ./storage/backups/ && \
 	echo "✅ Database backup downloaded: $$(basename $$LATEST_REMOTE)"
 
 ## 📊 db-import: Imports the most recent database backup into Craft
@@ -77,18 +77,18 @@ db-ingest: db-pull db-import
 
 ## ⬆️  db-push-staging: Backup local DB and upload/import to STAGING server
 db-push-staging: up
-	@if [ -z "$(MAKE_STAGING_USER)" ] || [ -z "$(MAKE_STAGING_HOST)" ] || [ -z "$(MAKE_STAGING_DB_NAME)" ] || [ -z "$(MAKE_STAGING_DB_USER)" ] || [ -z "$(MAKE_STAGING_DB_PASSWORD)" ]; then \
+	@if [ -z "$(DEPLOY_STAGING_USER)" ] || [ -z "$(DEPLOY_STAGING_HOST)" ] || [ -z "$(DEPLOY_STAGING_DB_NAME)" ] || [ -z "$(DEPLOY_STAGING_DB_USER)" ] || [ -z "$(DEPLOY_STAGING_DB_PASSWORD)" ]; then \
 		echo "❌ Missing required .env variables for db-push-staging:"; \
-		[ -z "$(MAKE_STAGING_USER)" ] && echo "   • MAKE_STAGING_USER"; \
-		[ -z "$(MAKE_STAGING_HOST)" ] && echo "   • MAKE_STAGING_HOST"; \
-		[ -z "$(MAKE_STAGING_DB_NAME)" ] && echo "   • MAKE_STAGING_DB_NAME"; \
-		[ -z "$(MAKE_STAGING_DB_USER)" ] && echo "   • MAKE_STAGING_DB_USER"; \
-		[ -z "$(MAKE_STAGING_DB_PASSWORD)" ] && echo "   • MAKE_STAGING_DB_PASSWORD"; \
+		[ -z "$(DEPLOY_STAGING_USER)" ] && echo "   • DEPLOY_STAGING_USER"; \
+		[ -z "$(DEPLOY_STAGING_HOST)" ] && echo "   • DEPLOY_STAGING_HOST"; \
+		[ -z "$(DEPLOY_STAGING_DB_NAME)" ] && echo "   • DEPLOY_STAGING_DB_NAME"; \
+		[ -z "$(DEPLOY_STAGING_DB_USER)" ] && echo "   • DEPLOY_STAGING_DB_USER"; \
+		[ -z "$(DEPLOY_STAGING_DB_PASSWORD)" ] && echo "   • DEPLOY_STAGING_DB_PASSWORD"; \
 		echo "💡 Add these to your .env file (see .env.example)"; \
 		exit 1; \
 	fi
 	@echo "⚠️  WARNING: This will OVERWRITE the database on STAGING server"; \
-	echo "📍 Target: $(MAKE_STAGING_USER)@$(MAKE_STAGING_HOST) -> $(MAKE_STAGING_DB_NAME)"; \
+	echo "📍 Target: $(DEPLOY_STAGING_USER)@$(DEPLOY_STAGING_HOST) -> $(DEPLOY_STAGING_DB_NAME)"; \
 	read -p "Continue? [y/N] " -n 1 -r; \
 	echo; \
 	if [[ ! $$REPLY =~ ^[Yy]$$ ]]; then \
@@ -105,9 +105,9 @@ db-push-staging: up
 	fi; \
 	BACKUP_FILE=$$(basename $$LATEST_LOCAL); \
 	echo "📤 Uploading $$BACKUP_FILE to staging server..."; \
-	scp $$LATEST_LOCAL $(MAKE_STAGING_USER)@$(MAKE_STAGING_HOST):/tmp/$$BACKUP_FILE && \
+	scp $$LATEST_LOCAL $(DEPLOY_STAGING_USER)@$(DEPLOY_STAGING_HOST):/tmp/$$BACKUP_FILE && \
 	echo "📊 Importing database on staging server..."; \
-	ssh $(MAKE_STAGING_USER)@$(MAKE_STAGING_HOST) "mysql -u$(MAKE_STAGING_DB_USER) -p$(MAKE_STAGING_DB_PASSWORD) $(MAKE_STAGING_DB_NAME) < /tmp/$$BACKUP_FILE && rm /tmp/$$BACKUP_FILE" && \
+	ssh $(DEPLOY_STAGING_USER)@$(DEPLOY_STAGING_HOST) "mysql -u$(DEPLOY_STAGING_DB_USER) -p$(DEPLOY_STAGING_DB_PASSWORD) $(DEPLOY_STAGING_DB_NAME) < /tmp/$$BACKUP_FILE && rm /tmp/$$BACKUP_FILE" && \
 	echo "✅ Database successfully pushed to STAGING server"
 
 ## 📦 update: Updates both bun and composer dependencies
@@ -133,7 +133,7 @@ up:
 		echo "✅ DDEV is already running"; \
 	else \
 		echo "🚀 Starting DDEV..."; \
-		ddev start; \
+		ddev start --yes; \
 	fi
 
 ## 🔴 down: Stops DDEV project

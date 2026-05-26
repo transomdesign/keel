@@ -37,7 +37,7 @@ cd "$TARGET_DIR"
 bash bin/init.sh "$SLUG"
 
 # Start the dev environment (post-start hook installs composer + bun deps)
-ddev start
+ddev start --yes
 
 # First-time Craft setup
 ddev craft install

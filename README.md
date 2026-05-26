@@ -103,21 +103,16 @@ Other: craft-llm-ready, craft-mcp
 
 ## Tearing down a test project
 
-Run these from inside the project directory:
-
 ```bash
-ddev delete --omit-snapshot   # stop + remove containers, DB, and DDEV project registry entry
-cd ..
-rm -rf <project-slug>         # remove the project folder
+(cd <project-slug> ; ddev delete --omit-snapshot) && rm -rf <project-slug>
 ```
 
-`--omit-snapshot` skips the automatic DB backup DDEV would otherwise create — fine for throwaway test projects. Leave it off if you want to keep the database.
+`--omit-snapshot` skips the automatic DB backup — fine for throwaway test projects. Leave it off if you want to keep the database.
 
 Verify nothing is left:
 
 ```bash
 ddev list   # should not show the project
-docker ps   # no orphaned containers
 ```
 
 ## Resources

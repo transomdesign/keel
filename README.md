@@ -101,6 +101,25 @@ Transom: craft-behold, craft-site-tint, matrix-defaults, site-asset-router
 
 Other: craft-llm-ready, craft-mcp
 
+## Tearing down a test project
+
+Run these from inside the project directory:
+
+```bash
+ddev delete --omit-snapshot   # stop + remove containers, DB, and DDEV project registry entry
+cd ..
+rm -rf <project-slug>         # remove the project folder
+```
+
+`--omit-snapshot` skips the automatic DB backup DDEV would otherwise create — fine for throwaway test projects. Leave it off if you want to keep the database.
+
+Verify nothing is left:
+
+```bash
+ddev list   # should not show the project
+docker ps   # no orphaned containers
+```
+
 ## Resources
 
 - [Craft CMS docs](https://craftcms.com/docs/5.x/)

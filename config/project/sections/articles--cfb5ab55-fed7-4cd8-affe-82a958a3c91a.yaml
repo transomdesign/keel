@@ -1,0 +1,32 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 0e0d03a1-73d3-45a0-9cc6-0d508835ca6e # Builder: Blog
+handle: articles
+maxAuthors: 1
+minAuthors: 1
+name: Articles
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: none
+siteSettings:
+  177bf172-3ebf-45b8-b634-b17fda7ddef5: # Secondary
+    enabledByDefault: true
+    hasUrls: true
+    template: blog/_entry.twig
+    uriFormat: 'blog/{slug}'
+  3067f776-da80-45b3-8266-dda80e9a9fcc: # Primary
+    enabledByDefault: true
+    hasUrls: true
+    template: blog/_entry.twig
+    uriFormat: 'blog/{slug}'
+  f4bfd477-f2a5-437c-9c51-80d72728993e: # Tertiary
+    enabledByDefault: true
+    hasUrls: true
+    template: blog/_entry.twig
+    uriFormat: 'blog/{slug}'
+type: channel

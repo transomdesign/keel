@@ -1,0 +1,105 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks ?? [] %}
+{% set width = width|default() %}
+{% set mt = mt|default %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+{% set align = align|default(null) %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+
+{# Pre-collect background image only — it's a positional layer, not in flow #}
+{% set image = null %}
+{% if blocks is not empty %}
+	{% for block in blocks.all() %}
+		{% if block.type.handle == 'spotlightBackground' and image is null %}
+			{% set image = block.image.one() ?? null %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% set sectionAttr = {
+	id: id,
+	class: [mt]|filter,
+	'data-theme': theme
+} %}
+
+<section {{ attr(sectionAttr) }}>
+  <div {{ attr({ class: ['section', width, 'spotlight', align ? 'spotlight--align-' ~ align]|filter }) }}>
+	{% if image %}
+		<div class="spotlight__bg">
+			{% include '_utilities/picture' with {
+				image: image,
+				ioName: 'ioSpotlight',
+				variants: {
+					xl: {
+						width: 1920
+					},
+					lg: {
+						width: 1280
+					},
+					md: {
+						width: 1024
+					},
+					sm: {
+						width: 768
+					},
+					xs: {
+						width: 640
+					}
+				},
+				className: 'spotlight__bg-img',
+				loading: 'eager'
+			} %}
+		</div>
+	{% endif %}
+
+	{% if blocks is not empty %}
+		{% for block in blocks.all() %}
+			{% switch block.type.handle %}
+				{% case 'headline' %}
+					<div class="spotlight__content body-pad">
+						{% include '_2-molecules/headline-header.twig' with {
+							blocks: block.blocks,
+							align: block.align.value|default(null),
+							classes: 'spotlight__header'
+						} only %}
+					</div>
+
+				{% case 'image' %}
+					{% set contentImageMt = block.layout is defined and block.layout.topMargin.value is defined
+						? 'mt-' ~ block.layout.topMargin.value
+						: null
+					%}
+					{% include '_3-organisms/blocks/image.twig' with {
+						image: block.image.one() ?? null,
+						imageFree: block.imageFree.one() ?? null,
+						freeAspectRatio: block.freeAspectRatio ?? false,
+						caption: block.caption ?? null,
+						mt: contentImageMt
+					} only %}
+
+				{% case 'grid' %}
+					{% set gridOrientation = block.orientation.value ?? null %}
+					{% tag 'div' with {
+						class: [
+							'spotlight__grid body-pad',
+							gridOrientation in ['landscape', 'square'] ? 'grid-block--' ~ gridOrientation
+						]|filter
+					} %}
+						{% include '_2-molecules/grid-list.twig' with {
+							blocks: block.blocks,
+							columns: block.columns.value ?? null,
+							orientation: gridOrientation,
+							imageIsContained: block.imageIsContained ?? false
+						} only %}
+					{% endtag %}
+
+			{% endswitch %}
+		{% endfor %}
+	{% endif %}
+
+	{% include '_2-molecules/section-badge.twig' with { badge: badge, align: align, sectionId: sectionId } only %}
+  </div>
+</section>

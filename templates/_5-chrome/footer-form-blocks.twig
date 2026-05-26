@@ -1,0 +1,14 @@
+<!-- Template: {{ _self }} -->
+
+{% set siteSettings = siteSettings ?? null %}
+{% set footerFormBlocks = siteSettings ? siteSettings.footerForm : [] %}
+
+{% for section in footerFormBlocks %}
+	{% set sectionId = id ?? ((section.type.name ~ '-' ~ section.id)|kebab) %}
+	{% include '_3-organisms/blocks/form' with {
+		id: sectionId,
+		headlineBlocks: section.headline,
+		form: section.form.one(),
+		classes: 'footer-form'
+	} only %}
+{% endfor %}

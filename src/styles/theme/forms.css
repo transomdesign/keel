@@ -1,0 +1,27 @@
+/* Form Styles */
+@utility g73-checkbox {
+	@apply border border-[var(--dark-grout)];
+	background-color: var(--color-gold);
+	width: 20px;
+	height: 20px;
+}
+
+@utility g73-checked {
+	@apply border border-[var(--dark-grout)];
+	background-color: var(--color-dark-grout);
+}
+
+@utility g73-input {
+	@apply as-body-2 rounded-none border border-[var(--dark-grout)] bg-[var(--color-gold)];
+	color: var(--color-dark-grout);
+}
+
+@utility modal-input {
+	@apply rounded-none border border-black text-black;
+}
+
+@utility modal-checkbox {
+	@apply border border-[var(--dark-grout)];
+	width: 20px;
+	height: 20px;
+}

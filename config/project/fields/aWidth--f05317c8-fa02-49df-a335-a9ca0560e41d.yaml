@@ -1,0 +1,79 @@
+columnSuffix: null
+handle: aWidth
+instructions: null
+name: '[A] Width'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Default (optimal component width)'
+        -
+          - value
+          - ''
+        -
+          - icon
+          - block
+        -
+          - color
+          - ''
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Wide (wider on medium+ screens)'
+        -
+          - value
+          - wide
+        -
+          - icon
+          - expand-wide
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Narrow (narrower on small+ screens)'
+        -
+          - value
+          - narrow
+        -
+          - icon
+          - compress-wide
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Unbound (full bleed on very large screens)'
+        -
+          - value
+          - unbound
+        -
+          - icon
+          - arrow-right-arrow-left
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\RadioButtons

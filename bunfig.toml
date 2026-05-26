@@ -1,0 +1,5 @@
+[run]
+# Force all scripts to run with Bun's runtime instead of Node.js.
+# Without this, binaries like `vite` execute via their #!/usr/bin/env node shebang,
+# which hits the system Node (18) and fails Vite 8's Node 20+ requirement.
+bun = true

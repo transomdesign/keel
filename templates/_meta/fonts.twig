@@ -1,0 +1,117 @@
+<!-- Template: {{ _self }} -->
+
+{# -- Fonts -- #}
+{% set settings = siteSettings ?? craft.entries.section('siteSettings').one() %}
+
+{% if settings %}
+	{# Prepare Font Assets #}
+	{% set fontFunctional = settings.fonts.functional.one() %}
+	{% set fontDisplay = settings.fonts.display.one() %}
+	{% set fontBody = settings.fonts.body.one() %}
+
+	{% set fontFunctionalItalic = (settings.fonts.functionalItalic|length)
+		? settings.fonts.functionalItalic.one()
+		: null
+	%}
+	{% set fontDisplayItalic = (settings.fonts.displayItalic|length)
+		? settings.fonts.displayItalic.one()
+		: null
+	%}
+	{% set fontBodyItalic = (settings.fonts.bodyItalic|length)
+		? settings.fonts.bodyItalic.one()
+		: null
+	%}
+
+	{# Font: Functional #}
+	{% if fontFunctional is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontFunctional.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Functional'; src: url("{{
+				fontFunctional.url
+			}}") format('woff2'); font-display: swap; }
+		{% endcss %}
+	{% endif %}
+
+	{# Font: Functional (Italic) #}
+	{% if fontFunctionalItalic is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontFunctionalItalic.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Functional'; src: url("{{
+				fontFunctionalItalic.url
+			}}") format('woff2'); font-display: swap; font-style: italic; }
+		{% endcss %}
+	{% endif %}
+
+	{# Font: Display #}
+	{% if fontDisplay is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontDisplay.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Display'; src: url("{{ fontDisplay.url }}")
+			format('woff2'); font-display: swap; }
+		{% endcss %}
+	{% endif %}
+
+	{# Font: Display (Italic) #}
+	{% if fontDisplayItalic is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontDisplayItalic.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Display'; src: url("{{
+				fontDisplayItalic.url
+			}}") format('woff2'); font-display: swap; font-style: italic; }
+		{% endcss %}
+	{% endif %}
+
+	{# Font: Body #}
+	{% if fontBody is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontBody.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Body'; src: url("{{ fontBody.url }}")
+			format('woff2'); font-display: swap; }
+		{% endcss %}
+	{% endif %}
+
+	{# Font: Body (Italic) #}
+	{% if fontBodyItalic is not empty %}
+		<link
+			rel="preload"
+			href="{{ fontBodyItalic.url }}"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		{% css %}
+			@font-face { font-family: 'Body'; src: url("{{ fontBodyItalic.url }}")
+			format('woff2'); font-display: swap; font-style: italic; }
+		{% endcss %}
+	{% endif %}
+{% endif %}

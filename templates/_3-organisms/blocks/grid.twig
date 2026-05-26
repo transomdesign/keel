@@ -1,0 +1,34 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks|default %}
+{% set mt = mt|default %}
+{% set width = width|default('section--wide') %}
+{% set classes = classes|default %}
+{% set orientation = orientation|default %}
+{% set imageIsContained = imageIsContained|default(false) %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+{% set columns = columns|default %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% set containerAttr = {
+	id: id,
+	class: ['section relative', width, classes]
+} %}
+
+{% embed '_2-molecules/section-theme' with { theme, mt } %}
+	{% block content %}
+		<div {{ attr(containerAttr) }}>
+			<article class="{{ ['grid-block', orientation in ['landscape', 'square'] ? 'grid-block--' ~ orientation]|filter|join(' ') }}">
+				{% include '_2-molecules/grid-list.twig' with {
+					blocks: blocks,
+					columns: columns,
+					orientation: orientation,
+					imageIsContained: imageIsContained
+				} only %}
+			</article>
+			{% include '_2-molecules/section-badge.twig' with { badge: badge, sectionId: sectionId } only %}
+		</div>
+	{% endblock %}
+{% endembed %}

@@ -1,0 +1,41 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set title = title|default %}
+{% set rows = rows|default %}
+{% set mt = mt|default('mt-lg') %}
+{% set width = width|default('section--wide') %}
+
+{% tag 'section'
+	with
+	{
+		id: id,
+		class: ['section', width, mt]
+	}
+%}
+	{% tag 'article'
+		with
+		{
+			class: 'table-info'
+		}
+	%}
+		{% if title is not empty %}
+			<header class="table-info__header">
+				<h2 class="table-info__headline">{{ title }}</h2>
+			</header>
+		{% endif %}
+
+		{% if rows is not empty %}
+			<div class="table-info__content">
+				{% for row in rows %}
+					<dl class="table-info__definition">
+						<dt class="table-info__title">
+							{{ row.title }}
+						</dt>
+						<dd class="table-info__body passage">{{ row.body }}</dd>
+					</dl>
+				{% endfor %}
+			</div>
+		{% endif %}
+	{% endtag %}
+{% endtag %}

@@ -1,0 +1,32 @@
+columnSuffix: null
+handle: aCodeJson
+instructions: null
+name: '[A] Code (JSON)'
+searchable: false
+settings:
+  availableLanguages:
+    - css
+    - graphql
+    - html
+    - javascript
+    - json
+    - markdown
+    - mysql
+    - php
+    - shell
+    - twig
+    - typescript
+    - yaml
+  codeFolding: false
+  defaultValue: ''
+  fontSize: 14
+  language: json
+  lineNumbers: true
+  monacoEditorOptions: ''
+  placeholder: ''
+  showLanguageDropdown: false
+  singleLineEditor: false
+  theme: auto
+translationKeyFormat: null
+translationMethod: site
+type: nystudio107\codefield\fields\Code

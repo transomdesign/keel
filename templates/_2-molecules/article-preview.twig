@@ -1,0 +1,53 @@
+<!-- Template: {{ _self }} -->
+
+{% set title = title|default %}
+{% set thumbnail = thumbnail|default(siteSettings.articleThumbnail) %}
+{% set tags = tags|default %}
+{% set date = date|default %}
+{% set url = url|default %}
+{% set orientation = orientation|default('vertical') %}
+
+<article class="article-preview article-preview--{{ orientation }}">
+	<figure class="article-preview__figure">
+		{% if thumbnail is not empty %}
+			{# Image #}
+			{% include '_utilities/picture' with {
+				image: thumbnail.one(),
+				ioName: 'ioFeatured',
+				className: 'article-preview__img'
+			} %}
+		{% endif %}
+	</figure>
+
+	<header class="article-preview__header">
+		<h3 class="article-preview__title">
+			<a href="{{ url }}" class="article-preview__title-link">{{ title }}</a>
+		</h3>
+
+		<ul class="article-preview__tags">
+			{% if tags is not empty %}
+				{% for tag in tags.all() %}
+					<li class="article-preview__tag-item">
+						<a
+							class="article-preview__tag-link"
+							href="{{
+							url(
+								'/articles',
+								{
+									tag: tag.slug
+								}
+							)
+							}}"
+						>
+							{{ tag.title }}
+						</a>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+
+		<time class="article-preview__date" datetime="{{ date|atom }}">
+			{{ date|date('F j, Y') }}
+		</time>
+	</header>
+</article>

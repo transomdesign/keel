@@ -1,0 +1,119 @@
+.headline {
+	@apply flex flex-col items-center text-center;
+
+	:where(a:not(.btn)) {
+		@apply text-primary underline hover:no-underline;
+	}
+
+	.card {
+		@apply mt-5;
+	}
+}
+
+.headline--align-left {
+	@apply items-start text-left;
+
+	.headline__buttons {
+		@apply justify-start;
+	}
+}
+
+.headline--align-right {
+	@apply items-end text-right;
+
+	:where(ul, ol) {
+		display: inline-block;
+	}
+
+	.headline__buttons {
+		@apply justify-end;
+	}
+}
+
+/* Stamp */
+.headline__stamp {
+	@apply relative text-primary aspect-square size-8 mb-2;
+
+	img,
+	svg {
+		@apply size-full object-contain;
+	}
+
+	img {
+		@apply as-caption text-center;
+	}
+}
+
+/* Headline */
+.headline__headline {
+	@apply as-h2 text-h4-lg;
+}
+
+.headline__headline--first {
+	@apply as-h2;
+}
+
+.headline__subtitle {
+	@apply as-body-lg;
+}
+
+/* Overline */
+.headline__overline {
+	@apply as-overline text-primary mb-3 border-b-[1.5px] border-solid border-gray-700 pb-3 inline-block;
+}
+
+/* Paragraph */
+.headline__body {
+	@apply mt-0;
+}
+
+/* Buttons */
+.headline__buttons {
+	@apply mt-0 flex flex-wrap justify-center gap-4;
+}
+
+/* Order-aware vertical rhythm */
+.headline > :where(
+	.headline__stamp,
+	.headline__overline,
+	.headline__headline,
+	.headline__headline--first,
+	.headline__subtitle,
+	.headline__body,
+	.headline__buttons
+) + .headline__subtitle {
+	@apply mt-2;
+}
+
+.headline > :where(
+	.headline__stamp,
+	.headline__overline,
+	.headline__headline,
+	.headline__headline--first,
+	.headline__subtitle,
+	.headline__body,
+	.headline__buttons
+) + .headline__body {
+	@apply mt-3;
+}
+
+.headline > :where(
+	.headline__stamp,
+	.headline__overline,
+	.headline__headline,
+	.headline__headline--first,
+	.headline__subtitle,
+	.headline__body,
+	.headline__buttons
+) + .headline__buttons {
+	@apply mt-4;
+}
+
+.headline > .headline__buttons + :where(
+	.headline__stamp,
+	.headline__overline,
+	.headline__headline,
+	.headline__headline--first
+) {
+	@apply mt-3;
+}

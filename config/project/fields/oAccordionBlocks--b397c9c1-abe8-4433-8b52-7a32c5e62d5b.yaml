@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: oAccordionBlocks
+instructions: null
+name: '[O] Accordion Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Info Set'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 90a4dcb9-8d81-4be0-b2fb-c70d94f6daa4 # Accordion: Info Set
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

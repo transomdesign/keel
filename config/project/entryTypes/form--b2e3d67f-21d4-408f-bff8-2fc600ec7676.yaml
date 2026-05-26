@@ -1,0 +1,86 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  27c302c5-355b-4891-a864-27ba8c949dbe:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-18T05:20:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d7515ef5-a09e-48a5-9e6e-62ba86088082 # [A] Forms
+            handle: form
+            instructions: null
+            label: Form
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8b9b6af5-8841-49f3-92e8-b0d430d4d0a9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: eca5ae18-b759-4f8b-bcb7-0a8b532e26b4
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-19T05:31:48+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: "The text that will appear in the 'Jump To' navigation for this section"
+            label: 'Jump To Nav Label'
+            required: false
+            tip: 'Leave blank to exclude this section from the page navigation'
+            type: craft\fieldlayoutelements\CustomField
+            uid: 679ee243-5313-47dd-b65b-ead2d0d21083
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: 62c5c4db-7254-4316-9941-82b4b83d04c5
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-30T20:41:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 12fc85a1-a901-4f45-8f0d-831d74f693b4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 28675264-a34e-43fb-a3f5-7710411e7739
+        userCondition: null
+    thumbFieldKey: null
+handle: form
+hasTitleField: false
+icon: envelope-open-text
+name: Form
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

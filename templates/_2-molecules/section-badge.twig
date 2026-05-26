@@ -1,0 +1,30 @@
+<!-- Template: {{ _self }} -->
+
+{#
+ # Decorative section-level badge (SVG asset).
+ # Absolutely positioned so its top half overlaps the section above.
+ #
+ # @param badge         Craft asset (SVG); nullable — renders nothing if empty.
+ # @param align         'left'|'right'|null — text-column side (headline, spotlight). Badge matches.
+ # @param mediaPosition 'left'|'right'|null — image side (split). Badge is placed on the opposite side.
+ # @param sectionId     int — entry id used for deterministic L/R when no align/media hint.
+ #}
+
+{% set badge         = badge|default %}
+{% set align         = align|default(null) %}
+{% set mediaPosition = mediaPosition|default(null) %}
+{% set sectionId     = sectionId|default(0) %}
+
+{% if badge is not empty %}
+	{# Priority: mediaPosition (badge opposite image) → align (badge matches text) → id parity #}
+	{% set side = mediaPosition == 'left'  ? 'right'
+	           : mediaPosition == 'right' ? 'left'
+	           : align         == 'left'  ? 'left'
+	           : align         == 'right' ? 'right'
+	           : (sectionId % 2 == 1      ? 'left' : 'right')
+	%}
+
+	<figure class="section-badge section-badge--{{ side }}" aria-hidden="true">
+		<img src="{{ badge.url }}" alt="" loading="lazy" width="{{ badge.width }}" height="{{ badge.height }}">
+	</figure>
+{% endif %}

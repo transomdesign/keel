@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Disable all default Tailwind colors */
+	--color-*: initial;
+
+	/* Base Colors */
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	/* Utility Colors */
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* Semantic Role Tokens (defaults — override per-site) */
+	--color-primary: #64a70b; /* Brand main — buttons, links, overlines */
+	--color-accent: #f6be00; /* Secondary accent — highlights, badges */
+	--color-neutral: #4d4d4f;
+	--color-neutral-dark: #333333;
+	--color-neutral-light: #f1f1f1;
+	--color-error: #b00020; /* Form validation, error states */
+
+	/* Data-theme surface token defaults */
+	--color-theme-bg: var(--color-white);
+	--color-theme-text: var(--color-on-surface);
+	--color-theme-heading: var(--color-on-surface);
+}

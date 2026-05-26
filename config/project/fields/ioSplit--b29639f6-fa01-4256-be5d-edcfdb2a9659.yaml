@@ -1,0 +1,147 @@
+columnSuffix: null
+handle: ioSplit
+instructions: null
+name: '[IO] Split'
+searchable: false
+settings:
+  displayDominantColorPalette: true
+  displayLazyLoadPlaceholderImages: true
+  displayOptimizedImageVariants: true
+  fieldVolumeSettings:
+    __assoc__:
+      -
+        - split
+        - '*'
+  ignoreFilesOfType:
+    - image/svg
+    - image/gif
+    - application/pdf
+  variants:
+    -
+      __assoc__:
+        -
+          - width
+          - '704'
+        -
+          - useAspectRatio
+          - '1'
+        -
+          - aspectRatioX
+          - '7'
+        -
+          - aspectRatioY
+          - '5'
+        -
+          - retinaSizes
+          -
+            - '1'
+            - '2'
+        -
+          - quality
+          - '60'
+        -
+          - format
+          - ''
+    -
+      __assoc__:
+        -
+          - width
+          - '612'
+        -
+          - useAspectRatio
+          - '1'
+        -
+          - aspectRatioX
+          - '7'
+        -
+          - aspectRatioY
+          - '5'
+        -
+          - retinaSizes
+          -
+            - '1'
+            - '2'
+        -
+          - quality
+          - '82'
+        -
+          - format
+          - ''
+    -
+      __assoc__:
+        -
+          - width
+          - '991'
+        -
+          - useAspectRatio
+          - '1'
+        -
+          - aspectRatioX
+          - '7'
+        -
+          - aspectRatioY
+          - '5'
+        -
+          - retinaSizes
+          -
+            - '1'
+            - '2'
+        -
+          - quality
+          - '82'
+        -
+          - format
+          - ''
+    -
+      __assoc__:
+        -
+          - width
+          - '735'
+        -
+          - useAspectRatio
+          - '1'
+        -
+          - aspectRatioX
+          - '7'
+        -
+          - aspectRatioY
+          - '5'
+        -
+          - retinaSizes
+          -
+            - '1'
+            - '2'
+        -
+          - quality
+          - '82'
+        -
+          - format
+          - ''
+    -
+      __assoc__:
+        -
+          - width
+          - '607'
+        -
+          - useAspectRatio
+          - '1'
+        -
+          - aspectRatioX
+          - '7'
+        -
+          - aspectRatioY
+          - '5'
+        -
+          - retinaSizes
+          -
+            - '1'
+            - '2'
+        -
+          - quality
+          - '82'
+        -
+          - format
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: nystudio107\imageoptimize\fields\OptimizedImages

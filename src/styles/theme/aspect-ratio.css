@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@theme {
+	--aspect-4-5: 4 / 5;
+	--aspect-7-5: 7 / 5;
+	--aspect-8-5: 8 / 5;
+	--aspect-9-5: 9 / 5;
+	--aspect-16-9: 16 / 9;
+}

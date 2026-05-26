@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: oNavItems
+instructions: null
+name: '[O] Nav Items'
+searchable: false
+settings:
+  createButtonLabel: 'New Nav Item'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

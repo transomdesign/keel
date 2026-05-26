@@ -1,0 +1,113 @@
+@view-transition {
+	navigation: auto;
+}
+
+@theme {
+	/* why did i set this up in the first place....? */
+	--page-max-width: 1536px;
+}
+
+:root {
+	--global-nav-width: 100px;
+	--global-nav-height: 200px;
+	--global-chrome-height: 200px;
+	--header-height: 80px; /* matches .navbar { h-[80px] } */
+}
+
+/* Smooth Scroll */
+html {
+	@apply scroll-smooth antialiased;
+
+	scroll-padding-top: 150px;
+}
+
+/* Full height */
+html,
+body {
+	@apply h-full;
+}
+
+body {
+	@apply text-neutral flex h-full max-w-screen flex-col overflow-x-clip bg-white;
+
+	&[style='overflow: hidden;'] {
+		&::before {
+			@apply pointer-events-auto bg-white/50 backdrop-blur-xs;
+
+			transition: all 300ms ease-in-out;
+		}
+	}
+
+	& > main {
+		@apply flex-1;
+
+		& > :last-child:not(.spotlight) {
+			@apply mb-xxl;
+		}
+	}
+
+	& > header,
+	& > main,
+	& > footer {
+		@apply mx-auto w-full;
+	}
+}
+
+img {
+	@apply as-caption;
+
+	&[src=''] {
+		@apply border border-solid border-gray-100;
+	}
+}
+
+@utility body-pad {
+	@apply px-4 2xl:px-10;
+}
+
+@utility section {
+	@apply body-pad mx-auto;
+
+	@variant 2xl {
+		max-width: 96rem /* 1536px */;
+	}
+}
+
+@layer utilities {
+	.section--unbound {
+		@apply px-[unset];
+
+		@variant 2xl {
+			max-width: unset;
+		}
+	}
+
+	.section--narrow {
+		@apply sm:w-10/12 lg:w-8/12 xl:w-6/12;
+	}
+
+	.section--wide {
+		@apply md:w-10/12;
+	}
+}
+
+@utility hr {
+	@apply mt-8 w-full border-0 pb-8;
+}
+
+@utility hr--solid {
+	--gap-length: 0px;
+}
+
+button[disabled] {
+	@apply cursor-not-allowed opacity-50;
+}
+
+/* Skip Link */
+a[href='#main'].skip-link {
+	@apply font-body fixed top-0 left-1/2 z-90 -translate-x-1/2 -translate-y-full border-4 border-white bg-black px-2 py-0.5 text-2xl text-white uppercase opacity-0 transition-transform;
+
+	&:focus {
+		@apply translate-y-0 opacity-100;
+	}
+}

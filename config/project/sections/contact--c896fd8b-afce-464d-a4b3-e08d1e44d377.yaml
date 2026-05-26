@@ -1,0 +1,32 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: b6119e63-acce-46f0-9e9e-76c8383a6992 # Builder: Page
+handle: contact
+maxAuthors: 1
+minAuthors: 1
+name: Contact
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: '1'
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  177bf172-3ebf-45b8-b634-b17fda7ddef5: # Secondary
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: contact
+  3067f776-da80-45b3-8266-dda80e9a9fcc: # Primary
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: contact
+  f4bfd477-f2a5-437c-9c51-80d72728993e: # Tertiary
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: contact
+type: single

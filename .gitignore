@@ -1,0 +1,68 @@
+# Craft 5 .gitignore
+# TIP: is something being tracked by git and you don't want it to??
+# use the command `git rm --cached <folder-name>
+
+# CRAFT ENVIRONMENT
+.env.php
+.env.sh
+.env
+/.env
+/.idea
+
+# COMPOSER
+/vendor
+vendor
+
+# CRAFT STORAGE
+/storage/*
+storage/backups/*
+!storage/.gitkeep
+!storage/backups
+!storage/rebrand
+web/cpresources/*
+!web/cpresources/.gitkeep
+
+# ASSETS
+/web/assets/*
+/web/uploads/*
+/web/dist/*
+/web/dist/images/*
+
+# FAVICONS
+web/*.png
+web/*.ico
+web/*.webmanifest
+web/*.xml
+web/*.svg
+
+# ICON-PICKER
+web/icons
+
+# BLITZ CACHE
+web/cache
+
+# BUILD FILES
+/node_modules
+/yarn-error.log
+/npm-debug.log
+
+# LOCAL PLUGINS (installed via Packagist on server)
+/plugins/behold
+
+# MISC FILES
+.cache
+.DS_Store
+CRUSH.md
+GEMINI.md
+.crush
+.kiro
+forge.yaml
+/test*
+
+# DDEV - track directory but let .ddev/.gitignore handle specifics
+# (no .ddev entry needed here - let the internal .gitignore handle it)
+
+# INTELEPHENSE
+.intelephense/*
+!.intelephense/exclude
+intelephense.json

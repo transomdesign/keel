@@ -1,0 +1,15 @@
+.modal {
+	@apply hidden;
+}
+
+.modal.is_open {
+	@apply block;
+}
+
+.modal__photo-container figure.modal__figure {
+	@apply h-full w-full;
+}
+
+.modal__photo-container figure.modal__figure img {
+	@apply h-full w-full object-cover;
+}

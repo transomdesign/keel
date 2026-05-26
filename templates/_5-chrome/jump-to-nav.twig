@@ -1,0 +1,163 @@
+<!-- Template: {{ _self }} -->
+
+{% set siteSettings = siteSettings ?? null %}
+{% set filter = siteSettings ? siteSettings.uiFilter : null %}
+{% set filterSvg = filter ? filter.one() : null %}
+
+{#
+  Jump To Navigation Component
+
+	This component creates a links in the secondary "Jump To" navigation area.
+	It can be used in four ways:
+
+	1. With automatic section-based links (default)
+	  - Pass 'entry' to auto-generate links from contentBuilder sections with jumpToNavLabel
+
+  2. With a "Jump To Nav Block" from contentBuilder
+    - Automatically detected when a jumpToNavBlock exists in contentBuilder
+  	- This overrides all other links!
+
+	3. With a block of custom override HTML/Twig
+	  - Use {% block jumpLinksHtml %} to override with custom links
+
+	4. With a custom jumpLinksArray of link objects
+	  - e.g. [{ text: 'Home', url: '/', isActive: true }]
+
+	Props:
+	- entry: The entry object (optional if using custom links)
+	- jumpLinksArray: Array of link objects with 'url' and 'text' properties (optional)
+	- additionalLinksArray: Array of link objects to prepend to auto-generated links (optional)
+	- jumpLinksHtml: Twig block of links HTML
+#}
+
+{# Props #}
+{% set entry = entry is defined ? entry : null %}
+{% set jumpLinksArray = jumpLinksArray is defined ? jumpLinksArray : null %}
+{% set additionalLinksArray = additionalLinksArray is defined ? additionalLinksArray : null %}
+{% set jumpLinksHtml = jumpLinksHtml is defined ? jumpLinksHtml : null %}
+
+{# Internal Logic Variables #}
+{% set hasJumpLinksArray = false %}
+{% set jumpToNavBlockLinks = null %}
+{% set sections = [] %}
+{% set sectionsHaveNavLabels = false %}
+
+{# Check if entry has content and sections #}
+{% if entry is defined and entry is not empty %}
+	{# Check for contentBuilder field #}
+	{% if entry.contentBuilder is defined %}
+		{% set sections = entry.contentBuilder %}
+	{% elseif entry.blogBuilder is defined %}
+		{% set sections = entry.blogBuilder %}
+	{% endif %}
+
+	{% if sections is not empty %}
+		{% set sections = sections.all() %}
+		{# First, check if there's a jumpToNavBlock in the content #}
+		{% for section in sections %}
+			{% if section.type.handle == 'jumpToNavBlock' and section.links is defined and section.links is not empty %}
+				{% set jumpToNavBlockLinks = section.links %}
+				{% set hasJumpLinksArray = true %}
+			{% elseif section.jumpToNavLabel is defined and section.jumpToNavLabel is not empty %}
+				{% set sectionsHaveNavLabels = true %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endif %}
+
+{# Check if custom links were provided via jumpLinksArray #}
+{% if jumpLinksArray is defined and jumpLinksArray is not empty %}
+	{% set hasJumpLinksArray = true %}
+{% endif %}
+
+{# Check if the template is embedding this and overriding the links block #}
+{% if block('jumpToNavLinks')|trim is not empty %}
+	{% set hasJumpLinksArray = true %}
+{% endif %}
+
+{% set blockContent = block('jumpToNavLinks') %}
+
+{# Only render if we have something to show #}
+{% if hasJumpLinksArray or sectionsHaveNavLabels or (additionalLinksArray is defined and additionalLinksArray is not empty) %}
+	<nav id="jump-to-nav" class="jump-to-nav">
+		<div class="jump-to-nav__content-wrap">
+			<ul class="jump-to-nav__links">
+				  {% block jumpToNavLinks %}
+						{# Priority 1: "Jump To Nav Block" links from contentBuilder #}
+  					{% if jumpToNavBlockLinks %}
+  						{% for link in jumpToNavBlockLinks %}
+  							{% if link.url is defined and link.text is defined %}
+
+  							  <!-- Jump To Nav Item: Priority 1 -->
+  								<li class="jump-to-nav__item">
+  									<a class="jump-to-nav__link" href="{{ link.url }}"
+  										{%- if link.linkTitle is defined and link.linkTitle is not empty %} title="{{ link.linkTitle }}"{% endif %}
+  										{%- if link.classes is defined and link.classes is not empty %} class="{{ link.classes }}"{% endif %}
+  										{%- if link.customAttributes is defined and link.customAttributes is not empty %}
+  											{% for attr in link.customAttributes %}
+  												{{ attr.attribute }}="{{ attr.value }}"
+  											{% endfor %}
+  										{% endif %}>
+  										{{ link.text }}
+  									</a>
+  								</li>
+  							{% endif %}
+  						{% endfor %}
+
+            {# Priority 2: Custom jumpLinksArray passed as parameter #}
+            {% elseif jumpLinksArray is defined and jumpLinksArray is not empty %}
+  						{% for link in jumpLinksArray %}
+  				      {% set isActive = link.isActive is defined and link.isActive %}
+
+  							<!-- Jump To Nav Item: Priority 2 -->
+  							<li class="jump-to-nav__item">
+  					      {% tag 'a' with {
+  									href: link.url,
+  									class: [
+  									  'jump-to-nav__link',
+  										isActive ? 'jump-to-nav__link--active' : ''
+  									]
+  								}|merge(link.attrs ?? {}) %}
+  								  {{ link.text }}
+  								{% endtag %}
+  							</li>
+  						{% endfor %}
+
+            {# Priority 3: Auto-generated links from sections with jumpToNavLabel #}
+            {% else %}
+              {# Add any additional links first #}
+  						{% if additionalLinksArray is defined and additionalLinksArray is not empty %}
+  							{% for link in additionalLinksArray %}
+  							  <!-- Jump To Nav Item: Priority 3 -->
+  								<li class="jump-to-nav__item">
+    						    {% tag 'a' with {
+     									class: ['jump-to-nav__link', link.classes],
+     									href: link.url
+        						} %}
+     									{{ link.text }}
+                      {{ svg('@feather/chevron-right.svg') }}
+    								{% endtag %}
+  								</li>
+  							{% endfor %}
+  						{% endif %}
+
+						  {# Auto-generate links from sections #}
+  						{% if sectionsHaveNavLabels %}
+  							{% for section in sections %}
+  								{% if section.jumpToNavLabel is defined and section.jumpToNavLabel is not empty %}
+  									{% set handle = (section.type.name ~ '-' ~ section.id)|kebab %}
+  									<li class="jump-to-nav__item">
+  										<a class="jump-to-nav__link" href="#{{ handle }}">
+  											{{ section.jumpToNavLabel }}
+                        {{ svg('@feather/chevron-right.svg')|attr({ class: 'text-accent' }) }}
+  										</a>
+  									</li>
+  								{% endif %}
+  							{% endfor %}
+  						{% endif %}
+            {% endif %}
+					{% endblock %}
+			</ul>
+		</div>
+	</nav>
+{% endif %}

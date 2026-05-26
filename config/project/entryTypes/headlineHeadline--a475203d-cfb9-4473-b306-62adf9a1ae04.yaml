@@ -1,0 +1,42 @@
+allowLineBreaksInTitles: false
+color: emerald
+description: null
+fieldLayouts:
+  a4367f4e-ccc3-4516-860a-d737ea0f4e0d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-05T13:00:42+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 47477ffd-b6a7-4c39-90e3-725bb200ea5e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d400b72a-65f9-43fb-8bce-025650fb60a1
+        userCondition: null
+    thumbFieldKey: null
+handle: headlineHeadline
+hasTitleField: false
+icon: heading
+name: 'Headline: Headline'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

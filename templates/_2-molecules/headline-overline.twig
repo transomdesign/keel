@@ -1,0 +1,23 @@
+<!-- Template: {{ _self }} -->
+
+{% set overline = overline|default %}
+{% set stamp = stamp|default %}
+
+{% set overlineAttr = {
+	class: [
+		'headline__overline',
+	]
+} %}
+
+
+{% if stamp and stamp.inline %}
+	<figure class="headline__stamp">
+		{{ stamp.inline }}
+	</figure>
+{% endif %}
+
+{% if overline %}
+	<p {{ attr(overlineAttr) }}>
+		{{ overline }}
+	</p>
+{% endif %}

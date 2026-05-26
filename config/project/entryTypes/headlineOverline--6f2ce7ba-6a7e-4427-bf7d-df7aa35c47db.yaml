@@ -1,0 +1,58 @@
+allowLineBreaksInTitles: false
+color: emerald
+description: null
+fieldLayouts:
+  349eff0a-b3d1-4e50-aa2f-7f6e820c08cf:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-05T12:58:55+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: overline
+            instructions: null
+            label: Overline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d707e226-9e0f-4ba3-bd7c-0d249c94bd03
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-03-05T12:58:55+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 33a9f50b-1ca4-49f5-a941-1580095ab2e8 # [A] Icon Picker
+            handle: stamp
+            instructions: null
+            label: Stamp
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f5bb7ccb-29a8-4995-82cc-f463198f52e7
+            userCondition: null
+            warning: null
+            width: 50
+        name: Content
+        uid: bbd88dfc-2425-4d66-8abf-f212377ff397
+        userCondition: null
+    thumbFieldKey: null
+handle: headlineOverline
+hasTitleField: false
+icon: heading
+name: 'Headline: Overline'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

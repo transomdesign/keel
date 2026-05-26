@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# bin/init.sh — Personalise this Craft CMS starter for a new project.
+#
+# Usage:
+#   bin/init.sh [slug] ["Display Name"] [prod-host]
+#
+# Arguments are optional; the script prompts for any that are missing.
+# Run once, immediately after cloning. Guard against double-runs.
+
+set -euo pipefail
+
+# When piped through bash (e.g. curl | bash), stdin is the pipe, not the terminal.
+# Reopen stdin from /dev/tty so interactive prompts work correctly.
+[[ -t 0 ]] || exec </dev/tty
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# ── Sentinel check ────────────────────────────────────────────────────────────
+# If the placeholder slug is gone, this script has already been run.
+if ! grep -q 'name: keel' "$ROOT/.ddev/config.yaml" 2>/dev/null; then
+  echo "⚠️  init.sh has already been run on this project. Aborting."
+  exit 1
+fi
+
+# ── Gather inputs ─────────────────────────────────────────────────────────────
+SLUG="${1:-}"
+DISPLAY="${2:-}"
+PROD_HOST="${3:-}"
+
+if [[ -z "$SLUG" ]]; then
+  read -rp "Project slug (lowercase, hyphens ok — used for ddev name, URLs, bucket): " SLUG
+fi
+
+if [[ -z "$DISPLAY" ]]; then
+  read -rp "Display name (e.g. \"My Client\"): " DISPLAY
+fi
+
+if [[ -z "$PROD_HOST" ]]; then
+  read -rp "Production hostname (e.g. myclient.transom.dev) [leave blank to keep placeholder]: " PROD_HOST
+fi
+
+# ── Validate slug ─────────────────────────────────────────────────────────────
+if [[ ! "$SLUG" =~ ^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$ ]]; then
+  echo "❌ Slug must be lowercase letters, numbers, and hyphens only (no leading/trailing hyphens)."
+  exit 1
+fi
+
+PROD_HOST="${PROD_HOST:-${SLUG}.transom.dev}"
+
+echo ""
+echo "  Slug:         $SLUG"
+echo "  Display name: $DISPLAY"
+echo "  Prod host:    $PROD_HOST"
+echo ""
+read -rp "Proceed? [y/N] " CONFIRM
+[[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 0; }
+
+# ── Files to rewrite ─────────────────────────────────────────────────────────
+# Explicit list of tracked text files that carry placeholder tokens.
+FILES=(
+  "$ROOT/.ddev/config.yaml"
+  "$ROOT/.env.example"
+  "$ROOT/package.json"
+)
+
+# All YAML in config/project/
+while IFS= read -r f; do FILES+=("$f"); done < <(
+  find "$ROOT/config/project" -type f -name "*.yaml"
+)
+
+# Plugin composer files
+FILES+=(
+  "$ROOT/plugins/matrix-defaults/composer.json"
+  "$ROOT/plugins/site-asset-router/composer.json"
+  "$ROOT/plugins/behold/composer.json"
+)
+
+# Src + templates
+while IFS= read -r f; do FILES+=("$f"); done < <(
+  find "$ROOT/src" "$ROOT/templates" -type f \( -name "*.ts" -o -name "*.css" -o -name "*.twig" \)
+)
+
+FILES+=(
+  "$ROOT/vite.config.ts"
+  "$ROOT/README.md"
+)
+
+# ── Replace tokens ─────────────────────────────────────────────────────────--
+echo ""
+echo "🔄 Replacing tokens..."
+
+for FILE in "${FILES[@]}"; do
+  [[ -f "$FILE" ]] || continue
+  # Case-sensitive slug replacements — most specific first
+  sed -i '' \
+    "s/keel-secondary/${SLUG}-secondary/g;
+     s/keel-tertiary/${SLUG}-tertiary/g;
+     s/keel-fourth/${SLUG}-fourth/g;
+     s/keel\.transom\.dev/${PROD_HOST}/g;
+     s/\bkeel\b/${SLUG}/g" \
+    "$FILE"
+  # Display name (may contain spaces — use a distinct pattern)
+  sed -i '' "s/Keel/${DISPLAY}/g" "$FILE"
+done
+
+# ── Rename CSS files ──────────────────────────────────────────────────────────
+# (keep primary/secondary/tertiary names — they're generic per-site handles)
+
+# ── Rename workspace file ─────────────────────────────────────────────────────
+if [[ -f "$ROOT/keel.code-workspace" ]]; then
+  mv "$ROOT/keel.code-workspace" "$ROOT/${SLUG}.code-workspace"
+fi
+
+# ── Re-init git ───────────────────────────────────────────────────────────────
+echo ""
+read -rp "Remove .git history and start a fresh repo? [y/N] " REINIT_GIT
+if [[ "$REINIT_GIT" =~ ^[Yy]$ ]]; then
+  rm -rf "$ROOT/.git"
+  git -C "$ROOT" init
+  echo "✅ Fresh git repo initialised."
+fi
+
+# ── Done ──────────────────────────────────────────────────────────────────────
+echo ""
+echo "✅ Project renamed to \"${DISPLAY}\" (${SLUG})."
+echo ""
+echo "Next steps:"
+echo "  ddev start"
+echo "  ddev composer install"
+echo "  ddev craft install"
+echo "  ddev launch"

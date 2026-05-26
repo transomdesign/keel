@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: aToggleOff
+instructions: null
+name: '[A] Toggle (Off)'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Lightswitch

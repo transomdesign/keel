@@ -1,0 +1,118 @@
+{#
+  Video embed macros — single source of truth for YouTube/Vimeo rendering.
+
+  Usage:
+    {% import '_utilities/video-embed' as videoEmbed %}
+
+  @macro background(rawUrl)
+    Muted autoplay background iframe. Output: bare <iframe>.
+    Caller provides the wrapper (e.g. <div class="hero__video-bg">).
+    @prop rawUrl - string|object|null - URL string or Hyper/URL field object
+
+  @macro embed(rawUrl, autoplay)
+    Interactive embed: click-to-play thumbnail (YouTube) or lite-vimeo (Vimeo).
+    With autoplay=true: bare iframe instead.
+    @prop rawUrl  - string|object|null
+    @prop autoplay - bool (default false)
+#}
+
+{% macro background(rawUrl) %}
+	{%- set url = rawUrl.url ?? rawUrl ?? null -%}
+	{%- set ytId = null -%}
+	{%- set vimeoId = null -%}
+	{%- if url -%}
+		{%- if 'youtube.com' in url or 'youtu.be' in url -%}
+			{%- if 'youtu.be/' in url -%}
+				{%- set ytId = url|split('youtu.be/')|last|split('?')|first -%}
+			{%- elseif 'v=' in url -%}
+				{%- set ytId = url|split('v=')|last|split('&')|first -%}
+			{%- elseif '/embed/' in url -%}
+				{%- set ytId = url|split('/embed/')|last|split('?')|first -%}
+			{%- endif -%}
+		{%- endif -%}
+		{%- if 'vimeo.com' in url -%}
+			{%- if 'player.vimeo.com/video/' in url -%}
+				{%- set vimeoId = url|split('/video/')|last|split('?')|first -%}
+			{%- else -%}
+				{%- set vimeoId = url|split('vimeo.com/')|last|split('?')|first|split('/')|first -%}
+			{%- endif -%}
+		{%- endif -%}
+	{%- endif -%}
+	{%- if ytId -%}
+		<iframe
+			src="https://www.youtube-nocookie.com/embed/{{ ytId }}?autoplay=1&mute=1&loop=1&playlist={{ ytId }}&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0&disablekb=1"
+			title="Background video"
+			allow="autoplay; encrypted-media"
+			allowfullscreen
+		></iframe>
+	{%- elseif vimeoId -%}
+		<iframe
+			src="https://player.vimeo.com/video/{{ vimeoId }}?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
+			title="Background video"
+			allow="autoplay"
+			allowfullscreen
+		></iframe>
+	{%- endif -%}
+{% endmacro %}
+
+
+{% macro embed(rawUrl, autoplay) %}
+	{%- set url = rawUrl.url ?? rawUrl ?? null -%}
+	{%- set ytId = null -%}
+	{%- set vimeoId = null -%}
+	{%- if url -%}
+		{%- if 'youtube.com' in url or 'youtu.be' in url -%}
+			{%- if 'youtu.be/' in url -%}
+				{%- set ytId = url|split('youtu.be/')|last|split('?')|first -%}
+			{%- elseif 'v=' in url -%}
+				{%- set ytId = url|split('v=')|last|split('&')|first -%}
+			{%- elseif '/embed/' in url -%}
+				{%- set ytId = url|split('/embed/')|last|split('?')|first -%}
+			{%- endif -%}
+		{%- endif -%}
+		{%- if 'vimeo.com' in url -%}
+			{%- if 'player.vimeo.com/video/' in url -%}
+				{%- set vimeoId = url|split('/video/')|last|split('?')|first -%}
+			{%- else -%}
+				{%- set vimeoId = url|split('vimeo.com/')|last|split('?')|first -%}
+			{%- endif -%}
+		{%- endif -%}
+	{%- endif -%}
+	{%- if ytId -%}
+		{%- if autoplay -%}
+			<iframe
+				class="video__iframe"
+				src="https://www.youtube.com/embed/{{ ytId }}?autoplay=1&mute=1"
+				title="YouTube video"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen
+			></iframe>
+		{%- else -%}
+			<details class="video__embed">
+				<summary class="video__summary">
+					<img
+						class="video__thumbnail"
+						src="https://i.ytimg.com/vi/{{ ytId }}/maxresdefault.jpg"
+						alt="Play video"
+						loading="lazy"
+					/>
+					<span class="video__play-icon" aria-hidden="true">{{ svg('@feather/play.svg') }}</span>
+				</summary>
+				<iframe
+					class="video__iframe"
+					src="https://www.youtube.com/embed/{{ ytId }}"
+					title="YouTube video"
+					frameborder="0"
+					allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			</details>
+		{%- endif -%}
+	{%- elseif vimeoId -%}
+		<lite-vimeo
+			videoid="{{ vimeoId }}"
+			{% if autoplay %}autoload autoplay{% endif %}
+		></lite-vimeo>
+	{%- endif -%}
+{% endmacro %}

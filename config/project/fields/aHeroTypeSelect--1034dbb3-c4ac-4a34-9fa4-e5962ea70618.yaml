@@ -1,0 +1,40 @@
+columnSuffix: null
+handle: aHeroTypeSelect
+instructions: null
+name: '[A] Hero Type Select'
+searchable: false
+settings:
+  customOptions: false
+  iconsOnly: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Image
+        -
+          - value
+          - image
+        -
+          - icon
+          - image
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Video
+        -
+          - value
+          - video
+        -
+          - icon
+          - film
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ButtonGroup

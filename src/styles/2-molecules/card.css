@@ -1,0 +1,19 @@
+.card {
+	@apply bg-d as-body-2 passage text-b w-full overflow-hidden rounded-3xl border border-b border-solid p-4 text-left;
+
+	a:not(.btn) {
+		@apply text-b;
+	}
+}
+
+.card--caption {
+	@apply as-caption;
+}
+
+.card--a {
+	@apply border-a bg-c text-a;
+
+	a:not(.btn) {
+		@apply text-a;
+	}
+}

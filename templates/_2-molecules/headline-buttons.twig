@@ -1,0 +1,47 @@
+<!-- Template: {{ _self }} -->
+
+{#
+ # Buttons sub-component to the Headline Header
+ #
+ # @param buttons       arr - Hyper button links
+ #}
+
+{% set buttons = buttons ?? [] %}
+{% set arrowRightSvg = siteSettings.arrowRight.one()|default %}
+
+<div class="headline__buttons">
+	{% for button in buttons %}
+		{% set url = button.url ?? null %}
+		{% set text = button.customLinkText ?? button.linkText ?? button.text ?? null %}
+		{% set element = url ? 'a' : 'span' %}
+		{% set symbol = button.symbol.one()|default %}
+		{% tag element
+			with
+			{
+				href: url ?: false,
+				class: ['btn', not loop.first ? 'btn--secondary']|filter,
+				target: url and button.target ? button.target : false,
+				rel: url and button.target ? 'noopener' : false
+			}
+		%}
+			{{ text }}
+
+			{% if symbol %}
+				{% if symbol.extension == 'svg' %}
+					{{ svg(symbol) }}
+				{% else %}
+					<img
+						src="{{ symbol.url }}"
+						width="{{ symbol.width }}"
+						height="{{ symbol.height }}"
+						alt=""
+					/>
+				{% endif %}
+			{% endif %}
+
+			{% if button.hasArrow %}
+				{{ arrowRightSvg ? svg(arrowRightSvg) : '→' }}
+			{% endif %}
+		{% endtag %}
+	{% endfor %}
+</div>

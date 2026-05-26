@@ -1,0 +1,67 @@
+.themed {
+	@apply relative w-full;
+}
+
+/* Vertical breathing room when a theme is actively applied — matches Spotlight. */
+.themed[data-theme] {
+	@apply py-16 lg:py-24;
+
+	&.flush-bottom {
+		@apply pb-0;
+	}
+
+	/* Blocks with their own internal py (e.g. .split) would double-stack with the
+	   wrapper padding above. Reset them so all themed blocks share the same spacing. */
+	.split {
+		@apply py-0;
+	}
+}
+
+[data-theme='white'] {
+	@apply bg-white;
+}
+
+[data-theme='light'] {
+	@apply bg-neutral-100;
+}
+
+[data-theme='color'] {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+
+	--btn-primary-bg: var(--color-white);
+	--btn-primary-color: var(--color-primary);
+	--btn-primary-bg-hover: #d9d9d9;
+	--btn-primary-color-hover: var(--color-primary);
+
+	.headline__stamp,
+	.headline__overline,
+	a:not(.btn) {
+		color: var(--color-white);
+	}
+
+	.headline__overline {
+		border-color: var(--color-white);
+		fill: var(--color-white);
+	}
+}
+
+[data-theme='color'] .btn {
+	color: var(--btn-primary-color);
+}
+
+[data-theme='dark'] {
+	background-color: var(--color-neutral);
+	color: var(--color-white);
+
+	.headline__stamp,
+	.headline__overline,
+	a {
+		color: var(--color-white);
+	}
+
+	.headline__overline {
+		border-color: var(--color-white);
+		fill: var(--color-white);
+	}
+}

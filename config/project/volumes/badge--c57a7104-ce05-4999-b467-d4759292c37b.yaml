@@ -1,0 +1,76 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  394dc32c-170a-42bf-9890-ef574cc97137:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:8a55dd2f-3c5b-4826-a3da-23ec04bf0310'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-04-20T10:33:59+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: a321ecb8-ad62-4941-995a-7d0ddc4c92c3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            dateAdded: '2026-04-20T10:35:41+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: false
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 8a55dd2f-3c5b-4826-a3da-23ec04bf0310
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 04369351-678c-44e4-9a23-743b4aeb9a85
+        userCondition: null
+    thumbFieldKey: null
+fs: badge
+handle: badge
+name: Badge
+sortOrder: 23
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

@@ -1,0 +1,165 @@
+columnSuffix: null
+handle: contentBuilder
+instructions: null
+name: 'Builder: Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 3fe9a6aa-ffaa-4548-a8c3-f05827f8810b # Headline
+        -
+          - group
+          - Text
+    -
+      __assoc__:
+        -
+          - uid
+          - 9a49234d-00a9-469f-9f8d-f017e2461ab6 # Text
+        -
+          - group
+          - Text
+    -
+      __assoc__:
+        -
+          - uid
+          - 3b45a144-d998-4ea9-9de7-61f10ba61933 # Image
+        -
+          - group
+          - Media
+    -
+      __assoc__:
+        -
+          - uid
+          - cd6acee0-04df-4809-bcb1-6a4d0f985569 # Video
+        -
+          - group
+          - Media
+    -
+      __assoc__:
+        -
+          - uid
+          - 6ca05a32-d3e7-4b05-8eb6-dbf0cdf5a4e1 # Instagram
+        -
+          - group
+          - Media
+    -
+      __assoc__:
+        -
+          - uid
+          - 02c69faa-e443-47fe-8933-caf2d64dfd2d # Code
+        -
+          - group
+          - Media
+    -
+      __assoc__:
+        -
+          - uid
+          - 998a71e1-20c9-4a30-aaa5-7c90aeffa248 # Hero
+        -
+          - group
+          - Layout
+    -
+      __assoc__:
+        -
+          - uid
+          - c5fd64b7-0814-4890-a13f-7b0a70dc92e2 # Grid
+        -
+          - group
+          - Layout
+    -
+      __assoc__:
+        -
+          - uid
+          - 20b9b9d8-cac5-48f3-b6c4-4ffe8a27573e # Split
+        -
+          - group
+          - Layout
+    -
+      __assoc__:
+        -
+          - uid
+          - c08e32df-5bb0-400f-9291-564fa5bed9b5 # Spotlight
+        -
+          - group
+          - Layout
+    -
+      __assoc__:
+        -
+          - uid
+          - d868ae23-b1cf-4d1e-9d47-3cc3bafca61a # Accordion
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - 1dbb40a0-d8ea-426f-a75c-6066c38527df # Carousel
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - c9b3f329-2033-4e65-bd4c-3b76bfb0262e # Channel
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - e8de56c7-5ab4-491e-a474-4a12920a15c3 # Feed
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - bedfa89a-f2b7-4a25-ac6d-a1ca041777a5 # Table Info
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - a4ba6bfd-f503-4d1c-9aea-a6a2abadbe0b # Timeline
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - 6ce287e8-e015-4406-90c2-b118f1b26b39 # Quotes
+        -
+          - group
+          - Collections
+    -
+      __assoc__:
+        -
+          - uid
+          - b2e3d67f-21d4-408f-bff8-2fc600ec7676 # Form
+        -
+          - group
+          - Forms
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: none
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

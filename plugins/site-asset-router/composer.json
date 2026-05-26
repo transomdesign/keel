@@ -1,0 +1,21 @@
+{
+    "name": "transom/site-asset-router",
+    "description": "Routes asset uploads to site-specific subfolders in Craft CMS multisite installations",
+    "type": "craft-plugin",
+    "version": "1.0.0-dev",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2",
+        "craftcms/cms": "^5.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SiteAssetRouter\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "SiteAssetRouter\\Plugin",
+        "handle": "site-asset-router",
+        "name": "Site Asset Router"
+    }
+}

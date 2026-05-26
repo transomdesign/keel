@@ -1,0 +1,77 @@
+allowLineBreaksInTitles: false
+color: amber
+description: null
+fieldLayouts:
+  3a175482-9718-4051-ac4a-6b3b7d6ae6fc:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:db554b7e-44f9-4f7d-8a3a-e8e443ad6dba'
+      - 'layoutElement:3f02aded-0e1f-4544-a832-b96826de2e4d'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-05T01:32:17+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ba11f21a-24e9-4a1e-b26f-7f7e0096204f # [A] Rich Text (Inline Basic)
+            handle: text
+            instructions: null
+            label: Text
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: db554b7e-44f9-4f7d-8a3a-e8e443ad6dba
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-11-05T01:36:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 00abd07a-a431-4a42-b108-fc926623e8b1
+            handle: image
+            instructions: null
+            label: Image
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9b524888-f565-41fb-811d-97fa429e1784
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-12-12T17:24:02+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 37d020a7-0bd1-42a5-b36d-5b699966604c # [A] Link
+            handle: itemLink
+            instructions: null
+            label: Link
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3f02aded-0e1f-4544-a832-b96826de2e4d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b8964e2a-3c6a-45d5-9de6-a6986bc4524f
+        userCondition: null
+    thumbFieldKey: 'layoutElement:9b524888-f565-41fb-811d-97fa429e1784'
+handle: featuresItem
+hasTitleField: false
+icon: calculator-simple
+name: 'Item: Features Item'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

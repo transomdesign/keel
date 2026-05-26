@@ -1,0 +1,90 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  8fbd86fd-0221-4fda-93fa-4e7a3833c8fe:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-04-08T14:57:27+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 661a52eb-4fbc-4535-8499-1e1f0769ddd8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            dateAdded: '2026-04-08T14:58:41+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: false
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 8dd3d610-51f4-4849-bafa-2e45b56f1268
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-08T15:24:12+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: faa71d05-5ed5-465b-8e56-c03430e3949a # [IO] Carousel
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d85654de-e9b2-42ed-9e71-2751dddbb47d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c4feecdc-fd9c-44e6-ab99-7ece3e65dbfe
+        userCondition: null
+    thumbFieldKey: null
+fs: carousel
+handle: carousel
+name: Carousel
+sortOrder: 22
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: oFeaturesBlocks
+instructions: null
+name: '[O] Features Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Feature'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 9c1f658d-0c98-4054-b890-8e57feaffcc5 # Item: Features Item
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

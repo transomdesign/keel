@@ -1,0 +1,31 @@
+{# =========================================================================
+   Top Bar
+   Secondary cross-site links above the main navbar.
+   Driven by the Verbb Navigation menu "Top Bar".
+   Phone nodes (tel: URLs) render on the far left; other links on the far right.
+   ========================================================================= #}
+
+{% set topBarNodes = craft.navigation.nodes('topBar').level(1).all() %}
+{% set phoneNodes = topBarNodes|filter(n => (n.url ?? '') starts with 'tel:') %}
+{% set linkNodes = topBarNodes|filter(n => not ((n.url ?? '') starts with 'tel:')) %}
+
+{% if topBarNodes is not empty %}
+	<div class="topbar">
+		<div class="topbar__content">
+			{% if phoneNodes|length %}
+				<span class="topbar__phone">
+				  {{ svg('@feather/phone.svg')|attr({ width: 16, height: 16 }) }}
+					{{ phoneNodes|first.link }}
+				</span>
+			{% endif %}
+
+			{% if linkNodes|length %}
+				<ul class="topbar__links">
+					{% for node in linkNodes %}
+						<li class="topbar__link-item">{{ node.link }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,70 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  7a37c334-16a6-4590-9656-3d28572eaf7f:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-30T02:53:08+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 56c7d269-0d08-4f8a-8449-7f17b52f409a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-30T04:06:34+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 33a9f50b-1ca4-49f5-a941-1580095ab2e8 # [A] Icon Picker
+            handle: iconPicker
+            instructions: null
+            label: 'Icon Picker'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50fbc211-6b4f-4088-9c6b-35a89b30b001
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e1f3bf1c-0cae-4fde-b279-6e86c203782f
+        userCondition: null
+    thumbFieldKey: null
+handle: category
+hasTitleField: true
+icon: album-collection
+name: 'General: Category'
+showSlugField: true
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

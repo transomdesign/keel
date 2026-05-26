@@ -1,0 +1,23 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set block = block|default(null) %}
+{% set width = width|default('section--unbound') %}
+{% set mt = mt|default %}
+{% set code = code|default %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% if code is not empty %}
+	{% set containerAttr = {
+		id: id,
+		class: ['section', width, 'code-block']|filter,
+	} %}
+
+	{% embed '_2-molecules/section-theme' with { theme, mt } %}
+		{% block content %}
+			<div {{ attr(containerAttr) }}>
+				{{ code|raw }}
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endif %}

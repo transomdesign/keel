@@ -1,0 +1,13 @@
+{
+    "language_server_phpactor.diagnostics_on_update": true,
+    "language_server_phpactor.diagnostics_on_save": true,
+    "completion.dedupe": true,
+    "code_transform.class_new.variants": {
+        "default": "<?php\n\nnamespace <namespace>;\n\nclass <class_name>\n{\n}\n"
+    },
+    "phpactor.include_paths": [
+        "vendor/craftcms/cms/src/"
+    ],
+    "php.bin": "ddev exec php",
+    "language_server_phpactor.bin": "ddev exec php /var/www/html/vendor/bin/phpactor"
+}

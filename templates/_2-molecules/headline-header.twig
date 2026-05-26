@@ -1,0 +1,67 @@
+<!-- Template: {{ _self }} -->
+
+{% set blocks = blocks|default %}
+{% set align = align|default(null) %}
+{% set classes = classes|default %}
+{% set isFirst = isFirst|default %}
+
+{% if blocks is not empty %}
+	{% if blocks.all is defined %}
+		{% set blocks = blocks.all() %}
+	{% endif %}
+
+	{% tag 'header'
+		with
+		{
+			class: [
+				'headline',
+				align ? 'headline--align-' ~ align,
+				classes
+			]|filter
+		}
+	%}
+		{% for block in blocks %}
+			{% switch block.type.handle %}
+			  {# Overline #}
+				{% case 'headlineOverline' %}
+					{% include '_2-molecules/headline-overline.twig' with {
+						overline: block.overline,
+						stamp: block.stamp
+					} only %}
+
+				{# Headline #}
+				{% case 'headlineHeadline' %}
+					{% set headlineTag = isFirst ? 'h1' : 'h2' %}
+					{% tag headlineTag
+						with
+						{
+							class: [
+								'headline__headline',
+								isFirst ? 'headline__headline--first'
+							]|filter
+						}
+					%}
+						{{ block.headline }}
+					{% endtag %}
+
+				{# Subtitle #}
+				{% case 'headlineSubtitle' %}
+					<p class="headline__subtitle">
+						{{ block.subtitle }}
+					</p>
+
+				{# Body #}
+				{% case 'headlineBody' %}
+					<div class="headline__body passage">
+						{{ block.text }}
+					</div>
+
+				{# Buttons #}
+				{% case 'headlineButtons' %}
+				  {% include '_2-molecules/headline-buttons' with {
+						buttons: block.buttons
+					} only %}
+			{% endswitch %}
+		{% endfor %}
+	{% endtag %}
+{% endif %}

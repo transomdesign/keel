@@ -1,0 +1,57 @@
+{# Fetch siteSettings without tracking it in Blitz — saves it from invalidating the entire cache #}
+{% do craft.blitz.options.trackElements(false).trackElementQueries(false) %}
+{% set siteSettings = craft.entries().section('siteSettings').one() %}
+{% do craft.blitz.options.trackElements(true).trackElementQueries(true) %}
+{% set bodyClasses = bodyClasses|default %}
+{% set mainClasses = mainClasses|default %}
+{% block config %}
+
+{% endblock %}
+
+{% minify %}
+<!DOCTYPE html>
+<html lang="{{ craft.app.language|slice(0, 2) }}">
+	{% include '_meta/doc-head' %}
+
+	{% set bodyAttr = {
+		id: 'page-top',
+		class: bodyClasses is not empty ? bodyClasses : null
+	} %}
+
+	<body {{ attr(bodyAttr) }}>
+		{{ beginBody() }}
+
+		<nav aria-label="Skip link">
+			<a href="#main" class="skip-link">{{ 'Skip to Content'|t }}</a>
+		</nav>
+
+		{# Header #}
+		{% include '_5-chrome/header' with {
+			siteSettings: siteSettings,
+		} only %}
+
+		{% set mainAttr = {
+			id: 'main',
+			class: mainClasses is not empty ? mainClasses : null,
+			tabindex: '-1'
+		} %}
+
+		<main {{ attr(mainAttr) }}>
+			{% block bodyContent %}
+				{# Page content will go here #}
+			{% endblock %}
+		</main>
+
+		{% include '_5-chrome/footer' %}
+
+		{% include '_5-chrome/mobile-menu' %}
+		{% include '_2-molecules/toolbox-menu' %}
+
+		{% if siteSettings and siteSettings.codeSnippets is not empty %}
+			{{ siteSettings.codeSnippets|raw }}
+		{% endif %}
+
+		{{ endBody() }}
+	</body>
+</html>
+{% endminify %}

@@ -1,0 +1,31 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks|default %}
+{% set isFirst = isFirst ?? false %}
+{% set mt = mt|default %}
+{% set width = width|default('section--narrow') %}
+{% set classes = classes|default %}
+{% set align = align|default(null) %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+{% set flushBottom = flushBottom ?? false %}
+
+{% set containerAttr = {
+	id: id,
+	class: ['section relative', width, classes]
+} %}
+
+{% embed '_2-molecules/section-theme' with { theme, mt, flushBottom } %}
+	{% block content %}
+		<div {{ attr(containerAttr) }}>
+			{% include '_2-molecules/headline-header.twig' with {
+				blocks: blocks,
+				align: align,
+				isFirst: isFirst
+			} only %}
+			{% include '_2-molecules/section-badge.twig' with { badge: badge, align: align, sectionId: sectionId } only %}
+		</div>
+	{% endblock %}
+{% endembed %}

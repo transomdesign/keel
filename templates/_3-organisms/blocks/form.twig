@@ -1,0 +1,36 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set headlineBlocks = headlineBlocks|default %}
+{% set form = form|default %}
+{% set mt = mt|default %}
+{% set width = width|default %}
+{% set classes = classes|default %}
+
+{% tag 'section'
+	with
+	{
+		id: id,
+		class: [
+			width,
+			mt,
+			classes
+				? classes
+				: 'section text-center flex flex-col items-center gap-10'
+		]
+	}
+%}
+	{% include '_2-molecules/headline-header.twig' with {
+		blocks: headlineBlocks
+	} only %}
+
+	{% if form is not empty %}
+		{{ craft.formie.renderForm(form) }}
+
+		{# Blitz static caching workaround - refreshes CSRF tokens and captchas #}
+		<script>
+			document.addEventListener('onFormieInit', (event) => {
+			event.detail.formie.refreshForCache(event.detail.formId); });
+		</script>
+	{% endif %}
+{% endtag %}

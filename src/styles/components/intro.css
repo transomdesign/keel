@@ -1,0 +1,86 @@
+.intro {
+	@apply shadow-yellow-950;
+}
+
+.intro__photos {
+	@apply grid;
+
+	grid-template-rows: auto auto auto;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		'main'
+		'landscape'
+		'portrait';
+	gap: 40px;
+
+	figure {
+		@apply flex flex-col gap-4;
+	}
+
+	figcaption {
+		@apply block;
+	}
+
+	@variant md {
+		grid-template-rows: repeat(2, auto);
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-areas:
+			'main main main main main main main main main main main main'
+			'. portrait portrait portrait portrait . . landscape landscape landscape landscape .';
+		gap: 16px;
+	}
+
+	@variant md {
+		grid-template-areas:
+			'main main main main main main main main main main main main'
+			'. portrait portrait portrait portrait . landscape landscape landscape landscape landscape .';
+	}
+}
+
+.intro__accent-photos-main {
+	@apply mb-6 flex flex-col !gap-6;
+
+	grid-area: main;
+
+	@variant sm {
+		@apply mb-0 !flex-col-reverse !gap-10;
+	}
+
+	figcaption {
+		@apply w-full sm:w-8/12 lg:w-6/12;
+	}
+}
+
+.intro__accent-photos-main img {
+	@apply border-[.5px] border-black;
+}
+
+.intro__accent-photos-portrait {
+	@apply flex flex-col;
+
+	grid-area: portrait;
+
+	@variant md {
+		@apply -mt-24;
+	}
+}
+
+.intro__accent-photos-landscape {
+	grid-area: landscape;
+
+	@variant md {
+		@apply -mt-48;
+	}
+}
+
+#intro h4 {
+	@apply mb-6 sm:mb-0;
+}
+
+.copy p {
+	@apply as-body1;
+
+	&:not(:last-child) {
+		@apply mb-5;
+	}
+}

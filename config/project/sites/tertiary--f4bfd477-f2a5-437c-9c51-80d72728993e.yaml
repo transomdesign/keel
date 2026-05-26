@@ -1,0 +1,9 @@
+baseUrl: $URL_FOURTH
+enabled: '1'
+handle: tertiary
+hasUrls: true
+language: en
+name: 'Tertiary'
+primary: false
+siteGroup: 63400105-8e62-4183-9617-d6cfd193137c # Keel
+sortOrder: 4

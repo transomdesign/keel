@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+@utility btn {
+	@apply as-button inline-flex cursor-pointer items-center justify-center gap-2.5 px-6 py-2.5 text-center whitespace-nowrap no-underline transition-all rounded-full;
+
+	background-color: var(--btn-primary-bg, var(--color-primary));
+	color: var(--btn-primary-color, var(--color-white));
+
+	&:hover {
+		background-color: var(--btn-primary-bg-hover, var(--color-white));
+		color: var(--btn-primary-color-hover, var(--color-primary));
+	}
+
+	&:active {
+		background-color: var(--btn-primary-bg);
+		color: var(--btn-primary-color);
+	}
+
+	&:focus {
+		@apply outline-3 outline-gray-300 outline-solid;
+	}
+
+	&:disabled {
+		@apply pointer-events-none cursor-default opacity-50;
+	}
+}
+
+@utility btn--secondary {
+	background-color: var(--btn-secondary-bg, var(--color-neutral));
+	border-color: var(--btn-secondary-border-color);
+	color: var(--btn-secondary-color, var(--color-white));
+
+	&:hover {
+		background-color: var(--btn-secondary-bg-hover);
+		border-color: var(--btn-secondary-border-color-hover);
+		color: var(--btn-secondary-color-hover);
+	}
+}
+
+@utility btn--secondary-active {
+	background-color: var(--btn-secondary-bg-hover);
+	border-color: var(--btn-secondary-border-color-hover);
+	color: var(--btn-secondary-color-hover);
+
+	&:hover {
+		background-color: var(--btn-secondary-bg-hover);
+		border-color: var(--btn-secondary-bg);
+		color: var(--btn-secondary-color-hover);
+	}
+}
+
+@utility btn--ghost {
+	@apply bg-transparent text-black;
+
+	&:hover {
+	  @apply bg-primary;
+	}
+}
+
+@layer utilities {
+	.btn--secondary {
+		background-color: var(--btn-secondary-bg, var(--color-neutral));
+	}
+}

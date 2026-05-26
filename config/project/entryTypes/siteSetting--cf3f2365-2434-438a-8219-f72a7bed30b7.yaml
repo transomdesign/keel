@@ -1,0 +1,400 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  83c06a44-ea49-4b7b-8340-3dee2cb4ba12:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-01-14T23:31:25+00:00'
+            elementCondition: null
+            heading: Logo
+            type: craft\fieldlayoutelements\Heading
+            uid: 2c03907d-3716-4722-803e-372d6c850fba
+            userCondition: null
+          -
+            dateAdded: '2026-03-04T16:04:28+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: headerLogoDesktop
+            instructions: 'Horizonal logo shown in the navbar on desktop screen sizes'
+            label: 'Header Logo (Desktop)'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1e6ed832-220a-4651-aeec-ee85c9d2773f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-04T16:09:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: headerLogoMobile
+            instructions: 'Square logo shown in the navbar on mobile screen sizes'
+            label: 'Header Logo (Mobile)'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 54bc73ff-5005-4c92-b762-4d4483ae4bae
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-14T23:15:45+00:00'
+            elementCondition: null
+            heading: 'Message Bar'
+            type: craft\fieldlayoutelements\Heading
+            uid: d76cedec-7433-48a2-be02-76282e04967a
+            userCondition: null
+          -
+            dateAdded: '2025-10-16T16:35:31+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 04f618b3-460d-4489-92c9-12a8edb687fa # [O] Message Bar
+            handle: messageBar
+            instructions: null
+            label: 'Message Bar'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b577b390-2a8b-4fcf-b8fe-0d2bdc7c4ebe
+            userCondition: null
+            warning: null
+            width: 100
+        name: Globals
+        uid: 8df07148-fa0f-4a06-b72f-ed7e4da304a9
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-04T16:04:28+00:00'
+            elementCondition: null
+            heading: Logo
+            type: craft\fieldlayoutelements\Heading
+            uid: 15d506ea-caa2-4656-bf7e-eb0b5e48d301
+            userCondition: null
+          -
+            dateAdded: '2025-08-19T01:11:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: footerLogoDesktop
+            instructions: null
+            label: 'Footer Logo (Desktop)'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd12685a-b405-4a23-8e0a-030fe5cc7414
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-03-18T04:53:15+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: footerLogoMobile
+            instructions: null
+            label: 'Footer Logo (Mobile)'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 21ec7bea-c960-437d-88c6-89f596e0887c
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-03-17T16:13:08+00:00'
+            elementCondition: null
+            heading: Links
+            type: craft\fieldlayoutelements\Heading
+            uid: d98bb0d3-7ba1-48a6-a810-ec4402ffe432
+            userCondition: null
+          -
+            dateAdded: '2026-03-04T13:11:57+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: footerCopyrightText
+            instructions: 'Text that follows ©'
+            label: 'Footer Copyright Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e4bd870e-2f79-4722-9344-534637003227
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-04T13:07:22+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 0571d5d2-0852-487b-85de-0d217b71434a # [M] Rich Text List
+            handle: footerBottomLinks
+            instructions: null
+            label: 'Footer Bottom Links'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 07413d1d-abdf-4d64-a82d-4ef699fe3a94
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-17T17:09:18+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 107e8acf-230b-4b53-87ea-18a9ad57c5ee # [M] Text Set List
+            handle: footerContactLinks
+            instructions: null
+            label: 'Footer Contact Links'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e514f572-fb39-4398-a8a7-a0f946d3a4b1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-04T16:04:28+00:00'
+            elementCondition: null
+            heading: Form
+            type: craft\fieldlayoutelements\Heading
+            uid: 3b2ec0d6-64b3-40a9-ac46-5ee4abb24462
+            userCondition: null
+          -
+            dateAdded: '2025-12-02T17:33:27+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c3cad322-a380-443b-8ab2-0b35bad0f0b9 # [O] Form Blocks
+            handle: footerForm
+            instructions: null
+            label: 'Footer Form'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3520a1b1-70ab-4382-bcd1-4ac806b76eec
+            userCondition: null
+            warning: null
+            width: 100
+        name: Footer
+        uid: cfa99428-82e4-46a6-8f7e-f42b7f243a15
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-01-14T23:31:25+00:00'
+            elementCondition: null
+            heading: 'Blog Assets'
+            type: craft\fieldlayoutelements\Heading
+            uid: 0df0b3aa-c5b6-4dcd-9079-56118f1b0f4c
+            userCondition: null
+          -
+            dateAdded: '2025-11-17T04:10:36+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: e5983205-3639-4fd3-865d-8e439ca10a0e # [A] Image (Featured)
+            handle: articleThumbnail
+            instructions: 'Default image for blog posts without a thumbnail image'
+            label: 'Article Thumbnail'
+            required: false
+            tip: 800x600px
+            type: craft\fieldlayoutelements\CustomField
+            uid: 89dcffdb-82be-45b8-bc9e-f2da086e5358
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-14T23:15:45+00:00'
+            elementCondition: null
+            heading: 'UI Icons'
+            type: craft\fieldlayoutelements\Heading
+            uid: 83fe069b-2d74-4689-b4d4-6b83903c2104
+            userCondition: null
+          -
+            dateAdded: '2025-11-20T06:31:04+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: arrowLeft
+            instructions: null
+            label: 'Arrow Left'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6eb50d37-94b4-4089-afad-6e0f375b83dc
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-11-20T06:31:04+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: arrowRight
+            instructions: null
+            label: 'Arrow Right'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 03c18053-a4fe-44aa-bb71-80f9c9286c39
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-11-20T06:31:04+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: menuOpen
+            instructions: null
+            label: 'Menu Open'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 683f1fb4-899c-42f2-a4f4-f827f6782a9f
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-11-20T06:31:04+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: menuClose
+            instructions: null
+            label: 'Menu Close'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 31c25630-4256-4e0d-adc7-2152d752469d
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-01-28T13:28:31+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 36a5272f-4e77-4ae2-926a-03cc91e9793d # [A] Icon (SVG)
+            handle: uiFilter
+            instructions: null
+            label: Filter
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: abf95a88-1e43-48ec-9130-2b7edbb043eb
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Design & Assets'
+        uid: d22855e3-20dc-4f99-9c79-650cd721e950
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-01-14T23:31:25+00:00'
+            elementCondition: null
+            heading: 'External Scripts'
+            type: craft\fieldlayoutelements\Heading
+            uid: 620f023b-fa4a-45ae-b350-a4bf248e3301
+            userCondition: null
+          -
+            dateAdded: '2026-01-14T23:27:47+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 62e9e752-ff49-486d-9173-9eb5a2b7b397 # [A] Code (HTML)
+            handle: codeSnippets
+            instructions: 'HTML snippet for inserting 3rd party trackers/script/etc. Loaded at before </body>'
+            label: 'Code Snippets'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: daf3aa28-ec69-4be1-bea9-0fa81de537d0
+            userCondition: null
+            warning: 'Invalid HTML can break the webpage! Ensure your snippets are valid HTML!'
+            width: 100
+        name: 'Settings & Integrations'
+        uid: 0eb616db-03ca-4262-b1e9-b707691a0e33
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-08-20T10:15:54+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 516712a0-54cb-4fe9-bb8f-b87a5df01b2d # [M] Favicons
+            handle: favicons
+            instructions: null
+            label: Favicons
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c1b12d28-5398-4390-a0db-3905a941945d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Favicons
+        uid: 323c2295-7aaf-472c-ab0a-14167f490e23
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-10-26T20:04:44+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 666286d4-0213-4a7a-8c9b-26c35562e0af # [M] Fonts
+            handle: fonts
+            instructions: null
+            label: Fonts
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 37d4ef92-4a35-4feb-891d-e662732a63e2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Fonts
+        uid: e91dc355-e013-4b99-b441-6c2f2d01f69f
+        userCondition: null
+    thumbFieldKey: null
+handle: siteSetting
+hasTitleField: false
+icon: palette
+name: 'General: Site Setting'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,85 @@
+.spotlight {
+	@apply relative overflow-hidden py-16 lg:min-h-128 lg:py-24;
+
+	/* Aspect ratio only applies when there's no grid or content image below —
+	   otherwise the fixed height clips the grid cards or image block. Also
+	   only at lg+: below that, min-h-128 (512px) overrides the aspect-ratio
+	   height and forces the element wider than the viewport. */
+	&:not(:has(.spotlight__grid, article.image)) {
+		@apply lg:aspect-16-9;
+	}
+
+	/* Allow the section-badge to bleed above the section when present */
+	&:has(.section-badge) {
+		overflow: visible;
+	}
+}
+
+.spotlight.section--unbound {
+	@apply max-w-screen;
+}
+
+.spotlight__bg {
+	@apply absolute inset-0 z-0;
+}
+
+.spotlight__bg-img {
+	@apply h-full w-full object-cover;
+}
+
+/* Dark overlay + white text only apply when a bg image is present, for
+   readability over the image. Without this guard the overlay tints any
+   image-less spotlight a light gray — e.g. the `white` theme looked gray. */
+.spotlight:has(.spotlight__bg)::before {
+	@apply absolute inset-0 z-1 block bg-black/50;
+
+	content: '';
+}
+
+.spotlight:has(.spotlight__bg) .spotlight__content {
+	@apply text-white;
+
+	.headline__overline {
+		@apply border-white text-white;
+	}
+}
+
+.spotlight__content {
+	@apply section relative z-1 mx-auto flex flex-col justify-center sm:w-10/12 lg:w-8/12 xl:w-6/12;
+
+	&:not(:first-child) {
+		@apply mt-6;
+	}
+}
+
+/* Fill the section height (to center content vertically over bg image) only
+   when there's no grid below — with a grid, content should size to itself
+   so the section can fit both. */
+.spotlight:not(:has(.spotlight__grid)) .spotlight__content {
+	@apply h-full;
+}
+
+
+:is(.spotlight--align-left, .spotlight--align-right) {
+	.spotlight__content {
+		@apply md:w-9/12 lg:mx-[unset] lg:w-7/12 xl:w-6/12;
+
+		padding-inline: clamp(2rem, 5vw, 6rem);
+	}
+}
+
+.spotlight--align-left .spotlight__content {
+	@apply md:ml-0;
+}
+
+.spotlight--align-right .spotlight__content {
+	@apply md:mr-0 md:ml-auto;
+}
+
+.spotlight__grid {
+	@apply relative z-1;
+
+	&:not(:first-child) {
+	  @apply mt-6;
+	}
+}

@@ -1,0 +1,47 @@
+:root {
+	--fui-input-border: 1px solid var(--color-black);
+	--fui-input-border-radius: 0;
+	--fui-label-font-size: var(--text-body-1-sm);
+}
+
+.fui-i {
+	@apply flex w-full flex-col gap-4;
+}
+
+.fui-label,
+.fui-legend {
+	@apply as-body-1 text-left;
+}
+
+.fui-btn {
+	@apply btn;
+}
+
+.fui-page-container {
+	@apply flex flex-col gap-4;
+}
+
+.fui-field-container {
+	@apply flex flex-col;
+}
+
+.fui-input {
+	@apply as-caption block w-full rounded-none border border-black bg-white px-3 py-2;
+}
+
+.fui-submit {
+	@apply mt-4;
+}
+
+.fui-row {
+	@apply grid gap-4;
+	--fui-field-min-width-2col: calc(50% - 1rem);
+}
+
+.fui-alert {
+	@apply as-body-1 text-black;
+
+	&.fui-alert-success {
+		@apply bg-primary;
+	}
+}

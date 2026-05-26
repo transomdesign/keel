@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@theme {
+	--spacing: initial;
+
+	/* mobile default */
+	--spacing-xs: 12px;
+	--spacing-sm: 16px;
+	--spacing-md: 24px;
+	--spacing-lg: 32px;
+	--spacing-xl: 64px;
+	--spacing-xxl: 80px;
+
+	--spacing-straight-overline-bottom-margin: 16px;
+	--spacing-curved-overline-bottom-margin: 16px;
+	--spacing-heading-bottom-margin: 20px;
+	--spacing-subhead-bottom-margin: 32px;
+	--spacing-text-top-margin: 20px;
+	--spacing-paragraph-m1: 16px;
+	--spacing-paragraph-m2: 24px;
+	--spacing-paragraph-m3: 24px;
+}
+
+/* Override spacing values at different breakpoints */
+@layer theme {
+	:root,
+	:host {
+		/* MD */
+		@variant md {
+			--spacing-xs: 12px;
+			--spacing-sm: 16px;
+			--spacing-md: 24px;
+			--spacing-lg: 48px;
+			--spacing-xl: 80px;
+			--spacing-xxl: 96px;
+		}
+
+		/* XL */
+		@variant xl {
+			--spacing-xs: 16px;
+			--spacing-sm: 24px;
+			--spacing-md: 32px;
+			--spacing-lg: 64px;
+			--spacing-xl: 96px;
+			--spacing-xxl: 120px;
+		}
+
+		/* 2XL */
+		@variant 2xl {
+			--spacing-xs: 16px;
+			--spacing-sm: 24px;
+			--spacing-md: 40px;
+			--spacing-lg: 64px;
+			--spacing-xl: 96px;
+			--spacing-xxl: 120px;
+		}
+	}
+}

@@ -1,0 +1,41 @@
+/* Prevent layout shift */
+:root:has(.age-gate-active) {
+	overflow: hidden; /* Ensure overflow is hidden when modal is active */
+	scrollbar-gutter: stable;
+}
+
+.age-gate-modal:not([open]) {
+	opacity: 0;
+	position: absolute;
+	display: none;
+}
+
+.age-gate-modal {
+	/* Positioning and size from previous implementation, adapted */
+	@apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-8;
+	border: none;
+	width: 90%;
+	max-width: 30rem;
+	animation: fadeIn 0.15s ease-in forwards;
+	font-size: 1.06rem;
+	line-height: 1.5;
+	scrollbar-color: lightGray transparent;
+	text-align: left;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	z-index: 1050;
+}
+
+.age-gate-modal::backdrop {
+	animation: fadeIn 0.15s ease-in forwards;
+	background-color: rgb(255 255 255 / 0.7);
+	backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

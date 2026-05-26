@@ -1,0 +1,40 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks|default %}
+{% set mt = mt|default('mt-lg') %}
+{% set width = width|default('section--wide') %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['section', width, mt]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	{% tag 'article'
+		with
+		{
+			class: ['rewards']
+		}
+	%}
+		{# Product Cards #}
+		{% if blocks is not empty %}
+			{% tag 'ul'
+				with
+				{
+					class: ['mb-lg']
+				}
+			%}
+				{% for block in blocks %}
+					<li>
+						{% include '_2-molecules/product-card' with {
+							image: block.image.one(),
+							title: block.title,
+							teaser: block.subtitle
+						} %}
+					</li>
+				{% endfor %}
+			{% endtag %}
+		{% endif %}
+	{% endtag %}
+</section>

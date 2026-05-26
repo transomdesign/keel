@@ -1,0 +1,17 @@
+{
+    "_hash": "ef2784bfa6b6713a3c24528fdbe3c10b5ee0a30b345e546c3ca42a0a838bf177",
+    "patches": {
+        "nystudio107/craft-imageoptimize": [
+            {
+                "package": "nystudio107/craft-imageoptimize",
+                "description": "Fix srcsetWidth methods to properly handle retina variants",
+                "url": "patches/imageoptimize-fix-srcset-retina.patch",
+                "sha256": "ba4777be00dc131635fcb8ffe86b244c1c7cb3ab598c2e2f1be2573ef9eb325b",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

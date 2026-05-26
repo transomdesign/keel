@@ -1,0 +1,28 @@
+columnSuffix: null
+handle: aSeo
+instructions: null
+name: '[A] SEO'
+searchable: false
+settings:
+  elementDisplayPreviewType: google
+  facebookEnabledFields: ''
+  facebookTabEnabled: ''
+  generalEnabledFields:
+    - seoPreview
+    - mainEntityOfPage
+    - seoTitle
+    - seoDescription
+    - seoKeywords
+    - seoImage
+    - seoImageTransform
+    - seoImageTransformMode
+    - seoImageDescription
+    - canonicalUrl
+  generalTabEnabled: '1'
+  sitemapEnabledFields: ''
+  sitemapTabEnabled: ''
+  twitterEnabledFields: ''
+  twitterTabEnabled: ''
+translationKeyFormat: null
+translationMethod: site
+type: nystudio107\seomatic\fields\SeoSettings

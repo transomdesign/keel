@@ -1,0 +1,34 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set image = image|default %}
+{% set imageFree = imageFree|default %}
+{% set freeAspectRatio = freeAspectRatio|default(false) %}
+{% set caption = caption|default %}
+{% set mt = mt|default %}
+{% set width = width ?? 'section--wide' %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% set activeImage = freeAspectRatio ? imageFree : image %}
+{% set ioName = freeAspectRatio ? 'ioImageFree' : 'ioImage' %}
+
+{% if activeImage is not empty %}
+	{% embed '_2-molecules/section-theme' with { theme, mt } %}
+		{% block content %}
+			<div {{ attr({id: id, class: ['section relative', width]|filter}) }}>
+				{% tag 'article' with {
+					class: ['image', freeAspectRatio ? 'image--free']|filter
+				} %}
+					{% include '_2-molecules/media-image.twig' with {
+						image: activeImage,
+						caption: caption,
+						ioName: ioName
+					} only %}
+				{% endtag %}
+				{% include '_2-molecules/section-badge.twig' with { badge: badge, sectionId: sectionId } only %}
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endif %}

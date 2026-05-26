@@ -1,0 +1,93 @@
+altTranslationKeyFormat: null
+altTranslationMethod: site
+fieldLayouts:
+  f439811d-7d95-4778-ae14-32441d776fcc:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:4374b682-1068-452c-9e1f-93d5c2d9e24c'
+      - id
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-02T15:09:33+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: ddf6ec4a-7ad9-4684-b9c7-86504fe1e05d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            dateAdded: '2026-03-02T15:11:15+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: true
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 4374b682-1068-452c-9e1f-93d5c2d9e24c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-30T04:25:54+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: e78b1720-c00f-4915-b99f-5ef6cbf3d61c # [IO] Hero
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8acf1dd4-3627-4dec-8042-2dbf8b546bdf
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2d26ad88-ecd1-4209-b94d-5633e2e37543
+        userCondition: null
+    thumbFieldKey: null
+fs: hero
+handle: hero
+name: Hero
+sortOrder: 1
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

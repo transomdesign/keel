@@ -1,0 +1,19 @@
+[id*='fui-newsletter'] {
+	@apply flex flex-col justify-center gap-1 text-left;
+
+	.fui-btn-wrapper {
+		@apply items-start justify-start pt-0!;
+
+		button {
+			@apply btn mt-0 w-full;
+		}
+	}
+
+	.fui-page-container {
+		@apply gap-1;
+	}
+
+	h2 {
+		@apply as-body-2 font-bold;
+	}
+}

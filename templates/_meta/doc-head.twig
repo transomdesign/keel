@@ -1,0 +1,31 @@
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	{# -- Favicons -- #}
+	{% include '_meta/favicons' %}
+
+	{# -- Fonts -- #}
+	{% include '_meta/fonts' %}
+
+	<meta name="apple-mobile-web-app-title" content="{{ currentSite.name }}" />
+
+	{% if metaTheme is defined and metaTheme is not empty %}
+		<meta name="theme-color" content="{{ metaTheme }}" />
+	{% endif %}
+
+	{# -- Site-wide JavaScript -- #}
+	{{ craft.vite.script('scripts/main.ts', false) }}
+
+	{# -- Site-specific CSS based on current site handle -- #}
+	{% set siteStyleEntry = 'styles/sites/' ~ currentSite.handle ~ '.css' %}
+
+	{% if getenv('CRAFT_ENVIRONMENT') == 'dev' %}
+		<link rel="stylesheet" href="{{ craft.vite.asset(siteStyleEntry) }}" />
+	{% else %}
+		{# -- Inline Site-specific CSS to improve load speed -- #}
+		<style>
+			{{ inlineFile(craft.vite.entry(siteStyleEntry))|raw }}
+		</style>
+	{% endif %}
+</head>

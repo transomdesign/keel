@@ -1,0 +1,44 @@
+allowLineBreaksInTitles: false
+color: amber
+description: null
+fieldLayouts:
+  76b1f604-4bb5-4171-ba7c-54cab4d6c89a:
+    cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:a62756ad-8a6c-4803-911a-1089d41635bc'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-03T13:25:42+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 933febf2-61a9-4c3b-a456-ec530fe29e79 # [A] Rich Text (Extended)
+            handle: text
+            instructions: null
+            label: Text
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a62756ad-8a6c-4803-911a-1089d41635bc
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 349f1fba-fff5-49dc-a85d-26913a408638
+        userCondition: null
+    thumbFieldKey: null
+handle: splitText
+hasTitleField: false
+icon: diamond-half-stroke
+name: 'Split: Text'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

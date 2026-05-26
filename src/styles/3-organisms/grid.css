@@ -1,0 +1,33 @@
+.grid-block {
+	@apply flex flex-col;
+}
+
+.grid-block__list {
+	--_gap: 0.75rem; /* gap-3 */
+	@apply flex flex-wrap justify-center;
+	gap: var(--_gap);
+
+	.grid-card {
+		width: 100%; /* mobile: 1-up */
+	}
+
+	@variant md {
+		--_gap: 1rem; /* gap-4 */
+	}
+
+	@variant sm {
+		.grid-card {
+			width: calc((100% - var(--_gap)) / 2); /* tablet: 2-up */
+		}
+	}
+
+	@variant lg {
+		.grid-card {
+			width: calc((100% - (var(--desktop-cols, 3) - 1) * var(--_gap)) / var(--desktop-cols, 3)); /* desktop: editor-controlled */
+		}
+	}
+
+	@variant 2xl {
+		--_gap: 1.5rem; /* gap-6 */
+	}
+}

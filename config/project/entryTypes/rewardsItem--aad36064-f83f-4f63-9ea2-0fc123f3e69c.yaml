@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: fuchsia
+description: null
+fieldLayouts:
+  d6a88ca3-450f-4561-ac32-724bda4054dc:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:b27618a6-9f28-4254-bd59-4e7c29403e49'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-12-10T04:57:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: text
+            instructions: null
+            label: Text
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b27618a6-9f28-4254-bd59-4e7c29403e49
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-12-10T04:57:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9d12a4ef-4771-4ba6-a6d8-8a74972a8fb2
+            handle: image
+            instructions: null
+            label: Image
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: afd7c278-7b4a-4a86-a746-d41b4e58ed6e
+            userCondition: null
+            warning: null
+            width: 50
+        name: Content
+        uid: cf1bdec1-c5df-44f5-913d-d81d6450de78
+        userCondition: null
+    thumbFieldKey: 'layoutElement:afd7c278-7b4a-4a86-a746-d41b4e58ed6e'
+handle: rewardsItem
+hasTitleField: false
+icon: cake-candles
+name: 'Item: Rewards Item'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,85 @@
+columnSuffix: null
+handle: oMessageBar
+instructions: null
+name: '[O] Message Bar'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 153529a1-6c8b-416d-9885-d04d32d1d735
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Content
+                    1:
+                      - uid
+                      - 683d7b12-8e0e-453a-a145-cd3458f93e4e
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - isEnabled
+                            2:
+                              - label
+                              - Enabled
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2025-10-16T16:34:48+00:00'
+                            9:
+                              - uid
+                              - bf1e0d1b-3467-4816-8dfd-aaeb75598a0b
+                            12:
+                              - fieldUid
+                              - ccb32ef0-7553-4611-b276-0cc20062594f # [A] Toggle (Off)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - message
+                            2:
+                              - label
+                              - Message
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2025-10-16T16:34:48+00:00'
+                            9:
+                              - uid
+                              - a911f37a-dd54-4c56-9b13-3a2ef7ea2f69
+                            12:
+                              - fieldUid
+                              - ba11f21a-24e9-4a1e-b26f-7f7e0096204f # [A] Rich Text (Inline Basic)
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

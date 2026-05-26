@@ -1,0 +1,20 @@
+{# Default site has no frontend — send visitors straight to the CP #}
+{% if currentSite.handle == 'default' %}
+	{% redirect cpUrl() %}
+{% endif %}
+
+{% extends '_4-layouts/base' %}
+
+{% block bodyContent %}
+	{% if entry is defined and entry.title %}
+		<h1 class="sr-only">{{ entry.title }}</h1>
+	{% endif %}
+
+	{% if entry is defined and entry is not empty %}
+		{% set sections = entry.contentBuilder.all() %}
+
+		{% include '_3-organisms/content-builder.twig' with {
+			sections: sections
+		} %}
+	{% endif %}
+{% endblock %}

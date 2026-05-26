@@ -1,0 +1,40 @@
+<!-- Template: {{ _self }} -->
+
+{% set image = image|default %}
+{% set caption = caption|default %}
+{% set ioName = ioName|default('ioImage') %}
+
+{% if image is not empty %}
+	<figure class="image__figure">
+		<div class="styled-corners-wrapper">
+			{% include '_utilities/picture' with {
+				image: image,
+				ioName: ioName,
+				className: 'image__figure-img',
+				variants: {
+					xl: {
+						width: 1213
+					},
+					lg: {
+						width: 1039
+					},
+					md: {
+						width: 825
+					},
+					sm: {
+						width: 735
+					},
+					xs: {
+						width: 607
+					}
+				}
+			} %}
+		</div>
+
+		{% if caption is not empty %}
+			<figcaption class="image__figcaption">
+				{{ caption }}
+			</figcaption>
+		{% endif %}
+	</figure>
+{% endif %}

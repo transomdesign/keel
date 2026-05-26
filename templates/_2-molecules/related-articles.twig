@@ -1,0 +1,44 @@
+<!-- Template: {{ _self }} -->
+
+{% set entry = entry|default(null) %}
+{% set siteSettings = siteSettings|default(null) %}
+
+{% if entry %}
+  {% set relatedArticles = craft.entries()
+    .section('articles')
+    .id('not ' ~ entry.id)
+    .orderBy('postDate DESC')
+    .limit(3)
+    .all() %}
+
+  {# Render related articles section #}
+  {% if relatedArticles|length %}
+    <section class="related-articles section section--wide mt-xl">
+      <h2 class="as-h5 related-articles__heading mt-3">Related Articles</h2>
+
+      <div class="related-articles__grid">
+        {% for article in relatedArticles %}
+          {% include '_2-molecules/article-preview.twig' with {
+            title: article.title,
+            thumbnail: article.featuredImage,
+            tags: article.tags,
+            date: article.postDate,
+            url: article.url,
+            orientation: 'horizontal'
+          } only %}
+        {% endfor %}
+      </div>
+
+      <div class="related-articles__cta">
+        {% set arrowLeft = siteSettings ? (siteSettings.arrowLeft ?? null) : null %}
+        {% set arrowLeftSvg = arrowLeft ? arrowLeft.one()|default(null) : null %}
+        <a href="/articles" class="btn btn--secondary related-articles__back">
+          {% if arrowLeftSvg %}
+            {{ svg(arrowLeftSvg) }}
+          {% endif %}
+          Back to Articles
+        </a>
+      </div>
+    </section>
+  {% endif %}
+{% endif %}

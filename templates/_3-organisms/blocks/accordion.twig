@@ -1,0 +1,40 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set title = title|default %}
+{% set blocks = blocks|default %}
+{% set mt = mt|default %}
+{% set width = width|default('section--narrow') %}
+{% set classes = classes|default %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['section relative flex flex-col gap-5', mt, width, classes]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	<header>
+		<h3 class="as-h3">{{ title }}</h3>
+	</header>
+
+	<article class="accordion-wrapper">
+		{% for block in blocks %}
+			<details class="accordion" data-accordion>
+				<summary class="accordion__headline">
+					<h3>{{ block.headline }}</h3>
+
+					<div class="accordion__headline-icon">
+						{{ svg('@feather/plus.svg') }}
+					</div>
+				</summary>
+
+				<div class="accordion__body passage">
+					{{ block.body }}
+				</div>
+			</details>
+		{% endfor %}
+	</article>
+	{% include '_2-molecules/section-badge.twig' with { badge: badge, sectionId: sectionId } only %}
+</section>

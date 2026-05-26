@@ -1,0 +1,48 @@
+<!-- Template: {{ _self }} -->
+
+{% set feature = feature|default %}
+
+<li class="feature">
+  {% if not feature.itemLink.isEmpty() %}
+    <a href="{{ feature.itemLink.url }}">
+  {% endif %}
+
+	{% if feature.image is not empty %}
+		{% set image = feature.image.one() %}
+
+		<figure class="feature__figure">
+		  {% if image.extension == 'svg' %}
+				<img
+					class="feature__img feature__img--svg"
+					src="{{ image.url }}"
+					loading="lazy"
+					alt="{{ image.alt }}"
+					width="{{ image.width }}"
+					height="{{ image.height }}"
+				/>
+			{% else %}
+  	    {% include '_utilities/picture' with {
+  				image: image,
+  				ioName: 'ioFeatures',
+  				className: 'feature__img feature__img--raster',
+  				variants: {
+  					xs: {
+  						width: 140
+  					}
+  				}
+  			} %}
+			{% endif %}
+		</figure>
+
+	{% endif %}
+
+	{% if feature.text is not empty %}
+		<header class="feature__header">
+			{{ feature.text }}
+		</header>
+	{% endif %}
+
+	{% if not feature.itemLink.isEmpty() %}
+    </a>
+  {% endif %}
+</li>

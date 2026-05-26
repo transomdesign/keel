@@ -1,0 +1,159 @@
+allowLineBreaksInTitles: false
+color: sky
+description: null
+fieldLayouts:
+  4c93b75c-99d0-43ef-a0d3-dca940596f0b:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:17bec5a4-4212-4028-b667-269f50771af0'
+      - 'layoutElement:2273f940-adf3-49da-a04d-d533b5520cc7'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T07:09:11+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f525e33a-88e0-4335-b38d-97b4cc42a6e0 # [A] URL
+            handle: videoUrl
+            instructions: 'YouTube or Vimeo video URL (e.g. `https://www.youtube.com/watch?v=dQw4w9WgXcQ` or `https://vimeo.com/123456789`)'
+            label: 'Video URL'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1a1e2ac7-3b76-4702-9e98-86caf1d08594
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-11-05T06:35:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: caption
+            instructions: null
+            label: Caption
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2273f940-adf3-49da-a04d-d533b5520cc7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-11-05T06:32:58+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ccb32ef0-7553-4611-b276-0cc20062594f # [A] Toggle (Off)
+            handle: autoplay
+            instructions: null
+            label: Autoplay
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 17bec5a4-4212-4028-b667-269f50771af0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 6ef66316-4b24-47d4-a0a0-37894443f940
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-05-05T16:16:53+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 11d08c34-6db8-410a-8820-1730d076b853 # [A] Theme Toggle
+            handle: theme
+            instructions: null
+            label: Theme
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 771f2ae4-34f7-45c3-b82b-f183ef1e7db9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T10:30:55+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b368570f-83f3-414b-9542-c0d7ff556ff1 # [A] Image (Badge)
+            handle: badge
+            instructions: null
+            label: Badge
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4a11d762-5e02-4ba1-94a6-74c5aab18aa2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Options
+        uid: 5c035e51-69a8-4aef-8e07-8705c7f12fe5
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T07:18:23+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5d37719e-4b5d-41c3-bdf1-00c27b324f42
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 60600fc8-aa64-4a5e-b0c7-f3aa2009fe17
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T07:22:58+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: null
+            label: 'Jump To Nav Label'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 04d7d27c-95f4-4b32-9ab6-f921203a3c7c
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: 65dabfd9-a0af-4d1a-84ca-ff0c4c10437f
+        userCondition: null
+    thumbFieldKey: null
+handle: video
+hasTitleField: false
+icon: film
+name: Video
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,46 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set headlineBlocks = headlineBlocks|default %}
+{% set testimonialsBlocks = testimonialsBlocks|default %}
+{% set codeSnippet = codeSnippet|default %}
+{% set mt = mt|default %}
+{% set width = width|default %}
+{% set classes = classes|default %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['section', mt, width, classes]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	{% include '_2-molecules/headline-header.twig' with {
+		blocks: headlineBlocks,
+		class: 'testimonials__header mb-4'
+	} only %}
+
+	{% if codeSnippet %}
+		{{ codeSnippet|raw }}
+	{% else %}
+  	<script src="https://widget.senja.io/widget/88071e00-79b2-4bfe-a034-a60ef448ae07/platform.js" type="text/javascript" async></script>
+  	<div class="senja-embed mt-md" data-id="88071e00-79b2-4bfe-a034-a60ef448ae07" data-mode="shadow" data-lazyload="false" style="display: block; width: 100%;"></div>
+ 	{% endif %}
+
+
+	{% if testimonialsBlocks is not empty %}
+	  {% tag 'article' with {
+			class: 'testimonials-wrapper'
+		} %}
+
+			{% for testimonial in testimonialsBlocks %}
+				{% include '_2-molecules/card.twig' with {
+					id: testimonial.id,
+					richText: testimonial.richText,
+					rating: testimonial.rating,
+					ratingIsEnabled: testimonial.ratingIsEnabled,
+					classes: 'card--caption card--a'
+				} only %}
+			{% endfor %}
+		{% endtag %}
+	{% endif %}
+</section>

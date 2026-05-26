@@ -1,0 +1,78 @@
+<!-- Template: {{ _self }} -->
+
+{% import '_utilities/video-embed' as videoEmbed %}
+
+{% set id = id|default %}
+{% set block = block|default(null) %}
+{% set entry = entry|default(null) %}
+
+{# Hero is always full-width, no margin controls #}
+{% set sectionAttr = {
+	id: id,
+	class: 'section section--unbound',
+	'data-section-theme': 'transparent'
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	{% if block %}
+		{% set isVideo = block.background.value == 'video' %}
+		{% set image = block.image.one() %}
+		{% set headlineBlocks = block.headlineBlocks.all() %}
+		{% set variant = block.variant.value|default('standard') %}
+		{% set align = block.align.value|default(null) %}
+		{% set rawUrl = isVideo and block.videoUrl ? (block.videoUrl.url ?? block.videoUrl) : null %}
+		{% set hasMedia = image or (rawUrl and ('youtube.com' in rawUrl or 'youtu.be' in rawUrl or 'vimeo.com' in rawUrl)) %}
+
+		{% switch variant %}
+
+			{% case 'centered' %}
+				{% set heroClass = 'hero hero--centered' %}
+
+			{% case 'subnav' %}
+				{% set heroClass = 'hero hero--subnav' %}
+
+			{% default %}
+				{% set heroClass = 'hero' %}
+
+		{% endswitch %}
+
+		<div class="{{ heroClass }}{{ align ? ' hero--align-' ~ align }}">
+			<div class="hero__media">
+				{% if isVideo and rawUrl %}
+					<div class="hero__video-bg">
+						{{ videoEmbed.background(rawUrl) }}
+					</div>
+				{% elseif image %}
+					<div class="hero__image-bg">
+						{% include '_utilities/picture' with {
+							image: image,
+							ioName: 'ioHero',
+							variants: {
+								xl: { width: 1920 },
+								lg: { width: 1280 },
+								md: { width: 1024 },
+								sm: { width: 768 },
+								xs: { width: 640 },
+							},
+							className: 'hero__img',
+							loading: 'eager',
+						} only %}
+					</div>
+				{% endif %}
+
+				{% if hasMedia %}
+					<div class="hero__tint" aria-hidden="true"></div>
+				{% endif %}
+			</div>
+
+			{% if headlineBlocks %}
+				<div class="hero__content">
+					{% include '_2-molecules/headline-header.twig' with {
+					  blocks: headlineBlocks,
+					  isFirst: true
+					} only %}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</section>

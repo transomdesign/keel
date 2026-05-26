@@ -1,0 +1,288 @@
+<!-- Template: {{ _self }} -->
+
+{# State — initial values come from props/query params; on Sprig re-renders they come
+   from s-val:* on the clicked element or hidden inputs below. #}
+{% set entriesPerPage = entriesPerPage|default(9) %}
+{% set blockId = blockId|default %}
+{% set tagSlug = tagSlug ?? craft.app.request.getParam('tag') %}
+{% set categorySlug = categorySlug ?? craft.app.request.getParam('category') %}
+{% set page = page ?? 1 %}
+{% set searchQuery = searchQuery ?? craft.app.request.getParam('q') ?? '' %}
+
+{# Resolve entries for relational filtering #}
+{% set selectedTag = tagSlug
+	? craft.entries().section('tags').slug(tagSlug).one()
+	: null
+%}
+{% set selectedCategory = categorySlug
+	? craft.categories().group('newsEventsCategories').slug(categorySlug).one()
+	: null
+%}
+
+{# Build query #}
+{% set articlesQuery =
+	craft.entries().section('articles').orderBy('postDate DESC').limit(
+		entriesPerPage
+	)
+%}
+{% if selectedTag %}
+	{% set articlesQuery = articlesQuery.relatedTo(selectedTag) %}
+{% endif %}
+{% if selectedCategory %}
+	{% set articlesQuery = articlesQuery.relatedTo(selectedCategory) %}
+{% endif %}
+{% if searchQuery %}
+	{% set articlesQuery =
+		articlesQuery.search(searchQuery).orderBy('score DESC')
+	%}
+{% endif %}
+
+{# Paginate via Sprig #}
+{% set pageInfo = sprig.paginate(articlesQuery, page) %}
+{% set articles = pageInfo.pageResults %}
+
+{# Hidden inputs — preserve non-changing state across Sprig re-renders #}
+<input type="hidden" name="entriesPerPage" value="{{ entriesPerPage }}" />
+{% if tagSlug %}
+	<input type="hidden" name="tagSlug" value="{{ tagSlug }}" />
+{% endif %}
+{% if searchQuery %}
+	<input type="hidden" name="searchQuery" value="{{ searchQuery }}" />
+{% endif %}
+
+{# Category filter tabs #}
+{% set categories = craft.categories().group('newsEventsCategories').all() %}
+{% if categories|length %}
+	<nav class="news-filter-tabs section" aria-label="Filter by category">
+		<ul class="news-filter-tabs__list">
+			<li class="news-filter-tabs__item">
+				{% tag 'a'
+					with
+					{
+						sprig: true,
+						's-val:categorySlug': '',
+						's-val:page': '1',
+						's-push-url': (tagSlug ? '?tag=' ~ tagSlug : '/articles')
+							~ (searchQuery ? '&q=' ~ searchQuery),
+						class: [
+							'news-filter-tabs__link',
+							not categorySlug ? 'is-active'
+						]|filter
+					}
+				%}
+					All
+				{% endtag %}
+			</li>
+			{% for cat in categories %}
+				<li class="news-filter-tabs__item">
+					{% tag 'a'
+						with
+						{
+							sprig: true,
+							's-val:categorySlug': cat.slug,
+							's-val:page': '1',
+							's-push-url': '?category=' ~ cat.slug
+								~ (tagSlug ? '&tag=' ~ tagSlug)
+								~ (searchQuery ? '&q=' ~ searchQuery),
+							class: [
+								'news-filter-tabs__link',
+								categorySlug == cat.slug ? 'is-active'
+							]|filter
+						}
+					%}
+						{{ cat.title }}
+					{% endtag %}
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+{% endif %}
+
+{# Headline — rendered above search #}
+{% if blockId %}
+	{% set _block = craft.entries().id(blockId).one()|default %}
+	{% if _block and _block.headline is defined and (_block.headline|length) %}
+		{% include '_2-molecules/headline-header.twig' with {
+			blocks: _block.headline,
+			classes: 'mt-md'
+		} only %}
+	{% endif %}
+{% endif %}
+
+{# Search #}
+<div class="news-search section mb-lg">
+	<div class="news-search__field">
+		{% tag 'input'
+			with
+			{
+				sprig: true,
+				's-trigger': 'keyup changed delay:300ms',
+				's-replace': '#article-results',
+				's-val:page': '1',
+				type: 'search',
+				name: 'searchQuery',
+				value: searchQuery,
+				placeholder: 'Search articles…',
+				class: 'news-search__input',
+				'aria-label': 'Search articles'
+			}
+		%}
+		{% endtag %}
+		{% tag 'button'
+			with
+			{
+				sprig: true,
+				's-val:searchQuery': '',
+				's-val:page': '1',
+				type: 'button',
+				class: 'news-search__clear',
+				'aria-label': 'Clear search'
+			}
+		%}
+			{{ svg('@feather/x.svg') }}
+		{% endtag %}
+		{% tag 'button'
+			with
+			{
+				sprig: true,
+				's-val:page': '1',
+				type: 'submit',
+				class: 'news-search__submit',
+				'aria-label': 'Search'
+			}
+		%}
+			{{ svg('@feather/arrow-right.svg') }}
+		{% endtag %}
+	</div>
+</div>
+
+{# Article grid #}
+<div id="article-results">
+	<div class="section">
+		{% if articles|length %}
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+				{% for article in articles %}
+					{% include '_2-molecules/article-preview.twig' with {
+						title: article.title,
+						thumbnail: article.featuredImage,
+						tags: article.tags,
+						date: article.postDate,
+						url: article.url
+					} only %}
+				{% endfor %}
+			</div>
+		{% else %}
+			<p class="text-center text-(--color-on-surface-muted) py-12">
+				No articles found{{ selectedTag ? ' for this tag' }}{{ selectedCategory
+					? ' in this category' }}{{ searchQuery
+					? ' matching "' ~ searchQuery ~ '"' }}.
+			</p>
+		{% endif %}
+	</div>
+
+	{# Pagination #}
+	{% if pageInfo.totalPages > 1 %}
+		{% set arrowLeftSvg = siteSettings.arrowLeft.one()|default %}
+		{% set arrowRightSvg = siteSettings.arrowRight.one()|default %}
+
+		{# Shared URL suffix for push-url — preserves active tag/category in browser URL #}
+		{% set urlFilters = (tagSlug ? '&tag=' ~ tagSlug)
+			~ (categorySlug ? '&category=' ~ categorySlug)
+			~ (searchQuery ? '&q=' ~ searchQuery)
+		%}
+
+		<nav class="pagination">
+			<ul class="pagination__list">
+				{# Previous #}
+				<li class="pagination__item">
+					{% if page > 1 %}
+						{% tag 'a'
+							with
+							{
+								sprig: true,
+								class: 'pagination__arrow',
+								's-val:page': page - 1,
+								's-push-url': '?page=' ~ (page - 1) ~ urlFilters
+							}
+						%}
+							{% if arrowLeftSvg is not empty %}
+								{{ svg(arrowLeftSvg) }}
+							{% else %}
+								Prev
+							{% endif %}
+						{% endtag %}
+					{% else %}
+						<button
+							class="pagination__arrow pagination__arrow--disabled"
+							disabled
+						>
+							{% if arrowLeftSvg is not empty %}
+								{{ svg(arrowLeftSvg) }}
+							{% else %}
+								Prev
+							{% endif %}
+						</button>
+					{% endif %}
+				</li>
+
+				{# Page numbers — 5-page window around current page #}
+				{% set rangeStart = max(1, page - 2) %}
+				{% set rangeEnd = min(pageInfo.totalPages, page + 2) %}
+				{% for i in rangeStart..rangeEnd %}
+					<li class="pagination__item">
+						{% if i == page %}
+							<span class="pagination__link pagination__link--active">
+								{{ i }}
+							</span>
+						{% else %}
+							{% tag 'a'
+								with
+								{
+									sprig: true,
+									class: 'pagination__link',
+									's-val:page': i,
+									's-push-url': '?page=' ~ i ~ urlFilters
+								}
+							%}
+								{{ i }}
+							{% endtag %}
+						{% endif %}
+					</li>
+				{% endfor %}
+
+				{# Next #}
+				<li class="pagination__item">
+					{% if page < pageInfo.totalPages %}
+						{% tag 'a'
+							with
+							{
+								sprig: true,
+								class: 'pagination__arrow',
+								's-val:page': page + 1,
+								's-push-url': '?page=' ~ (page + 1) ~ urlFilters
+							}
+						%}
+							{% if arrowRightSvg is not empty %}
+								{{ svg(arrowRightSvg) }}
+							{% else %}
+								Next
+							{% endif %}
+						{% endtag %}
+					{% else %}
+						<button
+							class="pagination__arrow pagination__arrow--disabled"
+							disabled
+						>
+							{% if arrowRightSvg is not empty %}
+								{{ svg(arrowRightSvg) }}
+							{% else %}
+								Next
+							{% endif %}
+						</button>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+	{% endif %}
+</div>
+{# end #article-results #}

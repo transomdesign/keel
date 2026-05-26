@@ -1,0 +1,33 @@
+<!-- Template: {{ _self }} -->
+
+{% set toolboxNodes = craft.navigation.nodes('toolboxLinks').level(1).all() %}
+
+{% if toolboxNodes is not empty %}
+  <nav
+    id="toolbox-menu"
+    class="toolbox-menu"
+    aria-label="Toolbox links"
+    aria-expanded="false"
+  >
+    <div class="toolbox-menu__inner">
+      <ul class="toolbox-menu__links">
+        {% nav node in toolboxNodes %}
+          <li class="toolbox-menu__item">
+            <a
+              href="{{ node.url }}"
+              class="toolbox-menu__link"
+              {% if node.newWindow %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >
+              {% if node.iconPicker is defined and node.iconPicker is not empty %}
+                <span class="toolbox-menu__icon" aria-hidden="true">
+                  <svg><use href="/iconsets/feather-sprites.svg#{{ node.iconPicker }}"/></svg>
+                </span>
+              {% endif %}
+              <span class="toolbox-menu__label">{{- node.title -}}</span>
+            </a>
+          </li>
+        {% endnav %}
+      </ul>
+    </div>
+  </nav>
+{% endif %}

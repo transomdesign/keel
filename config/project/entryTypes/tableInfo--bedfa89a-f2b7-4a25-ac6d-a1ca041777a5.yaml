@@ -1,0 +1,114 @@
+allowLineBreaksInTitles: false
+color: pink
+description: null
+fieldLayouts:
+  cc46d3f8-d0ab-4827-8f95-1d4b2935ed49:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-04-01T07:32:19+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: b43fec83-cdf0-4af2-9a86-100e0a0e9e9a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-01T07:36:34+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f4af990b-50ba-4c83-8f31-2720ee25d86d # [O] Table Info Rows
+            handle: rows
+            instructions: null
+            label: Rows
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ea82a106-0f54-4c41-90a4-7becf30e9cd1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e044a64a-3b98-4fbf-ac2f-110feab52c2d
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T07:35:11+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: "The text that will appear in the 'Jump To' navigation for this section"
+            label: 'Jump To Nav Label'
+            required: false
+            tip: 'Leave blank to exclude this section from the page navigation'
+            type: craft\fieldlayoutelements\CustomField
+            uid: 00c91750-9ec7-42b4-8e83-4d5376572b61
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: fe0757ee-15ba-40c4-a6dd-93343bcae522
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T07:34:14+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6ea29903-aff0-42d5-8f1a-fb7e359596b7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: ea271c81-a2c3-4e9a-aa0f-adff5f001d53
+        userCondition: null
+    thumbFieldKey: null
+handle: tableInfo
+hasTitleField: true
+icon: table-rows
+name: 'Table Info'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

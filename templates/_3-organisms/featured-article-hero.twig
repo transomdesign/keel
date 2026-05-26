@@ -1,0 +1,80 @@
+<!-- Template: {{ _self }} -->
+
+{% set article = article ?? null %}
+
+{% if article %}
+	{% set image = article.featuredImage.one() ?? null %}
+	{% set badgeEntry = article.category.one() ?? article.tags.one() ?? null %}
+	{% set badge = badgeEntry ? badgeEntry.title : null %}
+
+	{# Body: prefer summary field, fall back to first Text block in blogBuilder #}
+	{% if article.summary is not empty %}
+		{% set body = article.summary %}
+		{% set bodyIsHtml = false %}
+	{% else %}
+		{% set firstTextBlock = article.blogBuilder.type('text').one() ?? null %}
+		{% set body = firstTextBlock ? firstTextBlock.richText : null %}
+		{% set bodyIsHtml = true %}
+	{% endif %}
+
+	<section class="section section--unbound" data-section-theme="transparent">
+		<div class="hero hero--align-right">
+			<div class="hero__media">
+				<div {{ attr({ class: ['hero__image-bg', not image ? 'bg-primary']|filter }) }}>
+					{% if image %}
+						{% include '_utilities/picture' with {
+							image: image,
+							ioName: 'ioFeatured',
+							variants: {
+								xl: { width: 1920 },
+								lg: { width: 1280 },
+								md: { width: 1024 },
+								sm: { width: 768 },
+								xs: { width: 640 }
+							},
+							className: 'hero__img hero__img--tint-3',
+							loading: 'eager'
+						} only %}
+					{% endif %}
+				</div>
+			</div>
+
+			<div class="hero__content">
+				<header class="headline">
+					{% if badge %}
+						{% include '_2-molecules/headline-overline.twig' with {
+							overline: badge
+						} only %}
+					{% endif %}
+
+					<h2 class="headline__headline">{{ article.title }}</h2>
+
+					{% if article.postDate %}
+						<time
+							class="hero__date as-caption"
+							datetime="{{ article.postDate|atom }}"
+						>
+							{{ article.postDate|date('F j, Y') }}
+						</time>
+					{% endif %}
+
+					{% if body %}
+						<div class="headline__body passage">
+							{% if bodyIsHtml %}
+								{{ body|raw }}
+							{% else %}
+								{{ body }}
+							{% endif %}
+						</div>
+					{% endif %}
+
+					<div class="headline__buttons">
+						<a href="{{ article.url }}" class="btn btn--secondary">
+							Read More {{ svg('@feather/chevron-right.svg') }}
+						</a>
+					</div>
+				</header>
+			</div>
+		</div>
+	</section>
+{% endif %}

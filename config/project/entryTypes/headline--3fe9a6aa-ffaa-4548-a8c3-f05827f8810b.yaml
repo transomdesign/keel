@@ -1,0 +1,178 @@
+allowLineBreaksInTitles: false
+color: emerald
+description: null
+fieldLayouts:
+  4304c079-a5a7-4f1a-9aac-a51586ecb030:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-04T23:50:45+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fcbb2457-9c6d-4fcd-9771-38c11395a332 # [O] Headline Blocks
+            handle: blocks
+            instructions: null
+            label: Blocks
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0d1578c-40c2-455f-8844-4c318ec6e53b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 79cedd71-c0ca-4e90-a9eb-5c0694fb7ec4
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-05-05T16:32:05+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 11d08c34-6db8-410a-8820-1730d076b853 # [A] Theme Toggle
+            handle: theme
+            instructions: null
+            label: Theme
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8046dd6a-4bbb-4590-befd-75e4840d9ac2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-18T18:29:24+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fab751c7-1d75-44e9-8b88-3b5b48793efa # [A] Align Select
+            handle: align
+            instructions: null
+            label: Align
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7df57c42-bff5-445d-89c3-6badb686eed1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T10:25:34+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b368570f-83f3-414b-9542-c0d7ff556ff1 # [A] Image (Badge)
+            handle: badge
+            instructions: null
+            label: Badge
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e6ead893-4161-4a2f-88ad-614f0241cc2a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-21T11:41:30+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ccb32ef0-7553-4611-b276-0cc20062594f # [A] Toggle (Off)
+            handle: flushBottom
+            instructions: null
+            label: 'Flush Bottom'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f3e3625e-23ef-4fda-8f02-b27a3aadf513
+            userCondition: null
+            warning: null
+            width: 100
+        name: Options
+        uid: f3a066e3-6e6a-422c-a8d1-81a8c6ce8051
+        userCondition: null
+      -
+        elementCondition:
+          class: craft\elements\conditions\entries\EntryCondition
+          conditionRules:
+            -
+              class: craft\elements\conditions\entries\FieldConditionRule
+              operator: in
+              uid: 44fd27e5-d7b3-4c34-8491-f1851920b40a
+              values:
+                - f76b13e6-69f3-47c4-b51f-1d78fae02bfe # Builder: Blog
+                - 7a53961d-f3e3-43ad-9905-0b5e35514948 # Builder: Content
+          elementType: craft\elements\Entry
+          fieldContext: global
+        elements:
+          -
+            dateAdded: '2025-11-18T05:43:30+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: "The text that will appear in the 'Jump To' navigation for this section"
+            label: 'Jump To Nav Label'
+            required: false
+            tip: 'Leave blank to exclude this section from the page navigation'
+            type: craft\fieldlayoutelements\CustomField
+            uid: 517c3672-5867-4554-908b-2c72e7eb3849
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: df48ab7e-b683-4d7d-8362-1f94b66f8238
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-30T20:41:53+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\entries\FieldConditionRule
+                  operator: in
+                  uid: 407e887e-d46b-488e-b03a-701434f122bd
+                  values:
+                    - 7a53961d-f3e3-43ad-9905-0b5e35514948 # Builder: Content
+                    - f76b13e6-69f3-47c4-b51f-1d78fae02bfe # Builder: Blog
+              elementType: craft\elements\Entry
+              fieldContext: global
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1b608a43-51d2-4dc1-b2e3-e6e95d54ec7b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 2c6b4462-4338-455a-b47d-e4c359f80668
+        userCondition: null
+    thumbFieldKey: null
+handle: headline
+hasTitleField: false
+icon: heading
+name: Headline
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

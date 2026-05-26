@@ -1,0 +1,106 @@
+columnSuffix: null
+handle: aRichTextHeadline
+instructions: null
+name: '[A] Rich Text (Headline)'
+searchable: false
+settings:
+  advancedLinkFields: null
+  availableTransforms: ''
+  availableVolumes: '*'
+  characterLimit: null
+  css: "h1 {\r\n  font-size: 2.75rem;\r\n  margin-block-end: 0.75rem;\r\n}\r\n\r\nh2 {\r\n  font-size: 2.25rem;\r\n}\r\n\r\nh3 {\r\n  font-size: 2.125rem;\r\n  font-family: 'Roboto Slab', serif;\r\n}\r\n\r\nh4 {\r\n  font-size: 2rem;\r\n}\r\n\r\nh5 {\r\n  font-size: 1.75rem;\r\n}\r\n\r\nh5 {\r\n  font-size: 1.6rem;\r\n}\r\n\r\np {\r\n  margin-block: 0.75rem;\r\n}\r\n\r\n.ck.ck-button.ck-heading_overline {\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.1em;\r\n  font-size: 0.875em;\r\n  font-weight: 600;\r\n}\r\n\r\nh2.headline__overline {\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.1em;\r\n  font-size: 0.875em;\r\n  font-weight: 600;\r\n}\r\n\r\n.ck.ck-button.ck-heading_body-large {\r\n  font-size: 17px;\r\n}\r\n\r\np.as-h2 {\r\n font-size: 2rem;\r\n line-height: 2.25rem;\r\n}\r\n\r\n.ck.ck-content a.btn {\r\n  display: inline-block;\r\n  padding: 0.25rem 0.75rem;\r\n  background-color: #333;\r\n  color: #fff;\r\n  text-decoration: none;\r\n  border-radius: 4px;\r\n  font-weight: 500;\r\n  margin-right: 0.25rem;\r\n}\r\n\r\n.ck.ck-content a.btn:hover {\r\n  background-color: #ccc;\r\n  color: #000;\r\n}"
+  cssFile: null
+  defaultTransform: null
+  defaultUploadLocationSubpath: null
+  defaultUploadLocationVolume: null
+  fullGraphqlData: true
+  headingLevels:
+    - '2'
+    - '3'
+    - '4'
+  imageEntryTypeUid: null
+  imageFieldUid: null
+  imageMode: img
+  js: null
+  jsFile: null
+  options:
+    __assoc__:
+      -
+        - htmlSupport
+        -
+          __assoc__:
+            -
+              - allow
+              -
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - h2
+                    -
+                      - classes
+                      -
+                        - headline__overline
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - a
+                    -
+                      - classes
+                      -
+                        - btn
+      -
+        - style
+        -
+          __assoc__:
+            -
+              - definitions
+              -
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - Overline
+                    -
+                      - element
+                      - h2
+                    -
+                      - classes
+                      -
+                        - headline__overline
+                -
+                  __assoc__:
+                    -
+                      - name
+                      - Button
+                    -
+                      - element
+                      - a
+                    -
+                      - classes
+                      -
+                        - btn
+  parseEmbeds: false
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - heading
+    - style
+    - '|'
+    - bold
+    - italic
+    - link
+    - '|'
+    - bulletedList
+    - numberedList
+    - htmlEmbed
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\ckeditor\Field

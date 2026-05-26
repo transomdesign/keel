@@ -1,0 +1,36 @@
+columnSuffix: null
+handle: aImageCarousel
+instructions: null
+name: '[A] Image (Carousel)'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:c28fd67d-a4ad-43b9-bddb-5a0d8950e96d' # Hero
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  previewMode: thumbs
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:a244a2de-314e-406f-ab7f-a0bb48d207fe' # Carousel
+  restrictedLocationSubpath: null
+  selectionLabel: 'Add Image'
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: thumbs
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

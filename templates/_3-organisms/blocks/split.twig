@@ -1,0 +1,90 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks|default %}
+{% set section = section|default(null) %}
+{% set theme = theme|default('light') %}
+{% set mt = mt|default %}
+{% set width = width|default('section--wide') %}
+{% set imageIsContained = imageIsContained|default(false) %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+
+{# Theme: modeToggle (dark | light | color), falls back to legacy section.theme field #}
+{% set themeMap = {
+	darkModeA: 'dark',
+	darkModeB: 'dark',
+	lightModeA: 'light',
+	lightModeB: 'light'
+} %}
+{% set themeRaw = section is not null and section.modeToggle is defined
+	? section.modeToggle.value ?? section.modeToggle
+	: section is not null and section.theme is defined
+		? section.theme.value ?? section.theme ?? theme
+		: theme
+%}
+{% set resolvedTheme = themeMap[themeRaw] ?? themeRaw ?? 'light' %}
+
+{# Direction: media left (default) or right #}
+{% set direction = section is not null and section.mediaPosition is defined
+	? section.mediaPosition.value|default('left')
+	: 'left'
+%}
+
+{% set articleAttr = {
+	id: id,
+	class: ['section', width, 'split', direction == 'right' ? 'split--right']
+} %}
+
+{% embed '_2-molecules/section-theme' with { theme: resolvedTheme, mt } %}
+	{% block content %}
+		{% if blocks is not empty %}
+			<article {{ attr(articleAttr) }}>
+				{% for block in blocks.all() %}
+					{% switch block.type.handle %}
+						{% case 'headline' %}
+							{# Headline #}
+							{% include '_2-molecules/headline-header.twig' with {
+								blocks: block.blocks,
+								align: block.align.value|default(null),
+								classes: 'split__header'
+							} only %}
+
+							{# Image(s) #}
+						{% case 'splitImage' %}
+							{% set image = block.image %}
+
+							{% if image is not empty %}
+								<figure class="{{ ['split__figure', imageIsContained ? 'split__figure--contained']|filter|join(' ') }}">
+									{% set image = image.one() %}
+									{% include '_utilities/picture' with {
+										image: image,
+										ioName: imageIsContained ? 'ioSplitFree' : 'ioSplit',
+										variants: {
+											xl: {
+												width: 704
+											},
+											lg: {
+												width: 612
+											},
+											md: {
+												width: 991
+											},
+											sm: {
+												width: 735
+											},
+											xs: {
+												width: 607
+											}
+										},
+										className: 'split__img'
+									} %}
+								</figure>
+							{% endif %}
+					{% endswitch %}
+				{% endfor %}
+			</article>
+		{% endif %}
+		{% include '_2-molecules/section-badge.twig' with { badge: badge, mediaPosition: direction, sectionId: sectionId } only %}
+	{% endblock %}
+{% endembed %}

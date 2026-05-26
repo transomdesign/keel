@@ -1,0 +1,39 @@
+<!-- Template: {{ _self }} -->
+
+{% import '_utilities/video-embed' as videoEmbed %}
+
+{# Normalize: URL field objects expose .url, plain strings pass through #}
+{% set videoUrl = videoUrl.url ?? videoUrl ?? null %}
+{% set caption = caption|default %}
+{% set autoplay = autoplay|default(false) %}
+{% set id = id|default %}
+{% set mt = mt|default %}
+{% set width = width ?? 'section--wide' %}
+{% set badge = badge|default %}
+{% set sectionId = sectionId|default(0) %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% if videoUrl and ('youtube.com' in videoUrl or 'youtu.be' in videoUrl or 'vimeo.com' in videoUrl) %}
+	{# Capture macro output before {% embed %}: macro imports don't propagate into embed block scope #}
+	{% set videoEmbedHtml %}{{ videoEmbed.embed(videoUrl, autoplay) }}{% endset %}
+	{% embed '_2-molecules/section-theme' with { theme, mt } %}
+		{% block content %}
+			<div {{ attr({ id: id, class: ['section relative', width]|filter }) }}>
+				<article class="video">
+					<figure class="video__figure">
+						<div class="styled-corners-wrapper">
+							{{ videoEmbedHtml }}
+						</div>
+
+						{% if caption is not empty %}
+							<figcaption class="video__figcaption">
+								{{ caption }}
+							</figcaption>
+						{% endif %}
+					</figure>
+				</article>
+				{% include '_2-molecules/section-badge.twig' with { badge: badge, sectionId: sectionId } only %}
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endif %}

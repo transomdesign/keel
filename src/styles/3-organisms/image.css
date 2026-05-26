@@ -1,0 +1,27 @@
+.image {
+	@apply flex justify-center;
+
+	img {
+		@apply aspect-16-9 relative w-full object-cover sm:inset-0 sm:h-full;
+	}
+}
+
+/* Free aspect ratio */
+.image--free {
+	img {
+		@apply aspect-auto h-auto sm:h-auto;
+	}
+}
+
+/* Figure */
+.image__figure {
+	@apply flex flex-col;
+}
+
+.image__figure-img {
+	@apply block h-full w-full;
+}
+
+.image__figcaption {
+	@apply as-caption mt-2;
+}

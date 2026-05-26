@@ -1,0 +1,9 @@
+name: bun
+repository: OpenForgeProject/ddev-bun
+version: 1.1.2
+install_date: "2026-02-23T16:24:35+09:00"
+project_files:
+    - commands/web/bun
+    - web-build/Dockerfile.bun
+global_files: []
+removal_actions: []

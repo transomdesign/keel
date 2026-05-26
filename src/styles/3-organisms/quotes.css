@@ -1,0 +1,55 @@
+.quotes-carousel {
+	@apply py-16 text-center;
+}
+
+.quotes-carousel__slide {
+	@apply flex flex-col items-center gap-4 px-6 md:px-24 lg:px-48;
+}
+
+/* Quote headline size */
+.headline--quote .headline__headline {
+	@apply as-h4;
+}
+
+/* Typographic quote marks and em-dash via pseudo-elements */
+.headline--quote .headline__headline::before { content: '\201C'; }
+.headline--quote .headline__headline::after  { content: '\201D'; }
+.headline--quote .headline__body p:first-child::before { content: '\2014\00A0'; }
+
+/* Pagination dots: outlined circles, active filled with primary */
+.quotes-carousel .splide__pagination__page {
+	@apply size-3 rounded-full border border-solid border-primary bg-transparent opacity-100 transition-colors;
+	transform: none;
+}
+
+.quotes-carousel .splide__pagination__page.is-active {
+	@apply bg-primary;
+	transform: none;
+}
+
+/* On color/dark themes, swap primary dots to white */
+[data-theme='color'],
+[data-theme='dark'] {
+	.quotes-carousel .splide__pagination__page {
+		@apply border-white;
+	}
+
+	.quotes-carousel .splide__pagination__page.is-active {
+		@apply bg-white;
+	}
+}
+
+/* Themed wrapper provides top/bottom padding — strip only the top to avoid doubling.
+   Bottom padding is kept so Splide's absolutely-positioned dots don't overlap content. */
+.themed[data-theme] .quotes-carousel {
+	@apply pt-0;
+}
+
+.splide__pagination {
+  @apply gap-2 mt-10!;
+}
+
+.quotes-carousel .splide__list {
+	align-items: flex-start;
+	transition: height 0.3s ease;
+}

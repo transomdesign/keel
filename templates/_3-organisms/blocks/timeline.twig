@@ -1,0 +1,317 @@
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+{% set id = id|default(null) %}
+{% set width = width|default(null) %}
+{% set mt = mt|default(null) %}
+
+{% tag 'section' with {
+	id: id,
+	class: ['timeline', width, mt]|filter
+} %}
+  <div class="timeline__wrapper">
+
+    {# Background image carousel #}
+    <div class="timeline__carousel">
+      {% for slide in slides %}
+        {% set img = slide.image.one() %}
+        <div class="timeline__slide"{% if img %} style="background-image: url('{{ img.url }}')"{% endif %}>
+          <div class="timeline__slide-overlay"></div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {# Info panel — left #}
+    <div class="timeline__info">
+      {% for slide in slides %}
+        <div class="timeline__info-inner{{ not loop.first ? ' is-hidden' }}" data-slide-index="{{ loop.index0 }}">
+          <p class="timeline__year">{{ slide.year }}</p>
+          <p class="timeline__copy">{{ slide.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {# Year navigation — right #}
+    <nav class="timeline__nav" aria-label="Timeline navigation">
+      <div class="timeline__nav-inner">
+        <button class="timeline__nav-prev" aria-label="Previous slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="timeline__nav-btns">
+          <span class="timeline__nav-dot" aria-hidden="true"></span>
+          {% for slide in slides %}
+            <button class="timeline__nav-btn{{ loop.first ? ' is-active' }}">{{ slide.year }}</button>
+          {% endfor %}
+        </div>
+        <button class="timeline__nav-next" aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+  </div>
+{% endtag %}
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+(function () {
+  var carousel = document.querySelector('.timeline__carousel');
+  if (!carousel) return;
+
+  var flkty = new Flickity(carousel, {
+    prevNextButtons: false,
+    pageDots: false,
+    draggable: false,
+    cellSelector: '.timeline__slide',
+    cellAlign: 'left',
+    fade: true,
+  });
+
+  var navDot    = document.querySelector('.timeline__nav-dot');
+  var navBtns   = document.querySelectorAll('.timeline__nav-btn');
+  var infoItems = document.querySelectorAll('.timeline__info-inner');
+  var infoPanel = document.querySelector('.timeline__info');
+  var dotOffset = 6;
+
+  function isMobile() { return window.innerWidth < 640; }
+
+  function updateDot(index) {
+    if (!navDot || !navBtns[index]) return;
+    navDot.style.top = (navBtns[index].offsetTop + dotOffset - (isMobile() ? 8 : 0)) + 'px';
+  }
+
+  function showSlide(index) {
+    infoItems.forEach(function (el, i) { el.classList.toggle('is-hidden', i !== index); });
+    navBtns.forEach(function (btn, i) { btn.classList.toggle('is-active', i === index); });
+    updateDot(index);
+  }
+
+  function transition(index) {
+    if (infoPanel) infoPanel.style.opacity = '0';
+    setTimeout(function () {
+      showSlide(index);
+      if (infoPanel) infoPanel.style.opacity = '1';
+    }, 350);
+  }
+
+  requestAnimationFrame(function () { showSlide(0); });
+
+  navBtns.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { flkty.select(i); transition(i); });
+  });
+
+  var prevBtn = document.querySelector('.timeline__nav-prev');
+  var nextBtn = document.querySelector('.timeline__nav-next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { flkty.previous(); transition(flkty.selectedIndex); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { flkty.next(); transition(flkty.selectedIndex); });
+})();
+</script>
+
+<style>
+.timeline__wrapper {
+  position: relative;
+}
+
+/* Flickity carousel */
+.timeline__carousel {
+  height: 100vh;
+  background: #000;
+}
+@media (min-width: 640px) {
+  .timeline__carousel { height: 88vh; }
+}
+.timeline__carousel .flickity-viewport { height: 100% !important; }
+.timeline__carousel .flickity-slider { transform: none !important; }
+
+/* Slides */
+.timeline__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: none !important;
+  left: 0 !important;
+}
+.timeline__slide.is-selected { opacity: 1; }
+.timeline__slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 5;
+}
+
+/* Info panel */
+.timeline__info {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  transition: opacity 0.35s ease;
+}
+@media (min-width: 640px) {
+  .timeline__info { right: 320px; left: 20px; }
+}
+.timeline__info-inner { position: absolute; bottom: 70px; }
+.timeline__info-inner.is-hidden { display: none; }
+
+/* Info item positioning */
+.timeline__info-inner {
+  width: 100%;
+  max-width: 200px;
+  padding-right: 20px;
+  border-right: 6px solid var(--color-primary);
+  text-align: right;
+  right: 160px;
+}
+@media (min-width: 640px) {
+  .timeline__info-inner {
+    width: 490px;
+    max-width: none;
+    padding-left: 20px;
+    padding-right: 0;
+    border-left: 6px solid var(--color-primary);
+    border-right: none;
+    text-align: left;
+    left: 40px;
+    right: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .timeline__info-inner { left: 60px; }
+}
+
+.timeline__year {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+}
+@media (min-width: 640px) { .timeline__year { font-size: 1.5rem; } }
+@media (min-width: 1024px) { .timeline__year { font-size: 2rem; } }
+
+.timeline__copy {
+  margin-top: 5px;
+  font-size: 0.875rem;
+  color: #fff;
+}
+@media (min-width: 640px) { .timeline__copy { font-size: 1.125rem; } }
+
+/* Navigation */
+.timeline__nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}
+@media (min-width: 640px) {
+  .timeline__nav {
+    top: 0;
+    right: 20px;
+    transform-origin: center right;
+    transform: scale(0.8);
+  }
+}
+.timeline__nav-inner {
+  padding: 20px 20px 20px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 640px) {
+  .timeline__nav-inner {
+    justify-content: center;
+    height: 100%;
+    padding: 20px 30px;
+  }
+}
+
+.timeline__nav-btns {
+  position: relative;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .timeline__nav-btns {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+.timeline__nav-btns::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+}
+@media (min-width: 640px) {
+  .timeline__nav-btns::before {
+    top: 35px;
+    left: -30px;
+    bottom: 35px;
+  }
+}
+
+.timeline__nav-dot {
+  background: var(--color-accent);
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 0;
+  left: -19px;
+  border-radius: 50%;
+  transition: top 0.3s cubic-bezier(0.185, 0.835, 0.64, 0.85);
+}
+@media (min-width: 640px) {
+  .timeline__nav-dot {
+    height: 12px;
+    width: 12px;
+    top: 42px;
+    left: -35px;
+  }
+}
+
+.timeline__nav-btn {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 20px auto;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+}
+@media (min-width: 640px) { .timeline__nav-btn { font-size: 1.25rem; } }
+@media (min-width: 1024px) {
+  .timeline__nav-btn { font-size: 1.625rem; width: 100%; min-width: 170px; }
+}
+.timeline__nav-btn.is-active {
+  color: var(--color-primary);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+}
+
+.timeline__nav-prev,
+.timeline__nav-next {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #fff;
+}
+.timeline__nav-prev svg,
+.timeline__nav-next svg { width: 24px; height: 24px; }
+@media (min-width: 640px) {
+  .timeline__nav-prev svg,
+  .timeline__nav-next svg { width: 48px; height: 48px; }
+}
+</style>

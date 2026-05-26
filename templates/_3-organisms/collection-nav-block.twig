@@ -1,0 +1,42 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set mt = mt|default %}
+{% set width = width|default('section--wide') %}
+{% set blocks = blocks|default %}
+
+{% set currentSlug = craft.app.request.getSegment(2) %}
+
+{% if blocks is not empty %}
+	{% tag 'section'
+		with
+		{
+			id: id,
+			class: ['section', width, mt]
+		}
+	%}
+		<menu class="collection-nav">
+			{% for block in blocks %}
+				{% switch block.type.handle %}
+					{% case 'collectionNavItem' %}
+			      {% set title = block.navItem.itemTitle %}
+			      {% set slug = block.navItem.itemSlug %}
+
+						{% tag 'li'
+							with
+							{
+								class: 'className'
+							}
+						%}
+				      {% tag 'a' with {
+								class: ['className', currentSlug == slug ? 'underline' : ''],
+								href: '/shop/' ~ slug
+							} %}
+								{{ title }}
+							{% endtag %}
+						{% endtag %}
+				{% endswitch %}
+			{% endfor %}
+		</menu>
+	{% endtag %}
+{% endif %}

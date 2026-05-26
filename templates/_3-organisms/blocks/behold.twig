@@ -1,0 +1,32 @@
+<!-- Template: {{ _self }} -->
+
+{% set beholdUrl = beholdUrl|default %}
+{% set id = id|default %}
+{% set width = width|default %}
+{% set mt = mt|default %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% if beholdUrl %}
+	{% embed '_2-molecules/section-theme' with { theme, mt } %}
+		{% block content %}
+			<div {{ attr({ id: id, class: ['behold', 'section', 'w-full', width]|filter }) }}>
+				{% set posts = craft.behold.all(beholdUrl) %}
+
+				<ul class="flex">
+					{% for post in posts %}
+						<li>
+							{% tag 'img' with {
+								class: 'className',
+								src: post.sizes.small.mediaUrl,
+								width: post.sizes.small.width,
+								height: post.sizes.small.height,
+								alt: post.caption
+							} %}
+							{% endtag %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endif %}

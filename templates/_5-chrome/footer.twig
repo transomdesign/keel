@@ -1,0 +1,232 @@
+<!-- Template: {{ _self }} -->
+
+{% set siteSettings = siteSettings ?? null %}
+{% set fl = siteSettings ? siteSettings.fieldLayout : null %}
+{# fl.isFieldIncluded('handle') is Twig's equivalent of JS optional chaining —
+   guards against fields that don't exist yet in the layout. fl itself is null
+   when siteSettings is null, so `fl and fl.isFieldIncluded(...)` handles both. #}
+
+{# Logo — footer-specific uploads override header logos #}
+{% set logoDesktop = fl
+	and fl.isFieldIncluded('footerLogoDesktop')
+	and siteSettings.footerLogoDesktop.one()
+	? siteSettings.footerLogoDesktop.one()
+	: fl and fl.isFieldIncluded('headerLogoDesktop')
+		? siteSettings.headerLogoDesktop.one()
+		: null
+%}
+{% set logoMobile = fl
+	and fl.isFieldIncluded('footerLogoMobile')
+	and siteSettings.footerLogoMobile.one()
+	? siteSettings.footerLogoMobile.one()
+	: fl and fl.isFieldIncluded('headerLogoMobile')
+		? siteSettings.headerLogoMobile.one()
+		: null
+%}
+
+{# Navigation sets #}
+{% set siteNavNodes = craft.navigation.nodes('main').all() %}
+{% set socialNavNodes = craft.navigation.nodes('social').all() %}
+{% set quickLinksNodes = craft.navigation.nodes('quickLinks').all() %}
+{% set currentUrl = craft.app.request.absoluteUrl %}
+
+{# Contact info #}
+{% set footerContactLinks = fl and fl.isFieldIncluded('footerContactLinks')
+	? siteSettings.footerContactLinks.all()
+	: []
+%}
+
+{# Bottom bar #}
+{% set copyrightText = fl and fl.isFieldIncluded('footerCopyrightText')
+	? siteSettings.footerCopyrightText
+	: null
+%}
+{% set bottomLinkBlocks = fl and fl.isFieldIncluded('footerBottomLinks')
+	? siteSettings.footerBottomLinks.all()
+	: []
+%}
+
+<div class="footer-container">
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="1440"
+		height="553"
+		fill="none"
+		viewBox="0 0 1440 553"
+		class="footer-bg"
+	>
+		<mask
+			id="a"
+			width="1440"
+			height="553"
+			x="0"
+			y="0"
+			mask-type="alpha"
+			maskUnits="userSpaceOnUse"
+		>
+			<path fill="#1d1f2d" d="M0 0h1440v553H0z" />
+		</mask>
+		<g fill="#fff" fill-rule="evenodd" clip-rule="evenodd" mask="url(#a)">
+			<path
+				d="M2009.36 20v714.88H-1280.9C-165.36 368.94 987 734.88 2009.36 20"
+				opacity=".02"
+			/>
+			<path d="M1580 30v666H-532c406-133.5 1871-119 2112-666" opacity=".02" />
+			<path
+				d="M1977 108v581h-5107c1797.56-143.02 3883.7 182.43 5107-581"
+				opacity=".02"
+			/>
+		</g>
+	</svg>
+
+	<footer id="footer" class="footer" role="contentinfo" aria-label="Footer">
+		{# — Logo + Newsletter — #}
+		<div class="footer__brand">
+			{% if logoDesktop is not empty or logoMobile is not empty %}
+				<figure class="footer__logo">
+					<a href="/" aria-label="{{ currentSite.name }} Homepage">
+						{% if logoDesktop is not empty %}
+							<img
+								src="{{ logoDesktop.url }}"
+								alt="{{ currentSite.name }}"
+								width="{{ logoDesktop.width }}"
+								height="{{ logoDesktop.height }}"
+								loading="lazy"
+								class="footer__logo-desktop hidden md:block"
+							/>
+						{% endif %}
+						{% if logoMobile is not empty %}
+							<img
+								src="{{ logoMobile.url }}"
+								alt="{{ currentSite.name }}"
+								width="{{ logoMobile.width }}"
+								height="{{ logoMobile.height }}"
+								loading="lazy"
+								class="footer__logo-mobile md:hidden"
+							/>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+
+			{% include '_5-chrome/footer-form-blocks' %}
+		</div>
+
+		{# — Site Nav — #}
+		{% if siteNavNodes is not empty %}
+			<nav class="footer__site-nav" aria-label="Site">
+				<h3 class="footer__nav-heading">Site</h3>
+
+				<ul class="footer__nav-links">
+					{% for node in siteNavNodes %}
+						{% tag 'li'
+							with
+							{
+								class: [
+									'footer__nav-item',
+									node.url == currentUrl ? ' footer__nav-item--active'
+								]
+							}
+						%}
+							{{ node.link }}
+						{% endtag %}
+					{% endfor %}
+				</ul>
+			</nav>
+		{% endif %}
+
+		{# — Social + Quick Links — #}
+		<div class="footer__secondary">
+			{% if socialNavNodes is not empty %}
+				<div class="footer__social-group">
+					<h3 class="footer__nav-heading">Social</h3>
+					<ul class="footer__social">
+						{% for node in socialNavNodes %}
+							<li class="footer__social-item">
+								{% tag 'a'
+									with
+									{
+										class: 'footer__social-link',
+										href: node.url,
+										'aria-label': node.title,
+										target: node.target,
+										rel: node.target ? 'noopener'
+									}
+								%}
+									{% if
+										node.iconPicker is defined
+											and node.iconPicker is not empty %}
+										{{ node.iconPicker.inline }}
+									{% else %}
+										{{ node.title }}
+									{% endif %}
+								{% endtag %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			{% if quickLinksNodes is not empty %}
+				<nav class="footer__quick-links" aria-label="Quick Links">
+				<h3 class="footer__nav-heading">Quick Links</h3>
+					<ul class="footer__nav-links">
+						{% for node in quickLinksNodes %}
+							{% tag 'li'
+								with
+								{
+									class: [
+										'footer__nav-item',
+										node.url == currentUrl ? 'footer__nav-item--active'
+									]
+								}
+							%}
+								{{ node.link }}
+							{% endtag %}
+						{% endfor %}
+					</ul>
+				</nav>
+			{% endif %}
+		</div>
+
+		{# — Contact — #}
+		{% if footerContactLinks is not empty %}
+			<div class="footer__contact">
+				<h3 class="footer__contact-heading">Contact</h3>
+
+				<dl class="footer__contact-list">
+					{% for block in footerContactLinks %}
+						<div class="footer__contact-group">
+							{% if block.headline is not empty %}
+								<dt class="footer__contact-group-heading">
+									{{ block.headline }}
+								</dt>
+							{% endif %}
+
+							{% if block.text is not empty %}
+								<dd class="passage">{{ block.text }}</dd>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</dl>
+			</div>
+		{% endif %}
+
+		{# — Footer Bottom Bar — #}
+		<div class="footer__bottom-bar">
+			{% if copyrightText is not empty %}
+				<span class="footer__copyright">
+					&copy;{{ 'now'|date('Y') }} {{ copyrightText }}
+				</span>
+			{% endif %}
+
+			{% if bottomLinkBlocks is not empty %}
+				<ul class="footer__bottom-links">
+					{% for block in bottomLinkBlocks %}
+						<li>{{ block.text }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</footer>
+</div>

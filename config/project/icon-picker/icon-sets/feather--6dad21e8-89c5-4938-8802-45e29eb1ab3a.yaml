@@ -1,0 +1,8 @@
+enabled: '1'
+handle: feather
+name: Feather
+settings:
+  folder: /feather
+  recursive: true
+sortOrder: 2
+type: verbb\iconpicker\iconsets\SvgFolder

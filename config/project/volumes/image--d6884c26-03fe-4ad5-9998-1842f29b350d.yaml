@@ -1,0 +1,106 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  ad328486-bf68-44e7-bb4a-141ef5afc02d:
+    cardThumbAlignment: start
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-11-01T22:23:48+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: aa01f3aa-a6b5-4d53-9371-42124f4b390e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            dateAdded: '2025-11-01T22:25:24+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
+            required: true
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 32ef7158-4dbe-4a76-b4d6-293f5aee2620
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-11-03T03:26:48+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: caption
+            instructions: null
+            label: Caption
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 32c11a68-e4b3-4203-b118-533fdc57494e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-11-14T09:24:06+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 31fbd02e-22a8-45b8-8c5a-3e93e1dd79da # [IO] Image
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6eb67140-d1d7-49f2-a66d-2d8d815f626e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: fe319c3a-1f97-4ca3-b3a1-9f2bfbcea03b
+        userCondition: null
+    thumbFieldKey: null
+fs: image
+handle: image
+name: Image
+sortOrder: 7
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: image
+transformSubpath: ''

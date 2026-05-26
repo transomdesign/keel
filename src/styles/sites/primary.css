@@ -1,0 +1,32 @@
+/**
+ * Primary — Brand Tokens
+ * Overrides semantic color, font, and button tokens for the primary brand.
+ * Loaded as a separate Vite entry point alongside main.css.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://use.typekit.net/osa6mcl.css');
+
+:root {
+	/* Mobile Menu */
+	--mobile-menu-starting-y-desktop: 0;
+	--mobile-menu-starting-x-desktop: calc(-100% - var(--spacing-sm));
+
+	/* Brand Colors */
+	--color-primary: #004b87;
+	--color-primary-dark: #003a6a;
+	--color-primary-light: #00a4de;
+	--color-accent: #f6be00;
+	--color-surface: #ffffff;
+	--color-surface-alt: #f1f1f1;
+	--color-on-surface: #4d4d4f;
+	--color-on-primary: #ffffff;
+	--color-border: #d1d1d1;
+	--color-error: #b00020;
+
+	/* Navbar / Chrome Tokens */
+	--navbar-bg: var(--color-white);
+
+	/* Footer */
+	--footer-nav-heading-color: var(--color-white);
+}

@@ -1,0 +1,21 @@
+{
+    "name": "transom/matrix-defaults",
+    "description": "Auto-populates Craft CMS 5 Matrix fields with default entries on new entry creation",
+    "type": "craft-plugin",
+    "version": "1.0.0-dev",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2",
+        "craftcms/cms": "^5.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MatrixDefaults\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "MatrixDefaults\\Plugin",
+        "handle": "matrix-defaults",
+        "name": "Matrix Defaults"
+    }
+}

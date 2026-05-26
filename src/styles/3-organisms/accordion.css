@@ -1,0 +1,37 @@
+.accordion {
+	&[open] {
+		.accordion__headline-icon {
+			svg {
+				@apply rotate-225!;
+			}
+		}
+	}
+}
+
+.accordion__headline {
+	@apply as-body-1 flex cursor-pointer list-none border-b border-solid border-black py-4;
+
+	&::-webkit-details-marker {
+		@apply hidden;
+	}
+
+	&:hover {
+		.accordion__headline-icon {
+			svg {
+				@apply rotate-90;
+			}
+		}
+	}
+}
+
+.accordion__headline-icon {
+	@apply text-primary ml-auto aspect-square;
+
+	svg {
+		@apply transition-transform duration-300;
+	}
+}
+
+.accordion__body {
+	@apply as-body-2 pt-4;
+}

@@ -1,0 +1,14 @@
+columnSuffix: null
+handle: aRange5
+instructions: null
+name: '[A] Range (5)'
+searchable: false
+settings:
+  defaultValue: null
+  max: 5
+  min: 0
+  step: 1
+  suffix: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Range

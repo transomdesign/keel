@@ -1,0 +1,217 @@
+{#
+  Responsive Picture Component using ImageOptimize variants
+
+  Required:
+  - image: Asset entry
+  - ioName: ImageOptimize field handle (e.g., 'ioPostcard', 'ioHero')
+
+  Optional:
+  - variants: Object mapping breakpoints to variant configs
+      Example:
+      variants: {
+        lg: { width: 573, sizes: '576px' },
+        sm: { width: 360, sizes: '360px' },
+        xs: { width: 559, sizes: '100vw' }
+      }
+
+  - sizes: Simple sizes attribute (fallback when variants not specified)
+      Example: "(min-width: 1024px) 576px, (min-width: 640px) 360px, 100vw"
+      Default: "100vw"
+
+  - className: CSS classes for <img>
+  - loading: Loading strategy ('lazy' or 'eager' - default: 'lazy')
+  - fetchpriority: Fetch priority override
+  - includeWebpSource: Whether to include WebP <source> tags (default: false)
+      Note: WebP is still used as the <img> src fallback
+#}
+
+{% set image = image|default() %}
+{% set ioName = ioName|default() %}
+{% set variants = variants|default() %}
+{% set sizes = sizes|default('100vw') %}
+{% set className = className|default() %}
+{% set loading = loading|default('lazy') %}
+{% set fetchpriority = fetchpriority|default('lazy' in loading ? 'low' : 'high') %}
+{% set includeWebpSource = includeWebpSource|default(false) %}
+
+{# Map Tailwind breakpoint names to min-width pixel values #}
+{% set breakpointMap = {
+  'xs': 0,
+  'sm': 640,
+  'md': 768,
+  'lg': 1024,
+  'xl': 1280,
+  '2xl': 1536
+} %}
+
+{% if image and ioName %}
+  {% set optimizedImages = image[ioName] %}
+  {% set isPng = image.mimeType == 'image/png' %}
+  {% set isReady = optimizedImages and optimizedImages.optimizedImageUrls|length > 0 %}
+  {% set optimizedOriginalUrl = optimizedImages and optimizedImages.optimizedImageUrls|length
+    ? optimizedImages.optimizedImageUrls|first
+    : null
+  %}
+  {% set optimizedModernUrl = optimizedImages and optimizedImages.optimizedWebPImageUrls|length
+    ? optimizedImages.optimizedWebPImageUrls|first
+    : null
+  %}
+
+  {% if isReady %}
+    <picture>
+      {% if variants %}
+        {# Enhanced variant mode with Tailwind breakpoints #}
+        {% for bp, variant in variants %}
+          {% set breakpointMinWidth = breakpointMap[bp] %}
+          {% set variantSizes = variant.sizes|default("#{variant.width}px") %}
+
+          {# Generate media query (skip for xs/mobile/default) #}
+          {% set mediaQuery = breakpointMinWidth > 0 ? "(min-width: #{breakpointMinWidth}px)" : null %}
+
+          {# Get WebP srcset for this variant width (includes 1x and 2x) #}
+          {# Safely check if variant exists before accessing it #}
+          {% set variantWebpSrcset = variant.width in optimizedImages.optimizedWebPImageUrls|keys
+            ? optimizedImages.srcsetWidthWebP(variant.width, true)
+            : null
+          %}
+
+          {% if isPng %}
+            {# PNG: skip AVIF (no variants generated, alpha unreliable at this quality) #}
+            {# Always emit WebP source (cwebp preserves alpha) #}
+            {% if variantWebpSrcset %}
+              {% tag 'source' with {
+                type: "image/webp",
+                srcset: variantWebpSrcset,
+                media: mediaQuery,
+                sizes: variantSizes
+              } %}
+              {% endtag %}
+            {% endif %}
+
+            {# PNG source using resized original variants (optipng-crushed, alpha preserved) #}
+            {% set variantPngUrl = variant.width in optimizedImages.optimizedImageUrls|keys
+              ? optimizedImages.optimizedImageUrls[variant.width]
+              : null
+            %}
+            {% if variantPngUrl %}
+              {% tag 'source' with {
+                type: "image/png",
+                srcset: variantPngUrl,
+                media: mediaQuery,
+                sizes: variantSizes
+              } %}
+              {% endtag %}
+            {% endif %}
+          {% endif %}
+
+          {# Non-PNG: AVIF source by default, WebP when includeWebpSource is set #}
+          {% if not isPng %}
+            {% if not includeWebpSource and variantWebpSrcset %}
+              {% tag 'source' with {
+                type: "image/avif",
+                srcset: variantWebpSrcset|replace('.webp', '.avif'),
+                media: mediaQuery,
+                sizes: variantSizes
+              } %}
+              {% endtag %}
+            {% endif %}
+
+            {% if includeWebpSource and variantWebpSrcset %}
+              {% tag 'source' with {
+                type: "image/webp",
+                srcset: variantWebpSrcset,
+                media: mediaQuery,
+                sizes: variantSizes
+              } %}
+              {% endtag %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {# Non-variants mode: emit full responsive srcsets from the IO field config #}
+      {% if not variants %}
+        {% set fullWebpSrcset = optimizedImages.optimizedWebPImageUrls|length > 0
+          ? optimizedImages.srcsetWebP()
+          : null
+        %}
+
+        {% if isPng and fullWebpSrcset %}
+          {# PNG: WebP source (alpha-safe), no AVIF #}
+          {% tag 'source' with {
+            type: "image/webp",
+            srcset: fullWebpSrcset,
+            sizes: sizes
+          } %}
+          {% endtag %}
+        {% endif %}
+
+        {% if not isPng %}
+          {% if not includeWebpSource and fullWebpSrcset %}
+            {% tag 'source' with {
+              type: "image/avif",
+              srcset: fullWebpSrcset|replace('.webp', '.avif'),
+              sizes: sizes
+            } %}
+            {% endtag %}
+          {% endif %}
+
+          {% if includeWebpSource and fullWebpSrcset %}
+            {% tag 'source' with {
+              type: "image/webp",
+              srcset: fullWebpSrcset,
+              sizes: sizes
+            } %}
+            {% endtag %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      {# Fallback img element #}
+      {% if variants %}
+        {# Get the mobile/xs variant as fallback #}
+        {% set fallbackVariant = variants.xs|default(variants|first) %}
+        {% if isPng %}
+          {# PNGs: use resized original PNG (alpha preserved) #}
+          {% set fallbackUrl = fallbackVariant.width in optimizedImages.optimizedImageUrls|keys
+            ? optimizedImages.optimizedImageUrls[fallbackVariant.width]
+            : optimizedImages.optimizedImageUrls|first
+          %}
+        {% else %}
+          {% set fallbackUrl = fallbackVariant.width in optimizedImages.optimizedWebPImageUrls|keys
+            ? optimizedImages.optimizedWebPImageUrls[fallbackVariant.width]
+            : optimizedImages.optimizedWebPImageUrls|first
+          %}
+        {% endif %}
+      {% endif %}
+
+      {% tag 'img' with {
+        class: className,
+        srcset: variants ? null : optimizedImages.srcset(),
+        sizes: variants ? null : sizes,
+        src: fallbackUrl|default(isPng ? optimizedOriginalUrl : optimizedModernUrl|default(optimizedOriginalUrl)),
+        alt: image.alt ? image.alt : '',
+        width: optimizedImages.originalImageWidth,
+        height: optimizedImages.originalImageHeight,
+        loading: loading,
+        fetchpriority: fetchpriority
+      } %}
+      {% endtag %}
+    </picture>
+  {% elseif image.url %}
+    {# Variants not generated yet (fresh upload, mid-queue, or live preview).
+       Fall back to the original asset so authors always see their image. #}
+    <picture>
+      {% tag 'img' with {
+        class: className,
+        src: image.url,
+        alt: image.alt ? image.alt : '',
+        width: image.width,
+        height: image.height,
+        loading: loading,
+        fetchpriority: fetchpriority,
+      } %}
+      {% endtag %}
+    </picture>
+  {% endif %}
+{% endif %}

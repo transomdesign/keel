@@ -1,0 +1,58 @@
+<!-- Template: {{ _self }} -->
+
+{% import '_utilities/video-embed' as videoEmbed %}
+
+{% set image = image|default %}
+{% set videoUrl = videoUrl.url ?? videoUrl ?? null %}
+{% set headlineBlocks = headlineBlocks|default %}
+{% set orientation = orientation|default %}
+{% set imageIsContained = imageIsContained|default(false) %}
+{% set ioName = imageIsContained ? 'ioGridCardFree' : (orientation == 'landscape' or orientation == 'square' ? 'ioGridCard' : 'ioGridCardPortrait') %}
+
+{% set hasVideo = videoUrl is not empty %}
+{% set hasFigure = image is not empty or hasVideo %}
+
+<li class="grid-card">
+	{% if hasFigure %}
+		{% tag 'figure'
+			with
+			{
+				class: [
+					'grid-card__figure',
+					hasVideo ? 'grid-card__figure--video',
+					not hasVideo and image.mimeType == 'image/svg+xml' ? 'grid-card__figure--svg',
+					not hasVideo and imageIsContained and image.mimeType != 'image/svg+xml' ? 'grid-card__figure--contained'
+				]|filter
+			}
+		%}
+			{% if hasVideo %}
+				{{ videoEmbed.embed(videoUrl) }}
+			{% elseif image.mimeType == 'image/svg+xml' %}
+				<img
+					class="grid-card__img"
+					src="{{ image.url }}"
+					width="{{ image.width }}"
+					height="{{ image.height }}"
+					alt="{{ image.alt ? : '' }}"
+					loading="lazy"
+				/>
+			{% else %}
+				{% include '_utilities/picture' with {
+					image: image,
+					ioName: ioName,
+					className: 'grid-card__img'
+				} only %}
+			{% endif %}
+		{% endtag %}
+	{% endif %}
+
+	<div class="grid-card__content">
+		{% if headlineBlocks is not empty %}
+			{% include '_2-molecules/headline-header.twig' with {
+				blocks: headlineBlocks,
+				classes: 'grid-card__header',
+				align: 'left'
+			} only %}
+		{% endif %}
+	</div>
+</li>

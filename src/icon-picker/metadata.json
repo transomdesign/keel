@@ -1,0 +1,13 @@
+{
+	"ui": {
+		"arrow-left": ["arrow", "left", "back", "previous", "navigation"],
+		"arrow-right": ["arrow", "right", "forward", "next", "navigation"],
+		"close": ["close", "x", "cancel", "exit", "dismiss"]
+	},
+	"social": {
+		"facebook": ["social", "facebook", "share", "meta"],
+		"twitter": ["social", "twitter", "x", "share"],
+		"instagram": ["social", "instagram", "share", "photo"],
+		"youtube": ["social", "youtube", "video", "watch"]
+	}
+}

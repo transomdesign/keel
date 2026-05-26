@@ -1,0 +1,41 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default(null) %}
+{% set width = width|default(null) %}
+{% set mt = mt|default(null) %}
+{% set channelHandle = channelHandle|default('articles') %}
+{% set limit = numberOfEntries|default(3) %}
+{% set category = category|default(null) %}
+{% set tags = tags|default([]) %}
+
+{% if channelHandle %}
+	{% set channelQuery = craft.entries()
+		.section(channelHandle)
+		.orderBy('postDate DESC')
+		.limit(limit)
+	%}
+
+	{% if category %}
+		{% set channelQuery = channelQuery.relatedTo(category) %}
+	{% endif %}
+
+	{% if tags|length %}
+		{# OR semantics: article matches if it relates to ANY selected tag. #}
+		{% set channelQuery = channelQuery.relatedTo(['or']|merge(tags)) %}
+	{% endif %}
+
+	{% set channelEntries = channelQuery.all() %}
+
+	{% if channelEntries|length %}
+		{% tag 'section' with {
+			id: id,
+			class: ['section', width, mt]|filter
+		} %}
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{% for entry in channelEntries %}
+					{% include '_2-molecules/entry-card.twig' with { entry: entry } only %}
+				{% endfor %}
+			</div>
+		{% endtag %}
+	{% endif %}
+{% endif %}

@@ -1,0 +1,25 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set blocks = blocks|default %}
+{% set mt = mt|default %}
+{% set width = width|default %}
+{% set classes = classes|default %}
+{% set cardClasses = cardClasses|default %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['cards', mt, width, classes]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+  {% for block in blocks %}
+    {% include '_2-molecules/card.twig' with {
+     	id: block.id,
+     	richText: block.richText,
+     	rating: block.rating,
+     	ratingIsEnabled: block.ratingIsEnabled,
+     	classes: cardClasses
+    } only %}
+  {% endfor %}
+</section>

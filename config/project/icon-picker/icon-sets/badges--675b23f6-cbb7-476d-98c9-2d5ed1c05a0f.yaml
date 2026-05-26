@@ -1,0 +1,8 @@
+enabled: '1'
+handle: badges
+name: Badges
+settings:
+  folder: /badges
+  recursive: true
+sortOrder: 3
+type: verbb\iconpicker\iconsets\SvgFolder

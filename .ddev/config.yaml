@@ -1,0 +1,80 @@
+name: keel
+type: craftcms
+docroot: web
+php_version: '8.4'
+webserver_type: nginx-fpm
+xdebug_enabled: false
+database:
+  type: mariadb
+  version: '11.4'
+use_dns_when_possible: true
+composer_version: '2'
+additional_hostnames:
+  - 'keel-secondary'
+  - 'keel-tertiary'
+  - 'keel-fourth'
+web_environment:
+  - XDG_DATA_HOME=/var/www/.local/share
+  - CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+webimage_extra_packages: [jpegoptim, optipng, gifsicle, webp, htop, libavif-bin]
+web_extra_exposed_ports:
+  - name: craft-vite
+    container_port: 1234
+    http_port: 1235
+    https_port: 1234
+nodejs_version: '24'
+corepack_enable: false
+hooks:
+  post-start:
+    # ===== QUEUE RUNNERS =====
+    - exec: 'php craft queue/listen &'
+
+    # ===== COMPOSER DEPENDENCIES =====
+    - composer: install
+
+    # ===== NODE.JS TOOLS =====
+    - exec: bun add -g svgo
+    - exec: bash -lc 'ln -sf ~/.bun/bin/svgo /usr/local/bin/svgo'
+    - exec:
+        bash -lc 'command -v svgo && svgo --version || (echo "svgo not on PATH"
+        && exit 1)'
+
+    # ===== PHP DEVELOPMENT TOOLS =====
+    # Install phpactor (PHP language server)
+    - exec: mkdir -p ~/bin
+    - exec:
+        curl -Lo ~/bin/phpactor
+        https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar
+    - exec: chmod +x ~/bin/phpactor
+
+    # Install PHP code quality tools globally
+    - exec: composer global require squizlabs/php_codesniffer phpstan/phpstan
+
+    # Make global composer tools available in PATH by symlinking to /var/www/html/bin
+    - exec: mkdir -p /var/www/html/bin
+    - exec:
+        bash -lc 'BIN_DIR=$(composer global config bin-dir --absolute
+        --quiet);         ln -sf "$BIN_DIR/phpactor"
+        /var/www/html/bin/phpactor;         ln -sf "$BIN_DIR/phpcs"
+        /var/www/html/bin/phpcs;         ln -sf "$BIN_DIR/phpcbf"
+        /var/www/html/bin/phpcbf;         ln -sf "$BIN_DIR/phpstan"
+        /var/www/html/bin/phpstan'
+
+    - exec: export PATH=$PATH:/var/www/html/bin:~/bin
+
+    # ===== VERIFICATION TESTS =====
+    - exec: echo "Testing tools availability..."
+    - exec: which phpactor && phpactor --version || echo "phpactor not found"
+    - exec: which phpcs && phpcs --version || echo "phpcs not found"
+    - exec: which phpstan && phpstan --version || echo "phpstan not found"
+
+    # ===== PROJECT DEPENDENCIES =====
+    - exec: bun install
+
+  pre-stop:
+    # ===== DATABASE BACKUP =====
+    # Create database backup and clean up old backups (keep 10 most recent)
+    - exec:
+        (if php craft install/check; then php craft db/backup && cd
+        storage/backups && ls -C1 -t | awk 'NR>10' | xargs --no-run-if-empty rm;
+        fi)

@@ -1,0 +1,1029 @@
+dateModified: 1779363690
+elementSources:
+  craft\elements\Entry:
+    -
+      heading: Globals
+      key: 'heading:4deb9174-867e-4c11-a238-b04cfa986aff'
+      page: Entries
+      type: heading
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: ce0b27ee-7ab6-4477-b715-88a8595cc97a
+            values:
+              - df7a15d6-dd28-4378-81e3-8278102426d9 # Site Settings
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: cards
+      key: 'custom:196260ec-0027-4f17-af71-c989098703f9'
+      label: Settings
+      page: Entries
+      tableAttributes: '-'
+      type: custom
+    -
+      heading: Pages
+      key: 'heading:5b7782a1-eb87-46fd-9855-700e9954785b'
+      page: Entries
+      type: heading
+    -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: ni
+            uid: 9c8d77c1-aeab-490b-be5b-703751af1b7e
+            values:
+              - cfb5ab55-fed7-4cd8-affe-82a958a3c91a # Articles
+              - c7ced6be-bcd2-4ebd-9308-1c83e223cbd8 # Category
+              - 0b328cb9-be33-4953-ab86-256f2b100f9f # Pages
+              - df7a15d6-dd28-4378-81e3-8278102426d9 # Site Settings
+              - cb68d0da-9fdd-4963-aaf8-862011834df6 # Tags
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - title
+        - asc
+      defaultViewMode: cards
+      key: 'custom:94ce044e-6dbf-4598-89b2-1e476ca8c601'
+      label: 'Main Pages'
+      page: Entries
+      tableAttributes:
+        - slug
+        - postDate
+      type: custom
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:0b328cb9-be33-4953-ab86-256f2b100f9f' # Pages
+      page: Entries
+      tableAttributes:
+        - status
+        - postDate
+        - uri
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      defaultViewMode: ''
+      disabled: true
+      key: singles
+      page: Entries
+      tableAttributes:
+        - slug
+        - uri
+        - dateUpdated
+      type: native
+    -
+      heading: Blog
+      key: 'heading:bd634887-b596-480c-98eb-3eb7334aad69'
+      page: Entries
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:cfb5ab55-fed7-4cd8-affe-82a958a3c91a' # Articles
+      page: Entries
+      tableAttributes:
+        - status
+        - postDate
+        - dateUpdated
+        - 'fieldInstance:3f8cc98b-79c9-4a4f-b606-2f583f2e47ee'
+      type: native
+    -
+      key: 'section:c7ced6be-bcd2-4ebd-9308-1c83e223cbd8' # Category
+      page: Entries
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:cb68d0da-9fdd-4963-aaf8-862011834df6' # Tags
+      page: Entries
+      tableAttributes:
+        - status
+        - postDate
+        - link
+        - slug
+      type: native
+    -
+      heading: All
+      key: 'heading:05f56442-5e7c-48ad-bffb-4679ac16ebab'
+      page: Entries
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: cards
+      disabled: false
+      key: '*'
+      page: Entries
+      tableAttributes:
+        - status
+        - section
+        - postDate
+        - expiryDate
+        - link
+        - type
+        - id
+        - ancestors
+      type: native
+fs:
+  badge:
+    hasUrls: true
+    name: Badge
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  cards:
+    hasUrls: true
+    name: Cards
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_PUBLIC_URL
+  carousel:
+    hasUrls: true
+    name: Carousel
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  favicons:
+    hasUrls: true
+    name: Favicons
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  featured:
+    hasUrls: true
+    name: Featured
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  fonts:
+    hasUrls: true
+    name: Fonts
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  gridCard:
+    hasUrls: true
+    name: 'Grid Card'
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  hero:
+    hasUrls: true
+    name: Hero
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  icons:
+    hasUrls: true
+    name: Icons
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  image:
+    hasUrls: true
+    name: Image
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  imageFree:
+    hasUrls: true
+    name: 'Image (Free)'
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  pdfs:
+    hasUrls: true
+    name: PDFs
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: attachment
+      endpoint: $DO_SPACES_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_PUBLIC_URL
+  split:
+    hasUrls: true
+    name: Split
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  spotlight:
+    hasUrls: true
+    name: Spotlight
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+  timeline:
+    hasUrls: true
+    name: Timeline
+    settings:
+      bucket: $DO_SPACES_BUCKET
+      contentDisposition: ''
+      endpoint: $DO_SPACES_API_ENDPOINT
+      expires: '1 years'
+      keyId: $DO_SPACES_ACCESS_KEY_ID
+      region: $DO_SPACES_REGION
+      secret: $DO_SPACES_SECRET_ACCESS_KEY
+      subfolder: ''
+    type: vaersaagod\dospaces\Fs
+    url: $DO_SPACES_BASE_URL
+meta:
+  __names__:
+    0b328cb9-be33-4953-ab86-256f2b100f9f: Pages # Pages
+    0c0b19d5-0a01-4b5e-9c5b-93b4f6cc599d: '[A] Range (5)' # [A] Range (5)
+    0df27346-26aa-4c65-acb8-8345fd205311: KeelCares # KeelCares
+    0e0d03a1-73d3-45a0-9cc6-0d508835ca6e: 'Builder: Blog' # Builder: Blog
+    1dbb40a0-d8ea-426f-a75c-6066c38527df: Carousel # Carousel
+    1e6a7cf3-8a29-4407-97f5-ac2d1f667177: Home # Home
+    2bfe18fb-b6ab-4606-9fad-2818ed503212: 'General: Text Set List' # General: Text Set List
+    2c16a7a7-2cde-4658-9ef2-d517847626af: Terms # Terms
+    02c69faa-e443-47fe-8933-caf2d64dfd2d: Code # Code
+    3b45a144-d998-4ea9-9de7-61f10ba61933: Image # Image
+    3e09d7ac-3866-47c0-98f2-6c1722ce42c8: 'Headline: Buttons' # Headline: Buttons
+    3fb013e8-add0-403a-bf79-8fa8215f47f8: '[IO] Grid Card (Free)' # [IO] Grid Card (Free)
+    3fe9a6aa-ffaa-4548-a8c3-f05827f8810b: Headline # Headline
+    4bf19068-f270-4189-9011-5d5b37471d08: 'Keel Template' # Keel Template
+    04f618b3-460d-4489-92c9-12a8edb687fa: '[O] Message Bar' # [O] Message Bar
+    4fc8b19c-cc1a-40db-a9d4-39fbd0854c56: '[A] Orientation' # [A] Orientation
+    5aa67919-8786-42f8-bdac-59fc2021ab07: Keel # Keel
+    5ab49bb8-cbfe-4aba-b556-8444ae32cf46: Root # Root
+    5cecb50e-c1b5-49be-8508-fa1f435435dd: '[IO] Spotlight' # [IO] Spotlight
+    005d0d61-367b-48d5-abd7-e23ee15a7487: Icons # Icons
+    5d813eaa-54a0-4509-bfb1-28881bb97661: '[M] Overline' # [M] Overline
+    5f1fa385-46f8-4945-9698-a72eab099aa7: '[O] Quotes Blocks' # [O] Quotes Blocks
+    05ffaad9-22a2-4b48-99eb-4f1ee62af176: 'General: Category' # General: Category
+    6b4a4fdb-14bc-46e9-8767-ddb6476cfe21: Privacy # Privacy
+    6c187634-07a6-4025-b960-6c164d8f9a76: 'General: Tag' # General: Tag
+    6ca05a32-d3e7-4b05-8eb6-dbf0cdf5a4e1: Instagram # Instagram
+    6ce287e8-e015-4406-90c2-b118f1b26b39: Quotes # Quotes
+    6d6c7897-2380-4ee0-af6d-bf07bb64e382: '[IO] Image (Free)' # [IO] Image (Free)
+    6d663481-0f3e-434e-90af-bfdee872ab98: Timeline # Timeline
+    6dad21e8-89c5-4938-8802-45e29eb1ab3a: Feather # Feather
+    6e9ffa13-b1a4-43b5-ac3a-4fe996e519ea: '[IO] Grid Card (Portrait)' # [IO] Grid Card (Portrait)
+    6f2ce7ba-6a7e-4427-bf7d-df7aa35c47db: 'Headline: Overline' # Headline: Overline
+    06f98f66-6a0d-43f8-bba2-4abe50ab4011: '[A] Rich Text (Standard)' # [A] Rich Text (Standard)
+    07a92d43-cd1e-4b7a-bd8d-58dcde98740f: '[A] Image (Grid Card)' # [A] Image (Grid Card)
+    7a173f09-0801-412f-a55c-c01f84bc4641: 'Articles Page' # Articles Page
+    7a53961d-f3e3-43ad-9905-0b5e35514948: 'Builder: Content' # Builder: Content
+    8c9a4b19-3611-4f7f-b78e-882ef24e6e94: '[A] Image (Hero)' # [A] Image (Hero)
+    9a49234d-00a9-469f-9f8d-f017e2461ab6: Text # Text
+    9c1f658d-0c98-4054-b890-8e57feaffcc5: 'Item: Features Item' # Item: Features Item
+    11d08c34-6db8-410a-8820-1730d076b853: '[A] Theme Toggle' # [A] Theme Toggle
+    20b9b9d8-cac5-48f3-b6c4-4ffe8a27573e: Split # Split
+    21f49272-5863-41ed-9141-f35813044486: Social # Social
+    30f4b299-7816-450e-8299-6f4b8fd87dfc: '[A] Toggle (On)' # [A] Toggle (On)
+    31fbd02e-22a8-45b8-8c5a-3e93e1dd79da: '[IO] Image' # [IO] Image
+    33a9f50b-1ca4-49f5-a941-1580095ab2e8: '[A] Icon Picker' # [A] Icon Picker
+    34e51f06-b839-42d8-9d53-913f2ba420e4: '[A] SEO' # [A] SEO
+    36a5272f-4e77-4ae2-926a-03cc91e9793d: '[A] Icon (SVG)' # [A] Icon (SVG)
+    37d020a7-0bd1-42a5-b36d-5b699966604c: '[A] Link' # [A] Link
+    40c6f77e-f179-45a2-aced-52e24c5fc044: '[A] Featured Entry' # [A] Featured Entry
+    42e116a3-a1be-4a74-9ff6-cefc0a15e683: '[A] Code (JSON)' # [A] Code (JSON)
+    47d24729-73db-4e80-a4cd-4bc7c04aefc8: '[O] Grid Cards' # [O] Grid Cards
+    50a771c6-d7bf-4c4a-842d-e89e2f93da53: '[A] Margins' # [A] Margins
+    62e9e752-ff49-486d-9173-9eb5a2b7b397: '[A] Code (HTML)' # [A] Code (HTML)
+    68c034e6-15ed-4d2e-8c36-c1b1b2e125d8: '[IO] Timeline' # [IO] Timeline
+    079fc943-d3e7-4259-95cb-ad0c97140982: '[O] Nav Items' # [O] Nav Items
+    84e3dfef-0382-42c1-a30b-e9d553605685: '[A] Number' # [A] Number
+    90a4dcb9-8d81-4be0-b2fb-c70d94f6daa4: 'Accordion: Info Set' # Accordion: Info Set
+    92f916bc-92c5-4c8c-b495-008dc91a63a3: 'Split: Image' # Split: Image
+    107e8acf-230b-4b53-87ea-18a9ad57c5ee: '[M] Text Set List' # [M] Text Set List
+    177bf172-3ebf-45b8-b634-b17fda7ddef5: 'Secondary' # Secondary
+    0571d5d2-0852-487b-85de-0d217b71434a: '[M] Rich Text List' # [M] Rich Text List
+    622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01: '[A] Plain Text' # [A] Plain Text
+    624e90fa-d512-477e-ba92-4d9c14193bde: 'Contact Form' # Contact Form
+    630bfd61-4624-42c0-991f-cebbe2168ad0: '[A] Tags' # [A] Tags
+    658a88bf-d867-4d55-b0b0-3ef67081d193: 'Quick Links (Footer)' # Quick Links (Footer)
+    675b23f6-cbb7-476d-98c9-2d5ed1c05a0f: Badges # Badges
+    888d0fd6-528d-43e2-8f72-670308d786ec: '[A] Image (Split)' # [A] Image (Split)
+    933febf2-61a9-4c3b-a456-ec530fe29e79: '[A] Rich Text (Extended)' # [A] Rich Text (Extended)
+    998a71e1-20c9-4a30-aaa5-7c90aeffa248: Hero # Hero
+    1034dbb3-c4ac-4a34-9fa4-e5962ea70618: '[A] Hero Type Select' # [A] Hero Type Select
+    1298ced6-5f28-459d-ae0b-61344a217b78: Favicons # Favicons
+    3067f776-da80-45b3-8266-dda80e9a9fcc: 'Primary' # Primary
+    005661cf-92d4-4d12-a60e-c054902e4862: '404' # 404
+    6100d36f-5a92-465e-a323-5454813927f6: Careers # Careers
+    06283e57-d19d-4a2a-a565-fdd324936f60: 'Top Bar' # Top Bar
+    8067a6b9-db4e-4674-a375-7bf78a108d31: '[M] Layout' # [M] Layout
+    8239d007-091c-4abc-b9e0-acd733d622a5: '[IO] Split (Free)' # [IO] Split (Free)
+    16901c83-5fe6-451a-945e-b56b97c1832c: '[A] Image (Favicon)' # [A] Image (Favicon)
+    32342e5d-7ec0-4d07-82d4-1bbb469b6a9e: '[IO] Featured' # [IO] Featured
+    70754d09-3a64-4e62-b9e5-efa5eda240a2: 'Timeline: Slide' # Timeline: Slide
+    95293cf7-8c3d-4ec9-9425-d61e93576238: 'Grid: Card' # Grid: Card
+    97078ed0-5c7f-4ad6-999f-ca3058fb318c: 'Headline: Body' # Headline: Body
+    516712a0-54cb-4fe9-bb8f-b87a5df01b2d: '[M] Favicons' # [M] Favicons
+    640499a2-d323-4fbc-b662-bb2895729646: 'Spotlight: Background' # Spotlight: Background
+    666286d4-0213-4a7a-8c9b-26c35562e0af: '[M] Fonts' # [M] Fonts
+    808867f7-9b46-4197-92b3-6a1495b5d4a1: '[A] Category' # [A] Category
+    876811fb-8893-4c60-a4a3-ca584e238039: '[IO] Grid Card' # [IO] Grid Card
+    6294252a-0d08-48a3-a6c9-ec5cd5a43bfa: '[A] Image (Carousel)' # [A] Image (Carousel)
+    9570727d-f7f6-4da9-9327-06f04b841390: 'Image (Free)' # Image (Free)
+    20726073-f644-4c8b-bf2a-a267f462f77c: '[A] Rich Text (Headline)' # [A] Rich Text (Headline)
+    33973557-7d0f-469c-ae98-d7c15e293840: 'Secondary (Mobile)' # Secondary (Mobile)
+    63400105-8e62-4183-9617-d6cfd193137c: Keel # Keel
+    a0c3ed96-a2a3-43ee-9549-34a9b974e520: '[A] Image (Spotlight)' # [A] Image (Spotlight)
+    a4ba6bfd-f503-4d1c-9aea-a6a2abadbe0b: Timeline # Timeline
+    a72c4b03-c5e9-4970-adc6-8747cb088942: Toolbox # Toolbox
+    a244a2de-314e-406f-ab7f-a0bb48d207fe: Carousel # Carousel
+    a3864e94-3bf9-4502-bae2-be1403a6f1bf: '[M] Timeline Slides' # [M] Timeline Slides
+    a53281c8-d2bd-4f1a-a903-5b9686814f99: 'Headline: Subtitle' # Headline: Subtitle
+    a475203d-cfb9-4473-b306-62adf9a1ae04: 'Headline: Headline' # Headline: Headline
+    a4169822-6f55-440b-9d65-40c8e938af74: '[O] Split Blocks' # [O] Split Blocks
+    aad36064-f83f-4f63-9ea2-0fc123f3e69c: 'Item: Rewards Item' # Item: Rewards Item
+    aaea5829-eb00-416d-bae6-70070d847dd5: '[A] Rich Text (Basic)' # [A] Rich Text (Basic)
+    ab4107f4-1d75-4441-b171-a8afa66baf03: '[A] Columns' # [A] Columns
+    b2e3d67f-21d4-408f-bff8-2fc600ec7676: Form # Form
+    b397c9c1-abe8-4433-8b52-7a32c5e62d5b: '[O] Accordion Blocks' # [O] Accordion Blocks
+    b6119e63-acce-46f0-9e9e-76c8383a6992: 'Builder: Page' # Builder: Page
+    b29639f6-fa01-4256-be5d-edcfdb2a9659: '[IO] Split' # [IO] Split
+    b368570f-83f3-414b-9542-c0d7ff556ff1: '[A] Image (Badge)' # [A] Image (Badge)
+    ba4aa58a-1b8e-48b6-bcbe-6922b8088a46: '[A] Plain Text (Multi)' # [A] Plain Text (Multi)
+    ba11f21a-24e9-4a1e-b26f-7f7e0096204f: '[A] Rich Text (Inline Basic)' # [A] Rich Text (Inline Basic)
+    bd6a01cc-d35f-4c71-b16f-33b00e09008f: 'Grid Card' # Grid Card
+    bd6afdb8-1500-4161-80b9-b6583464ac51: '[A] Color' # [A] Color
+    bedfa89a-f2b7-4a25-ac6d-a1ca041777a5: 'Table Info' # Table Info
+    bef21a5a-9cc3-4d7e-a460-6b620973cd30: Spotlight # Spotlight
+    c08e32df-5bb0-400f-9291-564fa5bed9b5: Spotlight # Spotlight
+    c3cad322-a380-443b-8ab2-0b35bad0f0b9: '[O] Form Blocks' # [O] Form Blocks
+    c5fd64b7-0814-4890-a13f-7b0a70dc92e2: Grid # Grid
+    c7ced6be-bcd2-4ebd-9308-1c83e223cbd8: Category # Category
+    c9b3f329-2033-4e65-bd4c-3b76bfb0262e: Channel # Channel
+    c28fd67d-a4ad-43b9-bddb-5a0d8950e96d: Hero # Hero
+    c55ca0a9-4bd6-409b-afd8-c1884dafecd0: Team # Team
+    c57a7104-ce05-4999-b467-d4759292c37b: Badge # Badge
+    c424ba53-3344-49e3-9abc-89776691ba18: '[A] Code (CSS)' # [A] Code (CSS)
+    c896fd8b-afce-464d-a4b3-e08d1e44d377: Contact # Contact
+    c6364578-ed54-420d-a6fa-d62ccc795977: '[A] Tags (Products)' # [A] Tags (Products)
+    ca45f5c7-4e43-4715-b956-4c124ccc1a66: '[O] Spotlight Blocks' # [O] Spotlight Blocks
+    cb68d0da-9fdd-4963-aaf8-862011834df6: Tags # Tags
+    ccb32ef0-7553-4611-b276-0cc20062594f: '[A] Toggle (Off)' # [A] Toggle (Off)
+    cd6acee0-04df-4809-bcb1-6a4d0f985569: Video # Video
+    cf3f2365-2434-438a-8219-f72a7bed30b7: 'General: Site Setting' # General: Site Setting
+    cf10fbbd-8b1e-464b-8f47-a5574c2974a3: 'General: List Text' # General: List Text
+    cfb5ab55-fed7-4cd8-affe-82a958a3c91a: Articles # Articles
+    cfbd21e9-7b77-4d0b-9e97-12453abfa6e2: 'Jump To Nav' # Jump To Nav
+    d2d1594e-c645-4dcd-8dcc-735c5a41d0bf: '[A] Image (Timeline)' # [A] Image (Timeline)
+    d139adcb-6b36-4720-9229-05f2ce5a33d5: '[A] Channel Select' # [A] Channel Select
+    d243f957-f44d-454a-8c0d-cc4ad6952328: '[A] Image (Image)' # [A] Image (Image)
+    d868ae23-b1cf-4d1e-9d47-3cc3bafca61a: Accordion # Accordion
+    d6884c26-03fe-4ad5-9998-1842f29b350d: Image # Image
+    d7515ef5-a09e-48a5-9e6e-62ba86088082: '[A] Forms' # [A] Forms
+    daa72608-0171-4a9e-b672-ab8dc0a4befe: '[A] Image (Image Free)' # [A] Image (Image Free)
+    dbe46e6b-58b8-4465-9951-55752c725d39: 'Table Info: Row' # Table Info: Row
+    df7a15d6-dd28-4378-81e3-8278102426d9: 'Site Settings' # Site Settings
+    e2e84ce2-f0f6-466c-a33c-8150bdfd17f2: Split # Split
+    e6b3996f-413e-431f-b8c5-9d5b97c9de04: '[A] Nav Item' # [A] Nav Item
+    e6f4b460-b168-48e8-9264-5c955efc6a9d: 'Main (Mobile)' # Main (Mobile)
+    e7b4a236-56ce-4171-967d-515c04e3181f: '[A] Woff2 Font' # [A] Woff2 Font
+    e8de56c7-5ab4-491e-a474-4a12920a15c3: Feed # Feed
+    e9c4951b-996f-45cf-8d27-5c5c11860f21: New # New
+    e36ed945-fdea-437f-870e-f52a749f7b50: Featured # Featured
+    e78b1720-c00f-4915-b99f-5ef6cbf3d61c: '[IO] Hero' # [IO] Hero
+    e5983205-3639-4fd3-865d-8e439ca10a0e: '[A] Image (Featured)' # [A] Image (Featured)
+    ed7b6999-4688-4d62-bf15-393066efd773: Fonts # Fonts
+    ef5948de-b04c-41de-a329-e29111b77fcc: '[O] Features Blocks' # [O] Features Blocks
+    ef294330-819a-4c0d-b38f-7eb031b418e7: 'Public Schema' # Public Schema
+    f05317c8-fa02-49df-a335-a9ca0560e41d: '[A] Width' # [A] Width
+    f0958772-e9d7-4ade-9c5f-f3e70ab54b57: 'Main (Header)' # Main (Header)
+    f4af990b-50ba-4c83-8f31-2720ee25d86d: '[O] Table Info Rows' # [O] Table Info Rows
+    f4bfd477-f2a5-437c-9c51-80d72728993e: 'Tertiary' # Tertiary
+    f8ece754-24ff-4d1e-8987-64f950847e82: 'Split: Text' # Split: Text
+    f76b13e6-69f3-47c4-b51f-1d78fae02bfe: 'Builder: Blog' # Builder: Blog
+    f525e33a-88e0-4335-b38d-97b4cc42a6e0: '[A] URL' # [A] URL
+    faa71d05-5ed5-465b-8e56-c03430e3949a: '[IO] Carousel' # [IO] Carousel
+    fab751c7-1d75-44e9-8b88-3b5b48793efa: '[A] Align Select' # [A] Align Select
+    fcbb2457-9c6d-4fcd-9771-38c11395a332: '[O] Headline Blocks' # [O] Headline Blocks
+plugins:
+  behold:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  blitz:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 5.12.0
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.6.0.0
+  codefield:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  dospaces:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 3.4.12
+    settings:
+      ajaxTimeout: 10
+      alertEmails: null
+      allowPublicVolumes: true
+      captchas:
+        __assoc__:
+          -
+            - akismet
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Akismet
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - akismet
+          -
+            - captchaEu
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\CaptchaEu
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      0:
+                        - handle
+                        - captchaEu
+                      3:
+                        - endPoint
+                        - 'https://www.captcha.eu'
+          -
+            - cleantalk
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\CleanTalk
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - cleantalk
+          -
+            - turnstile
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Turnstile
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      0:
+                        - handle
+                        - turnstile
+                      3:
+                        - scriptLoadingMethod
+                        - asyncDefer
+                      4:
+                        - theme
+                        - auto
+                      5:
+                        - size
+                        - normal
+                      6:
+                        - appearance
+                        - always
+          -
+            - duplicate
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Duplicate
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - duplicate
+          -
+            - friendlyCaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\FriendlyCaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      0:
+                        - handle
+                        - friendlyCaptcha
+                      3:
+                        - language
+                        - en
+                      4:
+                        - startMode
+                        - none
+          -
+            - hcaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Hcaptcha
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      0:
+                        - handle
+                        - hcaptcha
+                      3:
+                        - size
+                        - normal
+                      4:
+                        - theme
+                        - light
+                      5:
+                        - language
+                        - en
+                      6:
+                        - minScore
+                        - 0.5
+                      7:
+                        - scriptLoadingMethod
+                        - asyncDefer
+          -
+            - honeypot
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Honeypot
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - honeypot
+          -
+            - javascript
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Javascript
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - javascript
+          -
+            - OopSpam
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\OopSpam
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - OopSpam
+          -
+            - question
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Question
+                -
+                  - enabled
+                  - '0'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - question
+          -
+            - recaptcha
+            -
+              __assoc__:
+                -
+                  - type
+                  - verbb\formie\integrations\captchas\Recaptcha
+                -
+                  - enabled
+                  - '1'
+                -
+                  - saveSpam
+                  - true
+                -
+                  - settings
+                  -
+                    __assoc__:
+                      -
+                        - handle
+                        - recaptcha
+                      -
+                        - secretKey
+                        - $GOOGLE_CONSOLE_API_KEY
+                      -
+                        - siteKey
+                        - $GOOGLE_RECAPTCHA_SITE_KEY
+                      -
+                        - type
+                        - enterprise
+                      -
+                        - size
+                        - normal
+                      -
+                        - theme
+                        - light
+                      -
+                        - badge
+                        - bottomright
+                      -
+                        - language
+                        - en
+                      -
+                        - minScore
+                        - 0.5
+                      -
+                        - scriptLoadingMethod
+                        - asyncDefer
+                      -
+                        - enterpriseType
+                        - score
+                      -
+                        - projectId
+                        - $GOOGLE_CLOUD_PROJECT_ID
+      defaultDateDisplayType: calendar
+      defaultDateTime: null
+      defaultDateValueOption: ''
+      defaultEmailTemplate: ''
+      defaultExportFolder: '@storage/formie-export'
+      defaultFileUploadVolume: ''
+      defaultFormTemplate: sfeTemplate
+      defaultInstructionsPosition: verbb\formie\positions\AboveInput
+      defaultLabelPosition: verbb\formie\positions\AboveInput
+      defaultPage: forms
+      emptyValuePlaceholder: 'No response.'
+      enableBackSubmission: true
+      enableCsrfValidationForGuests: true
+      enableLargeFieldStorage: false
+      enableUnloadWarning: true
+      filterIntegrationMapping: true
+      includeDraftElementUsage: false
+      includeRevisionElementUsage: false
+      maxIncompleteSubmissionAge: 30
+      maxSentNotificationsAge: 30
+      outputConsoleMessages: true
+      pdfPaperOrientation: portrait
+      pdfPaperSize: letter
+      pluginName: Formie
+      queuePriority: null
+      saveSpam: true
+      sendEmailAlerts: false
+      sentNotifications: true
+      setOnlyCurrentPagePayload: false
+      spamBehaviour: showSuccess
+      spamBehaviourMessage: ''
+      spamEmailNotifications: false
+      spamKeywords: ''
+      spamLimit: 500
+      submissionsBehaviour: all
+      useCssLayers: false
+      useQueueForIntegrations: true
+      useQueueForNotifications: true
+      validateCustomTemplates: true
+  hyper:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 1.0.0
+  icon-picker:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 1.2.3
+  image-optimize:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 1.0.0
+  llm-ready:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.2.0
+  matrix-defaults:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  mcp:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 2.1.2
+  postmark:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.1
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 3.0.12
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 3.0.13
+  site-asset-router:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  site-tint:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+    settings:
+      overrides:
+        __assoc__:
+          -
+            - 3067f776-da80-45b3-8266-dda80e9a9fcc # Primary
+            -
+              __assoc__:
+                -
+                  - accent
+                  - 004b87
+                -
+                  - accent-color
+                  - fff
+                -
+                  - accent-color-hover
+                  - fff
+                -
+                  - accent-hover
+                  - 4f7bbd
+          -
+            - 177bf172-3ebf-45b8-b634-b17fda7ddef5 # Secondary
+            -
+              __assoc__:
+                -
+                  - accent
+                  - 64a70b
+                -
+                  - accent-color
+                  - fff
+                -
+                  - accent-color-hover
+                  - fff
+                -
+                  - accent-hover
+                  - 556a39
+          -
+            - f4bfd477-f2a5-437c-9c51-80d72728993e # Tertiary
+            -
+              __assoc__:
+                -
+                  - accent
+                  - 1b76ae
+                -
+                  - accent-color
+                  - fff
+                -
+                  - accent-color-hover
+                  - fff
+                -
+                  - accent-hover
+                  - 009bf9
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: $CRAFT_SYSTEM_NAME
+  retryDuration: null
+  schemaVersion: 5.10.0.0
+  timeZone: America/Los_Angeles

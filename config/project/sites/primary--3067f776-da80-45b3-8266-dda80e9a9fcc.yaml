@@ -1,0 +1,9 @@
+baseUrl: $URL_SECONDARY
+enabled: '1'
+handle: primary
+hasUrls: true
+language: en
+name: 'Primary'
+primary: false
+siteGroup: 63400105-8e62-4183-9617-d6cfd193137c # Keel
+sortOrder: 2

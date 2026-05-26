@@ -1,0 +1,75 @@
+<!-- Template: {{ _self }} -->
+
+{% set entry = entry|default %}
+{% set sectionName = entry.section.name ?? '' %}
+
+{# fl.isFieldIncluded() guards against fields absent from this entry type's layout #}
+{% set fl = entry.fieldLayout ?? null %}
+{% set thumbnail  = fl and fl.isFieldIncluded('featuredImage') ? entry.featuredImage : null %}
+{% set tags       = fl and fl.isFieldIncluded('tags')           ? entry.tags          : null %}
+{% set summary    = fl and fl.isFieldIncluded('summary')        ? entry.summary       : null %}
+
+{# Derive icon from the entry's category iconPicker; fall back to a generic feather icon. #}
+{% set entryCategory = fl and fl.isFieldIncluded('category')
+	? entry.category.one()
+	: (entry.newsEventsCategory is defined ? entry.newsEventsCategory.one() ?? null : null)
+%}
+{% set categoryIcon  = entryCategory and entryCategory.iconPicker is not empty ? entryCategory.iconPicker : null %}
+{% set label = entryCategory.title ?? sectionName %}
+
+<article class="entry-card">
+	<header class="entry-card__type">
+		<span class="entry-card__icon" aria-hidden="true">
+			{% if categoryIcon %}
+				{{ categoryIcon.inline|raw }}
+			{% else %}
+				{{ svg('@feather/layout.svg') }}
+			{% endif %}
+		</span>
+		{% if label %}<span class="entry-card__label">{{ label }}</span>{% endif %}
+	</header>
+
+	{% if thumbnail is not empty %}
+		<figure class="entry-card__figure">
+			{% include '_utilities/picture' with {
+				image: thumbnail.one(),
+				ioName: 'ioFeatured',
+				className: 'entry-card__img'
+			} only %}
+		</figure>
+	{% endif %}
+
+	<div class="entry-card__content">
+		<h3 class="entry-card__title">
+			<a class="entry-card__title-link" href="{{ entry.url ?? '#' }}">{{ entry.title }}</a>
+		</h3>
+
+		{% if entry.postDate %}
+			<time class="entry-card__date" datetime="{{ entry.postDate|atom }}">
+				{{ entry.postDate|date('F j, Y') }}
+			</time>
+		{% endif %}
+
+		{% if summary %}
+			<p class="entry-card__summary">
+				{{ summary|striptags|slice(0, 160) }}…<a
+					class="entry-card__read-more"
+					href="{{ entry.url ?? '#' }}"
+				>Read more</a>
+			</p>
+		{% endif %}
+
+		{% if tags is not empty %}
+			{# Strip the entry slug to get the channel index URL.
+			   e.g. https://keel.ddev.site/articles/some-article → …/articles #}
+			{% set tagBase = entry.url|split('/')|slice(0, -1)|join('/') %}
+			<ul class="entry-card__tags">
+				{% for tag in tags.all() %}
+					<li class="entry-card__tag">
+						<a class="entry-card__tag-link" href="{{ tagBase }}?tag={{ tag.slug }}">{{ tag.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</article>

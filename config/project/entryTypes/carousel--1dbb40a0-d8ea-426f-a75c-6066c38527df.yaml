@@ -1,0 +1,91 @@
+allowLineBreaksInTitles: false
+color: purple
+description: null
+fieldLayouts:
+  3ff13b16-d61d-42e9-bb29-cefe5cc61c50:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-08T15:00:31+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 6294252a-0d08-48a3-a6c9-ec5cd5a43bfa # [A] Image (Carousel)
+            handle: images
+            instructions: null
+            label: Images
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 176e562e-dfb7-4a6c-ae2e-004684919eaf
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d0867f3a-82a7-4873-904f-9e6089849179
+        userCondition: null
+      -
+        elementCondition: null
+        name: Options
+        uid: eb3f443e-9f60-4642-9367-80602856376e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-02T13:36:24+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: null
+            label: 'Jump To Nav Label'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0d810976-502f-4468-b710-ad396784815f
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: ae06822d-c259-43a5-a070-1df224d7a489
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-02T13:36:24+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 68325b63-c7c4-4a2b-a63d-99dea2a4dabb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 0c871e1c-c4ba-4bbd-88b2-5cc8917518d2
+        userCondition: null
+    thumbFieldKey: null
+handle: carousel
+hasTitleField: false
+icon: horse-head
+name: Carousel
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

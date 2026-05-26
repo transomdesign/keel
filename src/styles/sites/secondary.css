@@ -1,0 +1,53 @@
+/**
+ * Secondary — Brand Tokens
+ * Overrides semantic color, font, and button tokens for the secondary brand.
+ * Loaded as a separate Vite entry point alongside main.css.
+ */
+
+/*@import url('https://cloud.typography.com/7724052/7374212/css/fonts.css');*/
+
+:root {
+	/* Brand Colors */
+	--color-primary: #64a70b;
+	--color-accent: #f6be00;
+	--color-error: #b00020;
+
+	/* Font Families */
+	--font-functional: 'Gotham A', 'Gotham B', Helvetica, Arial, sans-serif;
+	--font-display: 'Archer A', 'Archer B', Georgia, serif;
+	--font-body: 'Gotham A', 'Gotham B', Helvetica, Arial, sans-serif;
+
+	/* Navbar / Chrome Tokens */
+	--navbar-bg: var(--color-white);
+
+	/* Mobile Menu */
+	--mobile-menu-secondary-columns: 1;
+	--mobile-menu-secondary-align: center;
+	--mobile-menu-starting-y-desktop: 0;
+	--mobile-menu-starting-x-desktop: calc(-100% - var(--spacing-sm));
+	--mobile-menu-top-desktop: var(--spacing-sm);
+	--mobile-menu-left-desktop: var(--spacing-sm);
+	--mobile-menu-bottom-desktop: var(--spacing-sm);
+	--mobile-menu-height-desktop: auto;
+	--mobile-menu-max-width-desktop: 350px;
+	--mobile-menu-translate-y-desktop: 0%;
+}
+
+/* data-theme surface/text combos */
+[data-theme='light'] {
+	--color-theme-bg: var(--color-white);
+	--color-theme-text: var(--color-on-surface);
+	--color-theme-heading: var(--color-on-surface);
+}
+
+[data-theme='medium'] {
+	--color-theme-bg: var(--color-surface-alt);
+	--color-theme-text: var(--color-on-surface);
+	--color-theme-heading: var(--color-on-surface);
+}
+
+[data-theme='dark'] {
+	--color-theme-bg: var(--color-primary-dark);
+	--color-theme-text: var(--color-white);
+	--color-theme-heading: var(--color-primary-light);
+}

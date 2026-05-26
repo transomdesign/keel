@@ -1,0 +1,16 @@
+logging.enabled: true
+logging.level: DEBUG
+logging.path: /tmp/phpactor.log
+
+# Disable outsourced diagnostics to stop the error
+language_server.diagnostic_outsource: false
+
+# Disable PHP_CodeSniffer completely
+php_code_sniffer.enabled: false
+
+# Exclude vendor directory from indexing
+indexer.exclude_patterns:
+  - "/vendor/**/*"
+  - "/vendor/**/*.php"
+  - "/node_modules/**/*"
+  - "/storage/**/*"

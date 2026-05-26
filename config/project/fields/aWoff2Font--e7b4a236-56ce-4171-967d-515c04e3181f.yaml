@@ -1,0 +1,36 @@
+columnSuffix: null
+handle: aWoff2Font
+instructions: null
+name: '[A] Woff2 Font'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - WOFF2
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:d69c1f76-39d1-41da-bb05-7a5edc2a23c1'
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:ed7b6999-4688-4d62-bf15-393066efd773' # Fonts
+  restrictedLocationSubpath: '{{ object.site.handle }}/fonts'
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

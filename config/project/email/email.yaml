@@ -1,0 +1,8 @@
+fromEmail: accounts@transom.design
+fromName: 'Primary'
+replyToEmail: noreply@keel.transom.dev
+template: ''
+transportSettings:
+  messageStream: ''
+  token: $POSTMARK_SERVER_TOKEN
+transportType: craftcms\postmark\Adapter

@@ -1,0 +1,130 @@
+columnSuffix: null
+handle: aMargins
+instructions: null
+name: '[A] Margins'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - None
+        -
+          - value
+          - ''
+        -
+          - icon
+          - dash
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - XS
+        -
+          - value
+          - xs
+        -
+          - icon
+          - square-s
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - SM
+        -
+          - value
+          - sm
+        -
+          - icon
+          - circle-s
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - MD
+        -
+          - value
+          - md
+        -
+          - icon
+          - circle-m
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - LG
+        -
+          - value
+          - lg
+        -
+          - icon
+          - circle-l
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - XL
+        -
+          - value
+          - xl
+        -
+          - icon
+          - circle-x
+        -
+          - color
+          - ''
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - XXL
+        -
+          - value
+          - xxl
+        -
+          - icon
+          - square-xmark
+        -
+          - color
+          - ''
+        -
+          - default
+          - '1'
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\RadioButtons

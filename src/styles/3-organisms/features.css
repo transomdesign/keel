@@ -1,0 +1,41 @@
+.features {
+	@apply flex flex-col;
+}
+
+.features__list {
+	@apply flex flex-col flex-wrap items-center gap-12 md:flex-row md:justify-center md:gap-x-5 md:gap-y-11;
+}
+
+.features__header {
+	@apply mb-14;
+}
+
+.feature__figure {
+	/*@apply ;*/
+}
+
+.feature__img {
+	@apply inset-0 size-full object-contain;
+}
+
+.feature {
+	@apply flex w-full flex-col items-center gap-5 text-center md:w-3/12 md:gap-4;
+
+	a:hover {
+		.feature__header {
+			@apply underline;
+		}
+	}
+}
+
+.feature__header {
+	@apply as-h4;
+}
+
+.feature__img--raster {
+	@apply mb-3 w-35;
+}
+
+.feature__img--svg {
+	@apply size-18;
+}

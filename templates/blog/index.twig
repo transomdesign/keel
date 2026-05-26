@@ -1,0 +1,57 @@
+{# Build jumpLinksArray for blog tags before extending layout #}
+{% set currentTag = craft.app.request.getParam('tag') %}
+{% set tags = craft.entries().section('tags').orderBy('title ASC').all() %}
+{% set blogUrl = url('/blog') %}
+{% set jumpLinksArray = [
+	{
+		text: 'All',
+		url: blogUrl,
+		isActive: not currentTag,
+		attrs: {
+			'hx-get': blogUrl,
+			'hx-target': '#feed-sprig',
+			'hx-select': '#feed-sprig',
+			'hx-swap': 'outerHTML show:top',
+			'hx-push-url': blogUrl,
+			'hx-select-oob': '#jump-to-nav'
+		}
+	}
+] %}
+{% for tag in tags %}
+	{% set tagUrl =
+		url(
+			'/blog',
+			{
+				tag: tag.slug
+			}
+		)
+	%}
+	{% set jumpLinksArray =
+		jumpLinksArray|merge(
+			[
+				{
+					text: tag.title,
+					url: tagUrl,
+					isActive: tag.slug == currentTag,
+					attrs: {
+						'hx-get': tagUrl,
+						'hx-target': '#feed-sprig',
+						'hx-select': '#feed-sprig',
+						'hx-swap': 'outerHTML show:top',
+						'hx-push-url': tagUrl,
+						'hx-select-oob': '#jump-to-nav'
+					}
+				}
+			]
+		)
+	%}
+{% endfor %}
+
+{% extends '_4-layouts/base' %}
+
+{% block bodyContent %}
+	{% include '_3-organisms/content-builder.twig' with {
+		sections: entry is defined ? entry.contentBuilder.all() : [],
+		jumpLinksArray: jumpLinksArray
+	} %}
+{% endblock %}

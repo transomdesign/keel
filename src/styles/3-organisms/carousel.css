@@ -1,0 +1,17 @@
+.carousel {
+	@apply my-xxl z-10;
+}
+
+/* Each slide should take full height and auto width based on image aspect ratio */
+.carousel .splide__slide {
+	height: 100%;
+	width: auto !important; /* Override Splide's calculated width */
+}
+
+/* Images fill the slide height, width adjusts to maintain aspect ratio */
+.carousel .splide__slide img {
+	height: 100%;
+	width: auto;
+	object-fit: cover;
+	border: var(--carousel-border, none);
+}

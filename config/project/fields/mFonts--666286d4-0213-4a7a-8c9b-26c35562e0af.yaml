@@ -1,0 +1,324 @@
+columnSuffix: null
+handle: mFonts
+instructions: null
+name: '[M] Fonts'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 07c14c07-7a4a-4be3-8aa3-a44209db4f63
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Content
+                    1:
+                      - uid
+                      - f9c30230-2749-47d5-8ba1-88799fba78b4
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            -
+                              - type
+                              - craft\fieldlayoutelements\Heading
+                            -
+                              - heading
+                              - Display
+                            -
+                              - dateAdded
+                              - '2026-03-04T15:39:07+00:00'
+                            -
+                              - uid
+                              - f1879cc3-6f76-4ef7-98c2-b6c8df6b1bf8
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - display
+                            2:
+                              - label
+                              - Display
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-10-26T20:03:00+00:00'
+                            9:
+                              - uid
+                              - e50b28ae-0562-43d1-a1a3-f3f8fbe21577
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - displayItalic
+                            2:
+                              - label
+                              - 'Display (Italic)'
+                            3:
+                              - instructions
+                              - 'Optional if there is a specific WOFF2 file for italic'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-12-10T23:16:58+00:00'
+                            9:
+                              - uid
+                              - 3f4f9a9c-ede2-4b1d-884f-2548c9ddf166
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            -
+                              - type
+                              - craft\fieldlayoutelements\Heading
+                            -
+                              - heading
+                              - Functional
+                            -
+                              - dateAdded
+                              - '2026-03-04T15:39:07+00:00'
+                            -
+                              - uid
+                              - 9e7c5b5b-4a59-4e6e-949c-1846eace6123
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - functional
+                            2:
+                              - label
+                              - Functional
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-10-26T20:03:00+00:00'
+                            9:
+                              - uid
+                              - 3f3d5700-917d-4e86-84a2-789d27bc2652
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - functionalItalic
+                            2:
+                              - label
+                              - 'Functional (Italic)'
+                            3:
+                              - instructions
+                              - 'Optional if there is a specific WOFF2 file for italic'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-12-10T23:16:58+00:00'
+                            9:
+                              - uid
+                              - 055ae8cc-da1a-414a-8707-adecbd7245d1
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            -
+                              - type
+                              - craft\fieldlayoutelements\Heading
+                            -
+                              - heading
+                              - Body
+                            -
+                              - dateAdded
+                              - '2026-03-04T15:39:07+00:00'
+                            -
+                              - uid
+                              - ca1b9878-09d3-4d09-bffc-10e05590cf29
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - body
+                            2:
+                              - label
+                              - Body
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-10-26T20:36:30+00:00'
+                            9:
+                              - uid
+                              - 5db87376-7ece-4bcf-a6bf-f0e775aff627
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - bodyBold
+                            2:
+                              - label
+                              - 'Body (Bold)'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2026-03-04T15:37:49+00:00'
+                            9:
+                              - uid
+                              - ba7743f0-808a-4b24-adef-7043584b0fb7
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - bodyItalic
+                            2:
+                              - label
+                              - 'Body (Italic)'
+                            3:
+                              - instructions
+                              - 'Optional if there is a specific WOFF2 file for italic'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-12-10T23:16:58+00:00'
+                            9:
+                              - uid
+                              - b6c81b31-2e3e-4241-a886-b80786796ebc
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - bodyBoldItalic
+                            2:
+                              - label
+                              - 'Body (Bold Italic)'
+                            3:
+                              - instructions
+                              - '(Optional) If there is a WOFF2 for Bold Italic'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2026-03-04T15:37:49+00:00'
+                            9:
+                              - uid
+                              - c31b43e0-2a41-4b45-af8b-d9965c3ba352
+                            12:
+                              - fieldUid
+                              - e7b4a236-56ce-4171-967d-515c04e3181f # [A] Woff2 Font
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - code
+                            2:
+                              - label
+                              - Code
+                            3:
+                              - instructions
+                              - 'Use the `<link>` tag provided by your font provider'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-03-15T23:58:09+00:00'
+                            9:
+                              - uid
+                              - 8596474e-c20f-48b6-af70-b1e1a2d84da3
+                            12:
+                              - fieldUid
+                              - 62e9e752-ff49-486d-9173-9eb5a2b7b397 # [A] Code (HTML)
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

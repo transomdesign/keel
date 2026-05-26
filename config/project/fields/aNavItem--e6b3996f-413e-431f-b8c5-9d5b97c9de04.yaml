@@ -1,0 +1,120 @@
+columnSuffix: null
+handle: aNavItem
+instructions: null
+name: '[A] Nav Item'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 16868ce4-f12a-4c5a-82bc-25b039877e3a
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Content
+                    1:
+                      - uid
+                      - 42bcfc3f-c8ff-4904-b26c-6b694fbef211
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - itemTitle
+                            2:
+                              - label
+                              - Title
+                            3:
+                              - instructions
+                              - 'Display title shown for this item'
+                            6:
+                              - required
+                              - true
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-12-05T18:18:02+00:00'
+                            9:
+                              - uid
+                              - a4a7e003-82c1-45f7-8b8b-7648041baffe
+                            12:
+                              - fieldUid
+                              - 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - itemSlug
+                            2:
+                              - label
+                              - Slug
+                            3:
+                              - instructions
+                              - 'Slug from Commerce7 collection page'
+                            6:
+                              - required
+                              - true
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-12-05T18:18:02+00:00'
+                            9:
+                              - uid
+                              - 1804e44e-211f-47d1-87be-c0bbe71cbab6
+                            12:
+                              - fieldUid
+                              - 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - itemDescription
+                            2:
+                              - label
+                              - Description
+                            3:
+                              - instructions
+                              - '(Optional) Descriptive marketing text to for each C7 collection'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-01-05T14:22:07+00:00'
+                            9:
+                              - uid
+                              - 8fd78cc8-7867-4c2d-a9b3-dc58f6071bfb
+                            12:
+                              - fieldUid
+                              - 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

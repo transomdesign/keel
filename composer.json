@@ -1,0 +1,123 @@
+{
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"craftcms/ckeditor": "^5.0",
+		"craftcms/cms": "^5.7.10",
+		"craftcms/postmark": "^3.1.0",
+		"craftcms/security-patches": "dev-main",
+		"cweagans/composer-patches": "^2.0",
+		"transom/matrix-defaults": "@dev",
+		"transom/site-asset-router": "@dev",
+		"johnfmorton/craft-llm-ready": "^1.3.2",
+		"nystudio107/craft-code-editor": "^1.0.27",
+		"nystudio107/craft-code-field": "^5.0.1",
+		"nystudio107/craft-imageoptimize": "^5.0.7",
+		"nystudio107/craft-minify": "^5.0",
+		"nystudio107/craft-retour": "^5.0.12",
+		"nystudio107/craft-seomatic": "^5.1.15",
+		"nystudio107/craft-vite": "^5.0",
+		"putyourlightson/craft-blitz": "^5.11.4",
+		"putyourlightson/craft-sprig": "^3.7.2",
+		"stimmt/craft-mcp": "^v1.2.1",
+		"transom/craft-behold": "dev-main",
+		"transom/craft-site-tint": "^1.0",
+		"vaersaagod/dospaces": "^3.2",
+		"verbb/formie": "^3.0.29",
+		"verbb/hyper": "^2.2.7",
+		"verbb/icon-picker": "^3.0.6",
+		"verbb/navigation": "^3.0",
+		"vlucas/phpdotenv": "^5.4.0"
+	},
+	"require-dev": {
+		"craftcms/generator": "^2.2",
+		"phpunit/phpunit": "^11.5",
+		"yiisoft/yii2-shell": "^2.0.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"AssetTypes\\": "modules/AssetTypes/",
+			"SiteModule\\": "modules/SiteModule/",
+			"modules\\inlineassets\\": "modules/InlineAssets/src/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"craftcms/plugin-installer": true,
+			"cweagans/composer-patches": true,
+			"php-http/discovery": true,
+			"yiisoft/yii2-composer": true
+		},
+		"sort-packages": true,
+		"optimize-autoloader": true,
+		"platform": {
+			"php": "8.3"
+		}
+	},
+	"extra": {
+		"patches": {
+			"nystudio107/craft-imageoptimize": [
+				{
+					"description": "Fix srcsetWidth methods to properly handle retina variants",
+					"url": "patches/imageoptimize-fix-srcset-retina.patch",
+					"sha256": "ba4777be00dc131635fcb8ffe86b244c1c7cb3ab598c2e2f1be2573ef9eb325b"
+				}
+			]
+		},
+		"composer-patches": {
+			"ignore-dependency-patches": [
+				"yiisoft/yii2",
+				"yiisoft/yii2-debug",
+				"yiisoft/yii2-queue",
+				"yiisoft/yii2-shell"
+			]
+		}
+	},
+	"scripts": {
+		"craft-update": [
+			"@post-craft-update"
+		],
+		"post-craft-update": [
+			"Composer\\Config::disableProcessTimeout",
+			"@php craft install/check && php craft clear-caches/all --interactive=0 || exit 0",
+			"@php craft install/check && php craft migrate/all --interactive=0 || exit 0",
+			"@php craft install/check && php craft project-config/apply --interactive=0 || exit 0"
+		],
+		"post-update-cmd": "@post-craft-update",
+		"post-install-cmd": [
+			"@post-craft-update",
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		],
+		"post-create-project-cmd": [
+			"@php -r \"copy('.env.example', '.env');\"",
+			"@php -r \"unlink('composer.json');\"",
+			"@php -r \"rename('composer.json.default', 'composer.json');\"",
+			"@composer dump-autoload -o",
+			"@php craft setup/welcome"
+		],
+		"post-root-package-install": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		]
+	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "./plugins/matrix-defaults",
+			"options": {
+				"symlink": false
+			}
+		},
+		{
+			"type": "path",
+			"url": "./plugins/site-asset-router",
+			"options": {
+				"symlink": false
+			}
+		},
+		{
+			"type": "composer",
+			"url": "https://composer.craftcms.com",
+			"canonical": false
+		}
+	]
+}

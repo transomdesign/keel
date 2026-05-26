@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: oGridCards
+instructions: null
+name: '[O] Grid Cards'
+searchable: false
+settings:
+  createButtonLabel: 'New Card'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 95293cf7-8c3d-4ec9-9425-d61e93576238 # Grid: Card
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards-grid
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

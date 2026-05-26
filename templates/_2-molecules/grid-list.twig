@@ -1,0 +1,29 @@
+<!-- Template: {{ _self }} -->
+
+{#
+  Grid card list
+  @prop blocks: ElementQuery|array|null - matrix blocks with image/headlineBlocks fields
+  @prop columns: string|null - CP column count ('1'-'6'); defaults to 3
+  @prop orientation: string|null - 'landscape', 'square', or null (portrait)
+  @prop imageIsContained: bool - whether card images use contained aspect; defaults to false
+#}
+
+{% set blocks = blocks|default %}
+{% set columns = columns|default %}
+{% set orientation = orientation|default %}
+{% set imageIsContained = imageIsContained|default(false) %}
+{% set desktopCols = columns in ['1','2','3','4','5','6'] ? columns : 3 %}
+
+{% if blocks is not empty %}
+	<ul class="grid-block__list" style="--desktop-cols: {{ desktopCols }};">
+		{% for block in blocks.all() %}
+			{% include '_2-molecules/grid-card.twig' with {
+				image: block.image.one(),
+				videoUrl: block.videoUrl,
+				headlineBlocks: block.headlineBlocks,
+				orientation: orientation,
+				imageIsContained: imageIsContained
+			} only %}
+		{% endfor %}
+	</ul>
+{% endif %}

@@ -1,0 +1,36 @@
+columnSuffix: null
+handle: aIconSvg
+instructions: null
+name: '[A] Icon (SVG)'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - SVG
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:d69c1f76-39d1-41da-bb05-7a5edc2a23c1'
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:005d0d61-367b-48d5-abd7-e23ee15a7487' # Icons
+  restrictedLocationSubpath: '{{ object.site.handle }}/icons'
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: thumbs
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

@@ -1,0 +1,9 @@
+.c7-reservations {
+	.c7-btn {
+		@apply btn;
+	}
+}
+
+.c7-reservation__search .c7-form {
+	max-width: unset;
+}

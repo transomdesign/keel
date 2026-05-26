@@ -1,0 +1,38 @@
+columnSuffix: null
+handle: fImageFavicons
+instructions: null
+name: '[A] Image (Favicon)'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - ICO
+    - image
+    - SVG
+  branchLimit: null
+  defaultPlacement: end
+  defaultUploadLocationSource: 'volume:c28fd67d-a4ad-43b9-bddb-5a0d8950e96d' # Hero
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: thumbs
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:1298ced6-5f28-459d-ae0b-61344a217b78' # Favicons
+  restrictedLocationSubpath: '{{ object.site.handle }}/favicons'
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: thumbs
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

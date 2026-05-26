@@ -1,0 +1,61 @@
+columnSuffix: null
+handle: oHeadlineBlocks
+instructions: null
+name: '[O] Headline Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Line'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 6f2ce7ba-6a7e-4427-bf7d-df7aa35c47db # Headline: Overline
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - a475203d-cfb9-4473-b306-62adf9a1ae04 # Headline: Headline
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - a53281c8-d2bd-4f1a-a903-5b9686814f99 # Headline: Subtitle
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 97078ed0-5c7f-4ad6-999f-ca3058fb318c # Headline: Body
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 3e09d7ac-3866-47c0-98f2-6c1722ce42c8 # Headline: Buttons
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

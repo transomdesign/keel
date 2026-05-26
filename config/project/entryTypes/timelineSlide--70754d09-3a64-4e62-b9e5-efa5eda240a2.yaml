@@ -1,0 +1,74 @@
+allowLineBreaksInTitles: false
+color: fuchsia
+description: null
+fieldLayouts:
+  60900b36-7396-459c-9f2f-0e99ad9257f1:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-19T20:19:29+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: year
+            instructions: null
+            label: Year
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d3b140ac-5fc3-4e82-84d3-fd3c34cf96c7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-19T20:19:29+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ba4aa58a-1b8e-48b6-bcbe-6922b8088a46 # [A] Plain Text (Multi)
+            handle: description
+            instructions: null
+            label: Description
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dee2a5d9-8c2c-448f-ba64-2e04f801dd71
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-19T20:23:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d2d1594e-c645-4dcd-8dcc-735c5a41d0bf # [A] Image (Timeline)
+            handle: image
+            instructions: null
+            label: Image
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 684c8e38-3d81-4c47-80e6-cb6ea2bc991b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2404ba0a-a6f2-419b-8592-65117dacd08a
+        userCondition: null
+    thumbFieldKey: null
+handle: timelineSlide
+hasTitleField: false
+icon: timeline-arrow
+name: 'Timeline: Slide'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

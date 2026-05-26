@@ -1,0 +1,175 @@
+allowLineBreaksInTitles: false
+color: rose
+description: null
+fieldLayouts:
+  6cc82f68-8efd-4b08-aac4-6e3710977db3:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-20T15:41:37+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: "Use this block to render the full Articles listing page.\r\n\r\nWhen placed on a page, it outputs the Hero (if a featured article is set and the toggle is enabled), the search bar, the article listing, and pagination.\r\n\r\n**Only one Feed block should ever be needed per page**."
+            type: craft\fieldlayoutelements\Tip
+            uid: 33289fce-e998-4596-818f-10a6f241815d
+            userCondition: null
+          -
+            dateAdded: '2025-11-20T07:12:39+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 84e3dfef-0382-42c1-a30b-e9d553605685 # [A] Number
+            handle: entriesPerPage
+            instructions: null
+            label: 'Entries Per Page'
+            required: false
+            tip: 'Leave blank for default (9)'
+            type: craft\fieldlayoutelements\CustomField
+            uid: d2b3ad76-95e0-41c7-adf4-041649a1d1af
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-30T04:38:35+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 40c6f77e-f179-45a2-aced-52e24c5fc044 # [A] Featured Entry
+            handle: featuredEntry
+            instructions: "Leave blank to promote the latest entry to 'featured'"
+            label: 'Featured Entry'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cddf3871-aa95-4347-aa0b-e5f74dc692fd
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-12T13:22:28+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ccb32ef0-7553-4611-b276-0cc20062594f # [A] Toggle (Off)
+            handle: featuredEntryIsHero
+            instructions: null
+            label: 'Featured Entry Hero'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 90ca5cec-d648-4744-b1e0-23c8abf32095
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-03-30T13:42:54+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fcbb2457-9c6d-4fcd-9771-38c11395a332 # [O] Headline Blocks
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5ef7bcc8-7432-4f0b-827e-0462fa144f5e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T20:15:48+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 630bfd61-4624-42c0-991f-cebbe2168ad0 # [A] Tags
+            handle: tags
+            instructions: null
+            label: Tags
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dff7c456-ecb9-4aed-b081-511370fa085c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-04-15T20:15:48+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 808867f7-9b46-4197-92b3-6a1495b5d4a1 # [A] Category
+            handle: category
+            instructions: null
+            label: Category
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 189a38ff-020d-4806-b1d3-4ba0409f4d5a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 9f6906ff-3a22-464a-bd91-7733d8104d5e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-24T16:13:40+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: jumpToNavLabel
+            instructions: "The text that will appear in the 'Jump To' navigation for this section"
+            label: 'Jump To Nav Label'
+            required: false
+            tip: 'Leave blank to exclude this section from the page navigation'
+            type: craft\fieldlayoutelements\CustomField
+            uid: f9b4f987-1e4c-49c9-9bbf-6783537b453e
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Jump To Nav'
+        uid: de5f20eb-bd5e-46db-b9fb-83841cc1ee56
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-30T20:34:21+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d2e136ea-5b52-4e6c-9092-44f107a65b1e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 48191e79-f777-43fb-a3f2-cd3bb5416381
+        userCondition: null
+    thumbFieldKey: null
+handle: feed
+hasTitleField: false
+icon: typewriter
+name: Feed
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

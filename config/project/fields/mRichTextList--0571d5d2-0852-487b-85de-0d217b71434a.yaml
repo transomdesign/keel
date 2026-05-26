@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: mRichTextList
+instructions: null
+name: '[M] Rich Text List'
+searchable: false
+settings:
+  createButtonLabel: 'New Text Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - cf10fbbd-8b1e-464b-8f47-a5574c2974a3 # General: List Text
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: none
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

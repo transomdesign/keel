@@ -1,0 +1,56 @@
+/* Responsive Type Styles */
+@utility as-h1 {
+	@apply font-functional text-h1-sm/h1 md:text-h1-md/h1 lg:text-h1-lg/h1 font-medium text-balance;
+}
+
+@utility as-h2 {
+	@apply font-functional text-h2-sm/h2 md:text-h2-md/h2 lg:text-h2-lg/h2 font-medium text-balance;
+}
+
+@utility as-h3 {
+	@apply font-functional text-h3-sm/h3 md:text-h3-md/h3 lg:text-h3-lg/h3 font-normal;
+}
+
+@utility as-h4 {
+	@apply font-functional text-h4-sm/h4 md:text-h4-md/h4 lg:text-h4-lg/h4 font-normal uppercase;
+}
+
+@utility as-h5 {
+	@apply font-functional text-h5-sm/h5 font-normal;
+}
+
+@utility as-h6 {
+	@apply font-functional text-h6-sm/h6 font-normal;
+}
+
+@utility as-body-1 {
+	@apply font-body text-body-1-sm/body-1 md:text-body-1-md/body-1 lg:text-body-1-lg/body-1 font-normal;
+}
+
+@utility as-body-2 {
+	@apply font-body text-body-2-sm/body-2 md:text-body-2-md/body-2 lg:text-body-2-lg/body-2 font-normal;
+}
+
+@utility as-body-lg {
+	@apply font-body text-body-lg-sm/body-lg md:text-body-lg-md/body-lg lg:text-body-lg-lg/body-lg font-normal;
+}
+
+@utility as-caption {
+	@apply font-body text-caption-sm/caption md:text-caption-md/caption lg:text-caption-lg/caption;
+}
+
+@utility as-overline {
+	@apply font-display text-overline-sm/overline md:text-overline-md/overline lg:text-overline-lg/overline font-bold uppercase;
+}
+
+@utility as-subtitle-1 {
+	@apply font-display text-subtitle-1-sm/subtitle-1 md:text-subtitle-1-md/subtitle-1 lg:text-subtitle-1-lg/subtitle-1;
+}
+
+@utility as-subtitle-2 {
+	@apply font-display text-subtitle-2-sm/subtitle-2 md:text-subtitle-2-md/subtitle-2 lg:text-subtitle-2-lg/subtitle-2;
+}
+
+@utility as-button {
+	@apply font-functional text-button-sm/button font-medium uppercase;
+}

@@ -1,0 +1,37 @@
+columnSuffix: null
+handle: oSplitBlocks
+instructions: null
+name: '[O] Split Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Half'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 3fe9a6aa-ffaa-4548-a8c3-f05827f8810b # Headline
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 92f916bc-92c5-4c8c-b495-008dc91a63a3 # Split: Image
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: 2
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

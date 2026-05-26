@@ -1,0 +1,23 @@
+{% extends '_4-layouts/base' %}
+
+{% set entry = craft.entries()
+  .section('notFound')
+  .one() %}
+
+{% block bodyContent %}
+  {% if entry and entry.contentBuilder|length %}
+    {% include '_3-organisms/content-builder.twig' with {
+      sections: entry.contentBuilder.all()
+    } only %}
+  {% else %}
+    <section class="section flex flex-col text-center items-center gap-5 justify-center  mt-(--global-chrome-height) pt-xxl">
+      <h1 class="as-h1">
+        Page not found
+      </h1>
+
+      <a href="/" class="btn">
+        Homepage
+      </a>
+    </section>
+  {% endif %}
+{% endblock %}

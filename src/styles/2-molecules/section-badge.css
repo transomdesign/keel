@@ -1,0 +1,20 @@
+.section-badge {
+	@apply absolute pointer-events-none rounded-full size-[100px] -top-[50px] lg:size-[150px] lg:-top-[75px];
+	z-index: 9;
+
+	/* Harsh (no-blur) backdrop brightening — white contrast for gray badges */
+	backdrop-filter: brightness(1.4);
+
+	svg,
+	img {
+		@apply size-full object-contain;
+	}
+}
+
+.section-badge--left {
+	@apply left-4 lg:left-8;
+}
+
+.section-badge--right {
+	@apply right-4 lg:right-8;
+}

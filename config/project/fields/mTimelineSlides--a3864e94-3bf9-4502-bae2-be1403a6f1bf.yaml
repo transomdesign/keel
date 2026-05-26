@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: mTimelineSlides
+instructions: null
+name: '[M] Timeline Slides'
+searchable: false
+settings:
+  createButtonLabel: 'New Slide'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 70754d09-3a64-4e62-b9e5-efa5eda240a2 # Timeline: Slide
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

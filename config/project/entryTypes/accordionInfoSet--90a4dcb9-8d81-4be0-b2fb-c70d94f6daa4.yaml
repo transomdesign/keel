@@ -1,0 +1,58 @@
+allowLineBreaksInTitles: false
+color: violet
+description: null
+fieldLayouts:
+  2d079b10-a4c1-4979-9437-e8a54adb3c2d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-17T11:57:17+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5cae315d-9148-4f1c-b924-204f845c6425
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-01-15T06:15:10+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: aaea5829-eb00-416d-bae6-70070d847dd5 # [A] Rich Text (Basic)
+            handle: body
+            instructions: null
+            label: Body
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e1bf0500-1b0e-4964-924d-0e929dd1ee8b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: f894501e-c5ad-41be-bfbb-f1e8c86536d6
+        userCondition: null
+    thumbFieldKey: null
+handle: accordionInfoSet
+hasTitleField: false
+icon: stack-overflow
+name: 'Accordion: Info Set'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

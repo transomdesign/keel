@@ -1,0 +1,93 @@
+<!-- Template: {{ _self }} -->
+
+{% set image = image|default %}
+{% set title = title|default %}
+{% set subtitle = subtitle|default %}
+{% set teaser = teaser|default %}
+{% set url = url|default %}
+{% set button = button|default %}
+
+<div class="c7-product">
+	<!-- <c7-product-image> -->
+	<div class="c7-product__image">
+    {% tag 'a' with {
+  	  href: url ? url : null
+  	} %}
+  	  {% if image is not empty %}
+    		{% include '_utilities/picture' with {
+    		  image: image,
+          ioName: 'ioProductCard',
+          includeWebpSource: true,
+    		} %}
+  		{% endif %}
+    {% endtag %}
+	</div>
+
+	<div class="c7-product__details">
+		<div class="c7-product__title" role="heading" aria-level="3">
+		  {% if title is not empty %}
+				{% tag 'a' with {
+				  href: url ? url : null
+				} %}
+ 			    {{ title }}
+        {% endtag %}
+			{% endif %}
+		</div>
+
+		{% if subtitle is not empty %}
+  		<div class="c7-product__subtitle">
+  			{{ subtitle }}
+  		</div>
+		{% endif %}
+
+		{% if teaser is not empty %}
+  		<div class="c7-product__teaser">
+  			<p>
+   				{{ teaser }}
+  			</p>
+  		</div>
+		{% endif %}
+
+		{% if button is not empty %}
+  		<form action="#" class="c7-form c7-product__add-to-cart">
+  			<div class="c7-product__add-to-cart__price">
+  				<span class="c7-sr-only">Item Price</span><span>
+  					$45<span>.00</span>
+  				</span><span class="c7-product__add-to-cart__price__variant">
+  					<span class="c7-product__variant__price__title">750ML</span>
+  				</span>
+  			</div>
+  			<div class="c7-product__add-to-cart__form">
+  				<div class="c7-product__add-to-cart__form__quantity">
+  					<div class="c7-form__field">
+  						<label
+  							for="c7-quantity-27089b05-492d-4db5-87fe-f8f013deb158"
+  							id="c7-quantity-27089b05-492d-4db5-87fe-f8f013deb158-label"
+  							class="c7-required c7-sr-only"
+  						>
+  							Quantity
+  						</label><input
+  							aria-required="true"
+  							required=""
+  							id="c7-quantity-27089b05-492d-4db5-87fe-f8f013deb158"
+  							aria-labelledby="c7-quantity-27089b05-492d-4db5-87fe-f8f013deb158-label"
+  							autocomplete="off"
+  							inputmode="numeric"
+  							aria-invalid="false"
+  							type="text"
+  							value="1"
+  							name="quantity"
+  						/>
+  					</div>
+  				</div><button
+  					type="submit"
+  					class="c7-btn c7-btn--primary"
+  					formnovalidate=""
+  				>
+  					<span>Add to Cart</span>
+  				</button>
+  			</div>
+  		</form>
+		{% endif %}
+	</div>
+</div>

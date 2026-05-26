@@ -1,0 +1,23 @@
+.message-bar-wrap {
+	@apply pointer-events-auto grid overflow-hidden;
+
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.3s ease;
+}
+
+.message-bar-inner {
+	min-height: 0;
+	overflow: hidden;
+}
+
+.message-bar {
+	@apply bg-c text-a as-caption body-pad py-2 text-center;
+
+	a {
+		@apply underline;
+
+		&:hover {
+			@apply no-underline;
+		}
+	}
+}

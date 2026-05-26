@@ -1,0 +1,19 @@
+.rewards {
+	@apply flex flex-col;
+}
+
+.rewards__list {
+	@apply flex flex-col flex-wrap items-center gap-12 md:flex-row md:justify-center md:gap-x-5 md:gap-y-11;
+}
+
+.rewards__header {
+	@apply mb-14;
+}
+
+.reward {
+	@apply flex w-full flex-col items-center gap-5 text-center md:w-3/12 md:gap-4;
+}
+
+.reward__header {
+	@apply as-h4;
+}

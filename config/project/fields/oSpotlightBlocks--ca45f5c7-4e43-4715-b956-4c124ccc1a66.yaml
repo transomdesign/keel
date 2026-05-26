@@ -1,0 +1,53 @@
+columnSuffix: null
+handle: oSpotlightBlocks
+instructions: null
+name: '[O] Spotlight Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 3fe9a6aa-ffaa-4548-a8c3-f05827f8810b # Headline
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 640499a2-d323-4fbc-b662-bb2895729646 # Spotlight: Background
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - c5fd64b7-0814-4890-a13f-7b0a70dc92e2 # Grid
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - 3b45a144-d998-4ea9-9de7-61f10ba61933 # Image
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

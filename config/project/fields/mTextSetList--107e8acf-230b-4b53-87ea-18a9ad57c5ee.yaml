@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: mTextSetList
+instructions: null
+name: '[M] Text Set List'
+searchable: false
+settings:
+  createButtonLabel: 'New Text Set'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 2bfe18fb-b6ab-4606-9fad-2818ed503212 # General: Text Set List
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: none
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

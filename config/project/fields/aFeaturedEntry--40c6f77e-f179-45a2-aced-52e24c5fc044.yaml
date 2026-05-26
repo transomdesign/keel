@@ -1,0 +1,26 @@
+columnSuffix: null
+handle: aFeaturedEntry
+instructions: null
+name: '[A] Featured Entry'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSearchInput: true
+  showSiteMenu: false
+  showUnpermittedEntries: false
+  showUnpermittedSections: false
+  sources:
+    - 'section:cfb5ab55-fed7-4cd8-affe-82a958a3c91a' # Articles
+    - 'section:e221cd76-8537-4c4d-ad0c-423ae986d763'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

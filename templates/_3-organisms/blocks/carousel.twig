@@ -1,0 +1,49 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set images = images|default %}
+{% set mt = mt|default %}
+{% set width = width|default('section--unbound') %}
+{% set classes = classes|default %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['section', mt, width, classes]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	<div class="carousel splide" data-carousel>
+		<div class="splide__track">
+			{% if images is not empty %}
+				<ul class="splide__list">
+					{% for image in images.all() %}
+						<li class="splide__slide">
+    				  {% include '_utilities/picture' with {
+   							image: image,
+   							ioName: 'ioCarousel',
+   							variants: {
+ 									xl: {
+										width: 504
+									},
+								  lg: {
+										width: 418
+									},
+ 									md: {
+ 										width: 333,
+ 									},
+ 									sm: {
+ 										width: 247,
+ 									},
+										xs: {
+											width: 205,
+										},
+   							},
+   							className: 'carousel__img'
+    						} %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,42 @@
+<!-- Template: {{ _self }} -->
+
+{#
+ # quotes
+ # @var string|null  id
+ # @var string|null  width    Section width modifier class
+ # @var string|null  mt       Top-margin utility class
+ # @var array        quotes   Matrix of quote entries
+ # @var string|null  theme    white | light | color | dark
+ #}
+
+{% set id = id|default(null) %}
+{% set width = width|default(null) %}
+{% set mt = mt|default(null) %}
+{% set quotes = quotes|default %}
+{% set theme = theme is defined ? (theme.value ?? theme)|default('white') : 'white' %}
+
+{% if quotes is not empty %}
+	{% embed '_2-molecules/section-theme' with { theme, mt } %}
+		{% block content %}
+			<div {{ attr({ id: id, class: ['section', width]|filter }) }}>
+				<div class="splide quotes-carousel" data-quotes-carousel>
+					<div class="splide__track">
+						<ul class="splide__list">
+							{% for quote in quotes.all() %}
+								{% set blocks = quote.blocks.all() %}
+								{% if blocks is not empty %}
+									<li class="splide__slide quotes-carousel__slide">
+										{% include '_2-molecules/headline-header.twig' with {
+											blocks: blocks,
+											classes: 'headline--quote'
+										} only %}
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endif %}

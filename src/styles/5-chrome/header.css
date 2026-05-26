@@ -1,0 +1,59 @@
+.header {
+	@apply pointer-events-none fixed top-0 left-1/2 z-20 -translate-x-1/2;
+	transition: translate 0.3s ease;
+}
+
+.header.hide:not(.header--over-transparent) {
+	translate: -50% -100%;
+}
+
+/* =========================================================
+   Transparent Header (opt-in — hero pages only)
+   ========================================================= */
+
+/*
+ * Transparent state: header has header--transparent but NOT header--past-hero
+ * Only the .navbar goes transparent — .topbar always stays opaque.
+ */
+.header--transparent:not(.header--past-hero) {
+	.navbar {
+		/* Override bg and border to transparent */
+		--navbar-bg: transparent;
+		--navbar-border-bottom: transparent;
+
+		/* Switch text/logo to white for visibility over dark hero images */
+		--navbar-logo-color: white;
+		--navbar-link-color: white;
+		--navbar-burger-border-bottom: white;
+		--navbar-burger-border-top: white;
+
+		/* Smooth transition — applies when going from opaque to transparent (scroll back up) */
+		transition:
+			background-color 300ms ease,
+			border-color 300ms ease;
+	}
+}
+
+/*
+ * Opaque state restore: when past-hero class is added,
+ * the navbar reverts to its brand token values naturally
+ * (since the overrides above no longer apply).
+ * The transition on .navbar handles the smooth fade.
+ */
+.header--transparent .navbar {
+	transition:
+		background-color 300ms ease,
+		border-color 300ms ease;
+}
+
+.header--over-transparent {
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		backdrop-filter: blur(4px);
+		mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+	}
+}

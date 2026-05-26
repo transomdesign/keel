@@ -1,0 +1,85 @@
+columnSuffix: null
+handle: mLayout
+instructions: null
+name: '[M] Layout'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 25905fd8-5def-4e15-aee1-920f36a62eb6
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Content
+                    1:
+                      - uid
+                      - 5732809a-4380-439e-b92b-beef6dcd74e3
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - topMargin
+                            2:
+                              - label
+                              - 'Top Margin'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-11-30T20:31:13+00:00'
+                            9:
+                              - uid
+                              - 208eefbd-5b45-4d99-bc25-e134bb496d48
+                            12:
+                              - fieldUid
+                              - 50a771c6-d7bf-4c4a-842d-e89e2f93da53 # [A] Margins
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - width
+                            2:
+                              - label
+                              - Width
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-11-30T20:31:13+00:00'
+                            9:
+                              - uid
+                              - a70ce318-f43b-4605-ba90-6b634527db0a
+                            12:
+                              - fieldUid
+                              - f05317c8-fa02-49df-a335-a9ca0560e41d # [A] Width
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

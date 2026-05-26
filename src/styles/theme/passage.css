@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+@utility passage {
+	&:where(*) {
+		@apply as-body-1;
+	}
+
+	:where(p, ul, ol) {
+		&:not(:last-child) {
+			@apply mb-4;
+		}
+	}
+
+	:where(a) {
+		@apply text-primary underline hover:no-underline;
+	}
+
+	:where(.btn + .btn) {
+		@apply ml-2;
+	}
+
+	:where(h2) {
+		@apply as-h2 text-h4-lg mb-2;
+	}
+
+	:where(h3) {
+		@apply as-h3 mb-2;
+	}
+
+	:where(h4) {
+		@apply as-h4 mb-2;
+	}
+
+	:where(ul, ol) {
+		@apply list-outside pl-10;
+
+		&:has(+ :where(h1, h2, h3, h4)) {
+			@apply mb-4;
+		}
+
+		/*
+		 * CKEditor wraps each <li>'s text in a block <p>, which pushes native
+		 * bullet markers onto their own line. Fix: remove native markers, make
+		 * each <li> a flex row, and recreate the bullet via ::before so the
+		 * bullet and text center together as one unit.
+		 */
+		&:has([style*="text-align"]) {
+			@apply pl-0;
+			list-style: none;
+			width: fit-content;
+			margin-inline: auto;
+
+			li {
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+				gap: 0.4em;
+
+				p { display: inline; }
+			}
+		}
+
+		&:where(ul):has([style*="text-align"]) li::before {
+			content: '•';
+			flex-shrink: 0;
+		}
+
+		&:where(ol):has([style*="text-align"]) {
+			counter-reset: list-item;
+
+			li::before {
+				counter-increment: list-item;
+				content: counter(list-item) '.';
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	:where(ul) {
+		@apply list-disc;
+	}
+
+	:where(ol) {
+		@apply list-decimal;
+	}
+}

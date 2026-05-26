@@ -1,0 +1,25 @@
+{# Fetch your Site Settings entry #}
+{% set settings = craft.entries.section('siteSettings').one() %}
+{% set favicons = settings.favicons %}
+
+{# Prepare Asset URLs #}
+{% set icon192 = favicons.manifest192.one() %}
+{% set icon512 = favicons.manifest512.one() %}
+{% set iconMask = favicons.manifestMaskable.one() %}
+
+{# Set the JSON header #}
+{% header 'Content-Type: application/manifest+json' %}{ "icons": [{% if
+	icon192 %}
+	{ "src": "{{ icon192.url }}", "type": "image/png", "sizes": "192x192" }
+{% endif %}
+{% if icon192 and (iconMask or icon512) %},{% endif %}
+
+{% if iconMask %}
+	{ "src": "{{ iconMask.url }}", "type": "image/png", "sizes": "512x512",
+	"purpose": "maskable" }
+{% endif %}
+{% if iconMask and icon512 %},{% endif %}
+
+{% if icon512 %}
+	{ "src": "{{ icon512.url }}", "type": "image/png", "sizes": "512x512" }
+{% endif %}] }

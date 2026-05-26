@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: oTableInfoRows
+instructions: null
+name: '[O] Table Info Rows'
+searchable: false
+settings:
+  createButtonLabel: 'New Row'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - dbe46e6b-58b8-4465-9951-55752c725d39 # Table Info: Row
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

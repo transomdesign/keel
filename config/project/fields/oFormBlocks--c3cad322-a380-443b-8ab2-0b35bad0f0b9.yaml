@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: oFormBlocks
+instructions: null
+name: '[O] Form Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New Form Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - b2e3d67f-21d4-408f-bff8-2fc600ec7676 # Form
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: none
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

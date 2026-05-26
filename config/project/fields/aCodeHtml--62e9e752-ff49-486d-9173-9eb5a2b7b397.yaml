@@ -1,0 +1,24 @@
+columnSuffix: null
+handle: aCodeHtml
+instructions: null
+name: '[A] Code (HTML)'
+searchable: false
+settings:
+  availableLanguages:
+    - css
+    - html
+    - javascript
+    - json
+  codeFolding: false
+  defaultValue: ''
+  fontSize: 14
+  language: html
+  lineNumbers: true
+  monacoEditorOptions: ''
+  placeholder: '<script> // your script ... </script>'
+  showLanguageDropdown: false
+  singleLineEditor: false
+  theme: auto
+translationKeyFormat: null
+translationMethod: site
+type: nystudio107\codefield\fields\Code

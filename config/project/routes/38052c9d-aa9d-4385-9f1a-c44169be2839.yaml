@@ -1,0 +1,6 @@
+siteUid: null
+sortOrder: 1
+template: site-manifest
+uriParts:
+  - site.webmanifest
+uriPattern: site.webmanifest

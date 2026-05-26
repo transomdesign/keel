@@ -1,0 +1,32 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set isEnabled = isEnabled ?? false %}
+{% set text = text|default %}
+{% set classes = classes|default %}
+
+{% if isEnabled %}
+  <dialog id="age-gate-modal" class="age-gate-modal" data-age-gate closedby="none">
+    <header class="text-center">
+      <div class="passage">
+        {% if text is not empty %}
+          {{ text }}
+        {% else %}
+          <h2 class="as-h2">
+            You must be over 21 years old to visit our website
+          </h2>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="buttons mt-6 flex flex-wrap justify-center gap-4">
+      <button type="button" class="btn" data-close-modal>
+        I'm Over 21
+      </button>
+
+      <a href="https://google.com" class="btn btn--secondary">
+        No, I am not over 21
+      </a>
+    </div>
+  </dialog>
+{% endif %}

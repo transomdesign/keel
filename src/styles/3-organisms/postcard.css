@@ -1,0 +1,106 @@
+.postcard {
+	@apply flex w-full flex-col overflow-hidden rounded-2xl bg-white sm:flex-row;
+
+	.btn {
+		@apply btn;
+	}
+
+	/* Minimum aspect ratio */
+	&::before {
+		padding-bottom: unset;
+		content: '';
+		float: left;
+
+		@variant sm {
+			padding-bottom: 70%; /* Minimum aspect ratio */
+		}
+	}
+
+	&::after {
+		display: unset;
+		content: '';
+		clear: both;
+
+		@variant sm {
+			display: table; /* Minimum aspect ratio */
+		}
+	}
+}
+
+/* Legacy dark mode classes — commented out; kept for reference until CMS data migration confirmed */
+/*
+.postcard--dark-a {
+  @apply bg-a;
+
+  .postcard__header, .headline__overline {
+    @apply text-c;
+  }
+}
+
+.postcard--dark-b {
+  @apply bg-b;
+
+  .postcard__header, .headline__overline {
+    @apply text-d;
+  }
+
+  .btn {
+    @apply btn--tertiary;
+  }
+}
+
+.postcard--light-a {
+  @apply bg-white;
+
+  .postcard__header, .headline__overline {
+    @apply text-d;
+  }
+}
+*/
+
+/* Theme: dark */
+[data-theme='dark'] {
+	.postcard {
+		background: var(--color-primary-dark);
+		color: var(--color-on-primary);
+	}
+
+	.postcard__header,
+	.headline__overline {
+		color: var(--color-on-primary);
+	}
+
+	.postcard .btn {
+		@apply btn--secondary;
+	}
+}
+
+/* Theme: medium */
+[data-theme='medium'] {
+	.postcard {
+		background: var(--color-surface-alt);
+	}
+}
+
+/* Direction: media-right */
+.postcard--right {
+	.postcard__figure {
+		@apply sm:order-last;
+	}
+
+	.postcard__header {
+		@apply sm:order-first;
+	}
+}
+
+.postcard__header {
+	@apply order-last my-auto h-auto w-full px-4 pt-4 pb-4 sm:order-[unset] sm:w-1/2 sm:p-6 sm:py-10.5 md:px-8 lg:px-12;
+}
+
+.postcard__img {
+	@apply inset-0 size-full object-cover;
+}
+
+.postcard__figure {
+	@apply aspect-4-5 order-first h-auto w-full p-6 sm:order-[unset] sm:aspect-auto sm:w-1/2;
+}

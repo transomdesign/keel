@@ -1,0 +1,42 @@
+.split {
+	@apply flex flex-col items-center gap-12 overflow-hidden py-18 lg:flex-row lg:gap-6 xl:gap-12;
+
+	.btn {
+		@apply btn;
+	}
+}
+
+/* Direction: media-right */
+.split--right {
+	.split__figure {
+		@apply lg:order-last;
+	}
+
+	.split__header {
+		@apply lg:order-first;
+	}
+}
+
+/* Text Area */
+.split__header {
+	@apply order-last my-auto h-auto w-full lg:order-[unset] lg:w-1/2;
+}
+
+/* Image Area */
+.split__figure {
+	@apply aspect-7-5 relative order-first w-full overflow-hidden lg:order-[unset] lg:w-1/2;
+
+	picture {
+		@apply absolute inset-0;
+	}
+}
+
+.split__img {
+	@apply absolute inset-0 size-full object-cover;
+}
+
+.split__figure--contained {
+	.split__img {
+		@apply object-contain;
+	}
+}

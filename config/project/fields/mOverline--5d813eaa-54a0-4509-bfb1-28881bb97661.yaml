@@ -1,0 +1,82 @@
+columnSuffix: null
+handle: mOverline
+instructions: null
+name: '[M] Overline'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 9036df07-dac0-4edb-9431-69616940a769
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    1:
+                      - uid
+                      - b30c135a-578b-4640-810b-60643eaef1f0
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - graphic
+                            2:
+                              - label
+                              - Graphic
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2026-03-05T12:37:58+00:00'
+                            9:
+                              - uid
+                              - 77fb7327-e487-41dc-affd-a3be0be35640
+                            12:
+                              - fieldUid
+                              - 33a9f50b-1ca4-49f5-a941-1580095ab2e8 # [A] Icon Picker
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - text
+                            2:
+                              - label
+                              - Text
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2026-03-05T12:37:58+00:00'
+                            9:
+                              - uid
+                              - 19771d06-be29-42b6-92f1-d53005aa166e
+                            12:
+                              - fieldUid
+                              - 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

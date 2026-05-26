@@ -1,0 +1,63 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set slides = slides|default %}
+
+{% set sectionAttr = {
+	id: id,
+	class: 'section section--unbound size-full'
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	<div class="carousel-splash splide" data-carousel-splash>
+		<div class="splide__track">
+			{% if slides is not empty %}
+				<ul class="splide__list">
+					{% for slideEntry in slides.all() %}
+						{% set slide = slideEntry.slide %}
+
+						{% if slide %}
+
+							<li class="splide__slide">
+							  {# Image #}
+								{% include '_utilities/picture' with {
+									image: slide.image.one(),
+									ioName: 'ioCarouselSplash',
+									variants: {
+										xl: {
+											width: 1537
+										},
+										lg: {
+											width: 1279
+										},
+										md: {
+											width: 1023,
+										},
+										sm: {
+											width: 767,
+										},
+										xs: {
+											width: 639,
+										},
+									},
+									className: ['carousel-splash__img', slide.tint is not empty ? 'carousel-splash__img--tint-' ~ slide.tint : '']
+								} %}
+
+								{# Headline #}
+								{% include '_2-molecules/headline-header.twig' with {
+									blocks: slide.headlineBlocks,
+									class: 'carousel-splash__header'
+								} only %}
+
+								<div class="splide__arrows">
+									<button class="splide__arrow splide__arrow--prev"></button>
+									<button class="splide__arrow splide__arrow--next"></button>
+                </div>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</section>

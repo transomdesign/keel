@@ -1,0 +1,121 @@
+/* Toolbox wrapper — kept for non-supporting browsers (absolute fallback) */
+.toolbox {
+	@apply relative;
+}
+
+/* Toolbox trigger button */
+.toolbox-trigger {
+	@apply as-button flex flex-col items-center justify-center gap-1 text-black transition-opacity hover:opacity-60;
+	anchor-name: --toolbox-trigger;
+
+	svg {
+		@apply size-7.5;
+	}
+
+	span {
+		@apply as-overline;
+	}
+}
+
+.toolbox__trigger-label {
+}
+
+/* Toolbox panel */
+.toolbox-menu {
+	@apply pointer-events-none fixed left-0 z-9999 w-full text-black;
+	/* Fallback: hardcoded nav height */
+	top: var(--global-nav-height, 4rem);
+
+	/* Enhanced: track the trigger's actual bottom edge */
+	@supports (anchor-name: --x) {
+		top: anchor(--toolbox-trigger bottom);
+	}
+
+	/* Mobile: hidden by default, slides down when open */
+	transform: translateY(-100%);
+	visibility: hidden;
+	transition:
+		transform 0.25s ease,
+		visibility 0.25s ease;
+	background-color: var(--navbar-bg);
+	border-bottom: var(--navbar-border-bottom);
+
+	@variant md {
+		/* Fallback: absolute dropdown anchored to .toolbox wrapper */
+		@apply absolute w-auto;
+		top: 100%;
+		right: 0;
+		left: auto;
+		transform: none;
+		background-color: var(--navbar-bg);
+		border: 1px solid var(--color-border, #d1d1d1);
+		border-radius: 0.5rem;
+		visibility: hidden;
+		opacity: 0;
+		transition:
+			opacity 0.15s ease,
+			visibility 0.15s ease;
+
+		/* Enhanced: anchor to trigger directly, no positioned wrapper needed */
+		@supports (anchor-name: --x) {
+			position: absolute;
+			position-anchor: --toolbox-trigger;
+			top: anchor(bottom);
+			right: anchor(right);
+			left: auto;
+			width: max-content;
+		}
+	}
+}
+
+.toolbox-menu--open {
+	transform: translateY(0);
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* Desktop: reveal on hover (mouse) or aria-expanded (keyboard/JS) */
+@variant md {
+	.toolbox:hover .toolbox-menu,
+	.toolbox-trigger[aria-expanded='true'] ~ .toolbox-menu {
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.toolbox-menu__inner {
+	@apply body-pad mx-auto py-4;
+	max-width: var(--page-max-width);
+
+	@variant md {
+		@apply px-4;
+		max-width: none;
+	}
+}
+
+.toolbox-menu__links {
+	@apply flex flex-col gap-2 md:flex-col md:gap-1;
+}
+
+.toolbox-menu__link {
+	@apply as-button hover:bg-neutral text-neutral flex w-full items-center gap-2 rounded-sm px-3 py-2 transition-all hover:text-white hover:opacity-60;
+}
+
+.toolbox-menu__icon {
+	svg {
+		@apply size-4 fill-none stroke-current stroke-2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+}
+
+.header--over-transparent {
+	.toolbox-trigger {
+		@apply text-white;
+
+		svg {
+			@apply fill-primary;
+		}
+	}
+}

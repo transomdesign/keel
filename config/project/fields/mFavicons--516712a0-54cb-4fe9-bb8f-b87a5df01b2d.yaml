@@ -1,0 +1,240 @@
+columnSuffix: null
+handle: mFavicons
+instructions: 'See: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs'
+name: '[M] Favicons'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - 10e7bfe3-a5d7-4930-835d-0b5fb55181c6
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Content
+                    1:
+                      - uid
+                      - b488682c-eeca-477a-8da3-1e21fdbef9be
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - appleTouchIcon
+                            2:
+                              - label
+                              - apple-touch-icon.png
+                            3:
+                              - instructions
+                              - 'iOS Home Screen'
+                            4:
+                              - tip
+                              - '180×180px PNG'
+                            5:
+                              - warning
+                              - 'no transparency, rounded corners applied automatically'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-08-20T10:16:45+00:00'
+                            9:
+                              - uid
+                              - 4fd01852-5b2b-4eea-83e8-596f117e4548
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - ico
+                            2:
+                              - label
+                              - favicon.ico
+                            3:
+                              - instructions
+                              - 'Legacy fallback & Taskbars'
+                            4:
+                              - tip
+                              - 'ICO format'
+                            5:
+                              - warning
+                              - 'typically 16×16 and 32×32px sizes embedded'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-08-20T10:16:45+00:00'
+                            9:
+                              - uid
+                              - 19df1560-9d7d-4ac6-aaf9-38ecc2de2ceb
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - svg
+                            2:
+                              - label
+                              - icon.svg
+                            3:
+                              - instructions
+                              - 'Modern browsers (Chrome, Firefox, Safari, etc.)'
+                            4:
+                              - tip
+                              - 'SVG format'
+                            5:
+                              - warning
+                              - 'works at any size, supports dark mode variants'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-08-20T10:16:45+00:00'
+                            9:
+                              - uid
+                              - 1e98714b-60d1-47e4-b471-563a003d73d7
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - manifest192
+                            2:
+                              - label
+                              - manifest-192.png
+                            3:
+                              - instructions
+                              - 'Android/PWA Home Screen'
+                            4:
+                              - tip
+                              - '192×192px PNG'
+                            5:
+                              - warning
+                              - 'clean design for various contexts'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-08-20T10:16:45+00:00'
+                            9:
+                              - uid
+                              - ec7ce900-9394-4c4f-8404-d43c00ba1616
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - manifest512
+                            2:
+                              - label
+                              - manifest-512.png
+                            3:
+                              - instructions
+                              - 'Android Splash Screen'
+                            4:
+                              - tip
+                              - '512×512px PNG'
+                            5:
+                              - warning
+                              - 'optimized for mobile home screens'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2025-08-20T10:16:45+00:00'
+                            9:
+                              - uid
+                              - 41acc75d-853a-46fe-9d89-2c99e49c6e27
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - manifestMaskable
+                            2:
+                              - label
+                              - icon-mask.png
+                            3:
+                              - instructions
+                              - 'Added "safe area" padding around the logo so it doesn''t get cut off when cropped'
+                            5:
+                              - warning
+                              - '512x512px PNG'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 50
+                            8:
+                              - dateAdded
+                              - '2026-03-04T12:22:56+00:00'
+                            9:
+                              - uid
+                              - 05b4cca1-ff06-4067-b59a-7e05f6671ea4
+                            12:
+                              - fieldUid
+                              - 16901c83-5fe6-451a-945e-b56b97c1832c # [A] Image (Favicon)
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: pane
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

@@ -1,0 +1,11 @@
+handle: hfgTemplate
+name: 'Keel Template'
+outputCssLayout: true
+outputCssLocation: page-header
+outputCssTheme: false
+outputJsBase: true
+outputJsLocation: page-footer
+outputJsTheme: true
+sortOrder: null
+template: null
+useCustomTemplates: false

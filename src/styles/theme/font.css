@@ -1,0 +1,95 @@
+@theme {
+	/* Font Families */
+	/*--font-functional: 'Functional', Helvetica, Arial, sans-serif;
+	--font-display: 'Display', Georgia, serif;
+	--font-body: 'Body', 'Display', Georgia, serif;*/
+
+	/* Font Families */
+	--font-functional: 'Gotham A', 'Gotham B', Helvetica, Arial, sans-serif;
+	--font-display: 'Archer A', 'Archer B', Georgia, serif;
+	--font-body: 'Gotham A', 'Gotham B', Helvetica, Arial, sans-serif;
+
+	/* Reset text styles */
+	--text-*: initial;
+
+	/* Headings - responsive sizes */
+	--text-h1-sm: 2.125rem; /* 34px */
+	--text-h1-md: 4.5rem; /* 72px */
+	--text-h1-lg: 6rem; /* 96px */
+
+	--text-h2-sm: 1.75rem; /* 28px */
+	--text-h2-md: 3.75rem; /* 60px */
+	--text-h2-lg: 3.75rem; /* 60px */
+
+	--text-h3-sm: 2rem; /* 32px */
+	--text-h3-md: 3rem; /* 48px */
+	--text-h3-lg: 3rem; /* 48px */
+
+	--text-h4-sm: 2.125rem; /* 34px */
+	--text-h4-md: 2.125rem; /* 34px */
+	--text-h4-lg: 2.125rem; /* 34px */
+
+	--text-h5-sm: 1.5rem; /* 24px */
+	--text-h5-md: 1.5rem; /* 24px */
+	--text-h5-lg: 1.5rem; /* 24px */
+
+	--text-h6-sm: 1.125rem; /* 18px */
+	--text-h6-md: 1.25rem; /* 20px */
+	--text-h6-lg: 1.5rem; /* 24px */
+
+	/* Body text - responsive sizes */
+	--text-body-1-sm: 0.875rem; /* 14px */
+	--text-body-1-md: 1rem; /* 16px */
+	--text-body-1-lg: 1rem; /* 16px */
+
+	--text-body-2-sm: 0.75rem; /* 12px */
+	--text-body-2-md: 0.8125rem; /* 13px */
+	--text-body-2-lg: 0.875rem; /* 14px */
+
+	--text-body-lg-sm: 1rem; /* 16px */
+	--text-body-lg-md: 1.3125rem; /* 21px */
+	--text-body-lg-lg: 1.3125rem; /* 21px */
+
+	/* Utility text */
+	--text-overline-sm: 0.9375rem; /* 15px */
+	--text-overline-md: 1rem;      /* 15px */
+	--text-overline-lg: 1rem;      /* 15px */
+
+	--text-caption-sm: 0.75rem; /* 12px */
+	--text-caption-md: 0.75rem; /* 12px */
+	--text-caption-lg: 0.75rem; /* 12px */
+
+	--text-subtitle-1-sm: 1rem; /* 16px */
+	--text-subtitle-1-md: 1rem; /* 16px */
+	--text-subtitle-1-lg: 1rem; /* 16px */
+
+	--text-subtitle-2-sm: 0.875rem; /* 14px */
+	--text-subtitle-2-md: 0.875rem; /* 14px */
+	--text-subtitle-2-lg: 0.875rem; /* 14px */
+
+	--text-button-sm: 1rem; /* 16px */
+	--text-button-md: 1rem; /* 16px */
+	--text-button-lg: 1rem; /* 16px */
+
+	/* Line heights */
+	--leading-h1: 1.16667;
+	--leading-h2: 1.1667;
+	--leading-h3: 1.1667;
+	--leading-h4: 1.17647;
+	--leading-h4: 1.17647;
+	--leading-h5: 1.16667;
+	--leading-h6: 1.2;
+
+	--leading-body-1: 1.5;
+	--leading-body-2: 1.1875;
+	--leading-body-lg: 1.42857;
+
+	--leading-caption: 1.33333;
+
+	--leading-overline: 1.33333;
+
+	--leading-subtitle-1: 1.5;
+	--leading-subtitle-2: 1.14286;
+
+	--leading-button: 1.14286;
+}

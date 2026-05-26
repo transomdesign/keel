@@ -1,0 +1,126 @@
+allowLineBreaksInTitles: false
+color: orange
+description: null
+fieldLayouts:
+  28b29e28-2fa6-44f6-afa7-fa9ee982a906:
+    cardThumbAlignment: start
+    cardView:
+      - 'layoutElement:f8153a69-78f8-4f3c-864a-9dbd9f6f4ed2'
+      - 'layoutElement:ccb6698f-235a-4654-9fec-4dc2e8d269b9'
+      - 'layoutElement:0a875b0c-2057-46c3-a901-6ac73161f959'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-05T14:07:28+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 07a92d43-cd1e-4b7a-bd8d-58dcde98740f # [A] Image (Grid Card)
+            handle: image
+            instructions: null
+            label: Image
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d3dd182e-385d-40a5-b5a8-ca9110d0620c
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-19T03:04:50+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f525e33a-88e0-4335-b38d-97b4cc42a6e0 # [A] URL
+            handle: videoUrl
+            instructions: "YouTube or Vimeo video URL (e.g. `https://www.youtube.com/watch?v=dQw4w9WgXcQ` or `https://vimeo.com/123456789`)\r\n"
+            label: 'Video URL'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 358e45b1-6dde-4474-95f0-cfc04a9139c9
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-04-15T12:28:01+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: cardTitle
+            instructions: null
+            label: 'Card Title'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f8153a69-78f8-4f3c-864a-9dbd9f6f4ed2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-05T14:08:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 622cbecd-d13d-4eba-8fc4-cbb1eb3d5f01 # [A] Plain Text
+            handle: subtitle
+            instructions: null
+            label: Subtitle
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ccb6698f-235a-4654-9fec-4dc2e8d269b9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-05T14:08:56+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ba11f21a-24e9-4a1e-b26f-7f7e0096204f # [A] Rich Text (Inline Basic)
+            handle: body
+            instructions: null
+            label: Body
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0a875b0c-2057-46c3-a901-6ac73161f959
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-05T18:22:42+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fcbb2457-9c6d-4fcd-9771-38c11395a332 # [O] Headline Blocks
+            handle: headlineBlocks
+            instructions: null
+            label: 'Headline Blocks'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 64899f45-9a62-4347-b090-b5fd77ad1fb8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d7aa9e07-a234-44d2-9881-37e40901abef
+        userCondition: null
+    thumbFieldKey: 'layoutElement:d3dd182e-385d-40a5-b5a8-ca9110d0620c'
+handle: gridCard
+hasTitleField: false
+icon: grid-2-plus
+name: 'Grid: Card'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,23 @@
+.table-info__headline {
+	@apply as-h2 mb-7 border-b border-black pb-2.5 md:pb-3;
+}
+
+.table-info__content {
+	@apply md:pl-xl lg:px-xl mt-4 flex flex-col md:mt-16;
+}
+
+.table-info__definition {
+	@apply flex flex-col items-start gap-2 md:flex-row md:gap-10;
+
+	&:not(:last-child) {
+		@apply mb-5 border-b pb-5 md:mb-6 md:pb-6;
+	}
+}
+
+.table-info__title {
+	@apply as-h4 md:w-3/12;
+}
+
+.table-info__body {
+	@apply as-body-1 md:w-9/12;
+}

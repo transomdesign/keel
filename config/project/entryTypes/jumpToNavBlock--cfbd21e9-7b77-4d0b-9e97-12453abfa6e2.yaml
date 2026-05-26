@@ -1,0 +1,51 @@
+allowLineBreaksInTitles: false
+color: blue
+description: 'Adding this block will replace the automatic Jump To navigation with your custom links. Only use one Jump To Nav block per page.'
+fieldLayouts:
+  09170e29-aadb-4c39-a2cf-689789815237:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-11-19T08:03:13+00:00'
+            dismissible: false
+            elementCondition: null
+            style: warning
+            tip: 'Adding this block will replace the automatic Jump To navigation with your custom links. Only use one Jump To Nav block per page.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 1c473783-58ce-4320-81e9-f15326bf86b9
+            userCondition: null
+          -
+            dateAdded: '2025-11-19T08:03:13+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 37d020a7-0bd1-42a5-b36d-5b699966604c # [A] Link
+            handle: links
+            instructions: null
+            label: Links
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0e7e6436-2125-4668-b9d2-2d0aca30ad5a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a9d14f78-e500-4e28-a3ef-1386105b79c6
+        userCondition: null
+    thumbFieldKey: null
+handle: jumpToNavBlock
+hasTitleField: false
+icon: person-ski-jumping
+name: 'Jump To Nav'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

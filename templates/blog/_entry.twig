@@ -1,0 +1,130 @@
+{% extends '_4-layouts/base' %}
+
+{% set fl = entry.fieldLayout ?? null %}
+{% set category = fl and fl.isFieldIncluded('category')
+	? entry.category.one()
+	: (entry.newsEventsCategory is defined ? entry.newsEventsCategory.one() ?? null : null)
+%}
+
+{% block bodyContent %}
+	<article class="blog-builder mt-(--global-chrome-height)">
+		<header
+			class="section section--wide text-center flex flex-col items-center gap-5 my-lg"
+		>
+			<div
+				class="flex flex-wrap gap-3 order-first as-overline text-[var(--color-primary)]"
+			>
+				{% if category %}
+					<a
+						href="{{
+						url(
+							'/blog',
+							{
+								category: category.slug
+							}
+						)
+						}}"
+						class="article-detail__category"
+					>
+						{{ category.title }}
+					</a>
+					<span>|</span>
+				{% endif %}
+
+				{% set date = entry.postDate %}
+
+				<time datetime="{{ date|atom }}">{{ date|date('F j, Y') }}</time>
+
+				{% set tags = entry.tags %}
+
+				{% if tags is not empty %}
+					<span>|</span>
+
+					<ul class="flex flex-wrap gap-1">
+						{% for tag in tags.all() %}
+							<li>
+								<a
+									href="{{
+									url(
+										'/blog',
+										{
+											tag: tag.slug
+										}
+									)
+									}}"
+								>
+									{{ tag.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+
+			<h1 class="as-h1">{{ entry.title }}</h1>
+
+			{% if entry.subtitle is not empty %}
+				<p class="as-subtitle-1 mb-4">
+					{{ entry.subtitle }}
+				</p>
+			{% endif %}
+		</header>
+
+		{% if entry is defined and entry is not empty %}
+			{% set sections = entry.blogBuilder.all() %}
+
+			{% for section in sections %}
+				{% set layout = section.layout|default(null) %}
+				{% set width = layout and (layout.width.value|default(null))
+					? "section--#{layout.width.value}"
+					: 'section--narrow'
+				%}
+				{% set mt = layout and (layout.topMargin.value|default(null))
+					? "mt-#{layout.topMargin.value}"
+					: null
+				%}
+				{% set sectionId = id ?? ((section.type.name ~ '-' ~ section.id)|kebab)
+				%}
+
+				{% switch section.type.handle %}
+					{% case 'text' %}
+						{% include '_3-organisms/blocks/text.twig' with {
+							id: sectionId,
+							mt: mt,
+							richText: section.richText,
+							section: section,
+							theme: section.theme,
+							width: width
+						} only %}
+					{% case 'image' %}
+						{% include '_3-organisms/blocks/image.twig' with {
+							id: sectionId,
+							mt: mt,
+							width: width,
+							image: section.image.one(),
+							imageFree: section.imageFree.one(),
+							freeAspectRatio: section.freeAspectRatio,
+							caption: section.caption,
+							theme: section.theme
+						} only %}
+					{% case 'video' %}
+						{% include '_3-organisms/blocks/video.twig' with {
+							id: sectionId,
+							mt: mt,
+							width: width,
+							videoUrl: section.videoUrl,
+							caption: section.caption,
+							autoplay: section.autoplay,
+							theme: section.theme
+						} only %}
+				{% endswitch %}
+			{% endfor %}
+		{% endif %}
+
+		{# Related Articles #}
+		{% include '_2-molecules/related-articles.twig' with {
+			entry: entry,
+			siteSettings: siteSettings
+		} only %}
+	</article>
+{% endblock %}

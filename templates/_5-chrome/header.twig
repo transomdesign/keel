@@ -1,0 +1,24 @@
+{# =========================================================================
+   Header
+   Primary site header wrapper for top bar, navbar, and message bar.
+   ========================================================================= #}
+
+{% set classes = classes ?? null %}
+{% set siteSettings = siteSettings ?? null %}
+
+{% tag 'header' with {
+	id: 'header',
+	class: ['header', 'header--full', classes],
+	role: 'banner',
+	'aria-label': 'Header',
+} %}
+	{% include '_5-chrome/topbar.twig' with {
+		siteSettings: siteSettings,
+	} only %}
+
+	{% include '_5-chrome/navbar.twig' with {
+		siteSettings: siteSettings,
+	} only %}
+
+	{% include '_5-chrome/message-bar.twig' only %}
+{% endtag %}

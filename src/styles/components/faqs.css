@@ -1,0 +1,34 @@
+.ac {
+	@apply border-0;
+}
+.ac .ac-trigger {
+	@apply as-body1 flex w-full border-t-1 border-r-0 border-b-0 border-l-0 border-dashed border-black !py-4 text-left;
+}
+
+.ac .ac-trigger::after {
+	@apply hidden;
+}
+
+.ac .ac-trigger:hover::after {
+	@apply inline-block;
+}
+
+.ac .ac-trigger[disabled='false'] {
+	@apply text-[var(--color-gold)];
+}
+
+.ac .ac-panel {
+	overflow: hidden;
+}
+
+.ac .ac-header .ac-trigger {
+	@apply w-full cursor-pointer;
+}
+
+.ac .ac-panel {
+	@apply mb-[6px];
+}
+
+.ac .ac-panel p {
+	@apply as-body-2;
+}

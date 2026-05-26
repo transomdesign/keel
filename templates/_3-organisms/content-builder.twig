@@ -1,0 +1,231 @@
+<!-- Template: {{ _self }} -->
+
+{% set sections = sections|default %}
+
+{% if sections is not empty %}
+	{% set jumpNavRendered = false %}
+	{% for section in sections %}
+		{% set id = (section.type.name ~ '-' ~ section.id)|kebab %}
+		{% set sectionNumId = section.id %}
+		{% set blockBadge = loop.first ? null : (section.badge is defined ? section.badge.one() ?? null : null) %}
+		{% set layout = section.layout|default(null) %}
+		{% set width = layout and (layout.width.value|default(null))
+			? "section--#{layout.width.value}"
+			: null
+		%}
+		{% set mt = layout and (layout.topMargin.value|default(null))
+			? "mt-#{layout.topMargin.value}"
+			: null
+		%}
+
+		{% switch section.type.handle %}
+				{# -- Hero -- #}
+			{% case 'hero' %}
+				{% include '_3-organisms/blocks/hero' with {
+					id: id,
+					entry: entry is defined ? entry : null,
+					block: section
+				} only %}
+				{% if not jumpNavRendered %}
+					{% include '_5-chrome/jump-to-nav' with {
+						entry: entry is defined ? entry : null,
+						jumpLinksArray: jumpLinksArray is defined ? jumpLinksArray : null
+					} only %}
+					{% set jumpNavRendered = true %}
+				{% endif %}
+				{# -- Split -- #}
+			{% case 'split' %}
+				{% include '_3-organisms/blocks/split' with {
+					id: id,
+					width: width,
+					mt: mt,
+					blocks: section.blocks,
+					theme: section.theme,
+					imageIsContained: section.imageIsContained,
+					badge: blockBadge,
+					sectionId: sectionNumId
+				} only %}
+				{# -- Headline -- #}
+			{% case 'headline' %}
+				{% include '_3-organisms/blocks/headline' with {
+					id: id,
+					width: width,
+					mt: mt,
+					blocks: section.blocks,
+					theme: section.theme,
+					align: section.align.value|default(null),
+					badge: blockBadge,
+					sectionId: sectionNumId,
+					flushBottom: section.flushBottom
+				} only %}
+				{# -- Spotlight -- #}
+			{% case 'spotlight' %}
+				{% include '_3-organisms/blocks/spotlight' with {
+					id: id,
+					width: width,
+					mt: mt,
+					blocks: section.blocks,
+					theme: section.theme,
+					align: section.align.value|default(null),
+					badge: blockBadge,
+					sectionId: sectionNumId
+				} only %}
+				{# -- Code -- #}
+			{% case 'code' %}
+				{% include '_3-organisms/blocks/code' with {
+					id: id,
+					width: width,
+					mt: mt,
+					code: section.code,
+					theme: section.theme
+				} only %}
+				{# -- Timeline -- #}
+			{% case 'timeline' %}
+				{% include '_3-organisms/blocks/timeline' with {
+					id: id,
+					width: width,
+					mt: mt,
+					slides: section.slides
+				} only %}
+			{% case 'carousel' %}
+				{% include '_3-organisms/blocks/carousel.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					images: section.images
+				} only %}
+			{% case 'text' %}
+				{% include '_3-organisms/blocks/text.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					richText: section.richText,
+					section: section,
+					theme: section.theme
+				} only %}
+			{% case 'accordion' %}
+				{% include '_3-organisms/blocks/accordion.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					title: section.title,
+					blocks: section.blocks,
+					badge: blockBadge,
+					sectionId: sectionNumId
+				} only %}
+			{% case 'form' %}
+				{% include '_3-organisms/blocks/form.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					headlineBlocks: section.headline,
+					form: section.form.one()
+				} %}
+			{% case 'feed' %}
+				{% if section.featuredEntryIsHero %}
+					{# Featured article hero — resolve manual pick or fall back to latest article #}
+					{% set featuredEntry = section.featuredEntry.one()
+						?? craft.entries().section('articles').orderBy('postDate DESC').one()
+					%}
+					{% if featuredEntry %}
+						{% include '_3-organisms/featured-article-hero.twig' with {
+							article: featuredEntry
+						} only %}
+					{% endif %}
+				{% endif %}
+				{% if not jumpNavRendered %}
+					{% include '_5-chrome/jump-to-nav' with {
+						entry: entry is defined ? entry : null,
+						jumpLinksArray: jumpLinksArray is defined ? jumpLinksArray : null
+					} only %}
+					{% set jumpNavRendered = true %}
+				{% endif %}
+				{{
+					sprig(
+						'_3-organisms/blocks/feed',
+						{
+							entriesPerPage: section.entriesPerPage,
+							blockId: section.id,
+							width: width,
+							mt: mt
+						},
+						{
+							's-swap': 'innerHTML show:top',
+							id: 'feed-sprig'
+						}
+					)
+				}}
+			{% case 'tableInfo' %}
+				{% include '_3-organisms/blocks/table-info' with {
+					id: id,
+					width: width,
+					mt: mt,
+					rows: section.rows,
+					title: section.title
+				} only %}
+			{% case 'quotes' %}
+				{% include '_3-organisms/blocks/quotes.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					quotes: section.quotes,
+					theme: section.theme
+				} only %}
+			{% case 'image' %}
+				{% include '_3-organisms/blocks/image.twig' with {
+					id: id,
+					mt: mt,
+					width: width,
+					image: section.image.one(),
+					imageFree: section.imageFree.one(),
+					freeAspectRatio: section.freeAspectRatio,
+					caption: section.caption,
+					badge: blockBadge,
+					sectionId: sectionNumId,
+					theme: section.theme
+				} only %}
+			{% case 'channel' %}
+				{% include '_3-organisms/blocks/channel.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					numberOfEntries: section.numberOfEntries,
+					category: section.category is defined ? section.category.one() : null,
+					tags: section.tags is defined ? section.tags.all() : [],
+				} only %}
+			{% case 'video' %}
+				{% include '_3-organisms/blocks/video.twig' with {
+					id: id,
+					mt: mt,
+					width: width,
+					videoUrl: section.videoUrl,
+					caption: section.caption,
+					autoplay: section.autoplay,
+					badge: blockBadge,
+					sectionId: sectionNumId,
+					theme: section.theme
+				} only %}
+			{% case 'instagram' %}
+				{% include '_3-organisms/blocks/behold' with {
+					id: id,
+					width: width,
+					mt: mt,
+					beholdUrl: section.beholdUrl,
+					theme: section.theme
+				} only %}
+			{% case 'grid' %}
+				{% include '_3-organisms/blocks/grid.twig' with {
+					id: id,
+					width: width,
+					mt: mt,
+					blocks: section.blocks,
+					orientation: section.orientation.value|default(null),
+					imageIsContained: section.imageIsContained,
+					columns: section.columns.value|default(null),
+					badge: blockBadge,
+					sectionId: sectionNumId,
+					theme: section.theme
+				} only %}
+		{% endswitch %}
+	{% endfor %}
+{% endif %}

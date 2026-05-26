@@ -1,0 +1,17 @@
+<!-- Template: {{ _self }} -->
+
+{% set siteSettings = siteSettings ?? null %}
+
+<button
+	id="burger"
+	tabindex="0"
+	aria-label="open menu button"
+	aria-controls="menu"
+	aria-expanded="true"
+	class="burger-button"
+	type="button"
+>
+	{{ svg('@feather/menu.svg') }}
+
+	Menu
+</button>

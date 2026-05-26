@@ -1,0 +1,21 @@
+.blog-builder {
+	/* Headline blocks */
+	section[id^='headline']:not(:first-child) {
+		@apply mt-10;
+	}
+
+	/* Text blocks */
+	section[id^='text']:not(:first-child) {
+		@apply mt-10;
+	}
+
+	/* Text blocks immediately after headline blocks */
+	section[id^='headline'] + section[id^='text'] {
+		@apply mt-2;
+	}
+
+	/* Media / Image blocks */
+	section[id^='media']:not(:first-child) {
+		@apply mt-10;
+	}
+}

@@ -1,0 +1,55 @@
+.video {
+	@apply flex justify-center;
+}
+
+.video__figure {
+	@apply flex w-full flex-col;
+}
+
+/* <details> click-to-play wrapper */
+.video__embed {
+	@apply relative w-full aspect-16-9;
+
+	/* Remove the default disclosure triangle */
+	& > summary {
+		list-style: none;
+	}
+
+	& > summary::-webkit-details-marker {
+		display: none;
+	}
+
+	/* When open: hide the poster, let the iframe fill the space */
+	&[open] .video__summary {
+		@apply hidden;
+	}
+}
+
+.video__summary {
+	@apply absolute inset-0 cursor-pointer;
+}
+
+.video__thumbnail {
+	@apply block h-full w-full object-cover;
+}
+
+.video__play-icon {
+	@apply absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 p-5 text-black transition-transform hover:scale-110;
+
+	svg {
+		@apply size-8 translate-x-0.5;
+	}
+}
+
+/* Direct iframe (autoplay or Vimeo component) */
+.video__iframe {
+	@apply block aspect-16-9 w-full border-0;
+}
+
+lite-vimeo {
+	@apply block aspect-16-9 w-full;
+}
+
+.video__figcaption {
+	@apply as-caption mt-2;
+}

@@ -1,0 +1,34 @@
+# DDEV Generated files (automatically created/updated by DDEV)
+.ddev-docker-compose-*.yaml
+.env.web
+/.homeadditions/
+/.webimageBuild/
+/.dbimageBuild/
+/db_snapshots/
+/sequelpro.conf
+/import.yaml
+/docker-compose.override.yaml
+/.bgsync*
+/monitoring/
+/apache/
+/traefik/
+/providers/
+/xhprof/
+/addon-metadata/*
+!/addon-metadata/bun/
+/db-build/
+
+# DDEV logs and temporary files
+/logs/
+/.tldextract_cache/
+
+# Keep essential configuration files
+!config.yaml
+!docker-compose.*.yaml
+!.gitignore
+!/commands/
+!/homeadditions/
+!/nginx_full/
+!/mysql/
+!/php/
+!/web-build/

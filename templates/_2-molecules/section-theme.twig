@@ -1,0 +1,25 @@
+<!-- Template: {{ _self }} -->
+
+{#
+ # section-theme
+ # Wraps block content in a full-bleed background carrier.
+ # Always renders the wrapper (provides `relative` context for section-badge).
+ # `data-theme` is omitted for the default white value — no BG override applied.
+ # `mt` lives on the outer wrapper so it behaves as a true margin above the
+ # themed block, rather than padding the content down inside it.
+ #
+ # @var string|null theme  Theme value: white | light | color | dark
+ # @var string|null mt     Top-margin utility class (e.g. mt-xl)
+ #}
+
+{% set theme = (theme.value ?? theme)|default('white') %}
+{% set hasTheme = theme not in [null, '', 'white'] %}
+{% set mt = mt|default %}
+{% set flushBottom = flushBottom ?? false %}
+
+{% tag 'section' with {
+	class: ['themed', mt, flushBottom ? 'flush-bottom']|filter,
+	'data-theme': hasTheme ? theme : false,
+} %}
+	{% block content %}{% endblock %}
+{% endtag %}

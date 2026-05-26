@@ -1,0 +1,34 @@
+<!-- Template: {{ _self }} -->
+
+{% set id = id|default %}
+{% set headlineBlocks = headlineBlocks|default %}
+{% set featuresBlocks = featuresBlocks|default %}
+{% set mt = mt|default %}
+{% set width = width|default('section--wide') %}
+{% set classes = classes|default %}
+
+{% set sectionAttr = {
+	id: id,
+	class: ['section', mt, width, classes]
+} %}
+
+<section {{ attr(sectionAttr) }}>
+	<article class="features">
+	  {# Headline #}
+		{% include '_2-molecules/headline-header.twig' with {
+			blocks: headlineBlocks,
+			class: 'features__header'
+		} only %}
+
+		{# Features #}
+		{% if featuresBlocks is not empty %}
+			<ul class="features__list">
+				{% for feature in featuresBlocks.all() %}
+					{% include '_2-molecules/feature.twig' with {
+						feature: feature
+					} only %}
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</article>
+</section>

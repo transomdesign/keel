@@ -1,0 +1,13 @@
+{% set siteSettings = siteSettings ?? null %}
+{% set messageBar = siteSettings ? siteSettings.messageBar : null %}
+
+{# Site Settings → Global → Message Bar #}
+{% if messageBar and messageBar.isEnabled and messageBar.message is not empty %}
+	<aside class="message-bar-wrap">
+		<div class="message-bar-inner">
+			<div class="message-bar">
+				{{ messageBar.message }}
+			</div>
+		</div>
+	</aside>
+{% endif %}

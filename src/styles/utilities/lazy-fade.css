@@ -1,0 +1,59 @@
+/**
+ * Progressive Enhancement Lazy Image Fade-in
+ *
+ * This CSS provides a smooth fade-in effect for lazy-loaded images
+ * while maintaining full accessibility for users without JavaScript.
+ *
+ * How it works:
+ * 1. By default, all images are visible (no JS fallback)
+ * 2. When JS first runs, html gets 'js-enabled' class
+ * 3. Images start with opacity 0 when JS is enabled
+ * 4. When image loads, JS adds 'lazy-fade-loaded' class
+ * 5. CSS transition smoothly fades the image in
+ */
+
+/* Default state: images are visible (no-JS fallback) */
+img[loading='lazy'] {
+	opacity: 1;
+	transition: opacity 0.7s ease-in-out;
+}
+
+/* When JS is enabled, start images as invisible with blur effect */
+.js-enabled img[loading='lazy'].lazy-fade {
+	opacity: 0;
+	filter: blur(4px);
+	transform: scale(1.02) translateZ(0);
+	will-change: opacity, filter, transform;
+}
+
+/* Fade in when image has loaded */
+.js-enabled img[loading='lazy'].lazy-fade-loaded {
+	opacity: 1;
+	filter: blur(0);
+	transform: scale(1) translateZ(0);
+	transition:
+		opacity 0.9s cubic-bezier(0.36, 0, 0.64, 1),
+		filter 0.9s cubic-bezier(0.36, 0, 0.64, 1),
+		transform 0.9s cubic-bezier(0.36, 0, 0.64, 1);
+}
+
+/* Handle error state gracefully */
+.js-enabled img[loading='lazy'].lazy-fade-error {
+	opacity: 0.5;
+	filter: blur(0);
+	transform: scale(1) translateZ(0);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	img[loading='lazy'] {
+		transition: none !important;
+	}
+
+	.js-enabled img[loading='lazy'].lazy-fade {
+		opacity: 1;
+		filter: none;
+		transform: none;
+		will-change: auto;
+	}
+}

@@ -1,0 +1,64 @@
+allowLineBreaksInTitles: false
+color: fuchsia
+description: null
+fieldLayouts:
+  df1b02b1-9188-431d-a588-c21f92dc3e81:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-19T20:18:26+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a3864e94-3bf9-4502-bae2-be1403a6f1bf # [M] Timeline Slides
+            handle: slides
+            instructions: null
+            label: Slides
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fc3f2656-d377-4991-bfe8-5b2c5310cc49
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d5098553-e86a-4a67-8efb-353dbc7cc4ce
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-04-01T18:33:35+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 8067a6b9-db4e-4674-a375-7bf78a108d31 # [M] Layout
+            handle: layout
+            instructions: null
+            label: Layout
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7b920715-e415-4f4a-aaa4-2df04456aad1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Layout
+        uid: 7136bfaf-c89e-4073-99af-b0143f3cf661
+        userCondition: null
+    thumbFieldKey: null
+handle: timeline
+hasTitleField: false
+icon: timeline-arrow
+name: Timeline
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,8 @@
+enabled: '1'
+handle: root
+name: Root
+settings:
+  folder: '[root]'
+  recursive: true
+sortOrder: 1
+type: verbb\iconpicker\iconsets\SvgFolder

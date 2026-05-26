@@ -1,0 +1,8 @@
+columnSuffix: null
+handle: aChannelSelect
+instructions: null
+name: '[A] Channel Select'
+searchable: false
+translationKeyFormat: null
+translationMethod: none
+type: SiteModule\fields\ChannelSelectorField

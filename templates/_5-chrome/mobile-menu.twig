@@ -1,0 +1,132 @@
+<!-- Template: {{ _self }}.twig -->
+
+{# Props #}
+{% set classes = classes|default %}
+{% set isOpened = isOpened ?? false %}
+
+{# Site Settings #}
+{% set siteSettings = siteSettings ?? null %}
+{% set socialNavNodes = craft.navigation.nodes('social').all() %}
+{% set logo = siteSettings ? siteSettings.footerLogoMobile.one() : null %}
+{% set mainNodes = craft.navigation.nodes('main').all() %}
+{% set secondaryNav = craft.navigation.nodes('secondaryMobile').all() %}
+
+{% set menuAttr = {
+	id: 'mobile-menu',
+	class: ['mobile-menu', classes, isOpened ? 'mobile-menu--open' : null],
+	role: 'navigation',
+	'aria-label': 'Main menu',
+	'aria-expanded': isOpened ? 'true' : 'false'
+} %}
+
+<focus-trap {{ attr(menuAttr) }}>
+	{# Primary / Middle #}
+	<div class="mobile-menu__primary">
+		<ul class="mobile-menu__main-links">
+			{# Navigation → Main #}
+			{% if mainNodes is not empty %}
+				<menu class="navbar__links">
+					{% nav node in mainNodes %}
+						<li>
+							{{ node.link }}
+
+							{% ifchildren %}
+								<ul>
+									{% children %}
+								</ul>
+							{% endifchildren %}
+						</li>
+					{% endnav %}
+				</menu>
+			{% endif %}
+
+			{% nav node in mainNodes %}
+				<li>
+					{# Extract path from node.url for comparison with currentPage #}
+					{% set nodePath =
+						node.url
+							|replace({
+								(siteUrl): ''
+							})
+							|trim('/')
+					%}
+					{% set currentPath = craft.app.request.pathInfo|trim('/') %}
+					{% set isActive = nodePath == currentPath
+						or (nodePath != '' and currentPath starts with nodePath ~ '/')
+					%}
+					{% tag 'a'
+						with
+						{
+							href: node.url,
+							class: [
+								'mobile-menu__main-link',
+								isActive ? 'mobile-menu__main-link--active' : ''
+							]
+						}
+					%}
+						{{- node.title -}}
+					{% endtag %}
+				</li>
+			{% endnav %}
+		</ul>
+	</div>
+
+	{# Secondary / Bottom #}
+	<div class="mobile-menu__secondary">
+		<ul class="mobile-menu__secondary-links">
+			{% nav node in secondaryNav %}
+				<li>
+					{# Extract path from node.url for comparison with currentPage #}
+					{% set nodePath =
+						node.url
+							|replace({
+								(siteUrl): ''
+							})
+							|trim('/')
+					%}
+					{% set currentPath = craft.app.request.pathInfo|trim('/') %}
+					{% set isActive = nodePath == currentPath
+						or (nodePath != '' and currentPath starts with nodePath ~ '/')
+					%}
+					{% tag 'a'
+						with
+						{
+							href: node.url,
+							class: [
+								'mobile-menu__secondary-link',
+								isActive ? 'mobile-menu__secondary-link--active' : ''
+							]
+						}
+					%}
+						{{- node.title -}}
+					{% endtag %}
+				</li>
+			{% endnav %}
+		</ul>
+	</div>
+
+	<ul class="mobile-menu__social">
+    {% if socialNavNodes is not empty %}
+  		{% for node in socialNavNodes %}
+					<li class="mobile-menu__social-item">
+					{% tag 'a' with {
+						class: 'mobile-menu__social-link',
+						href: node.url,
+						"aria-label": node.title,
+						target: node.target,
+						rel: node.target ? "noopener"
+					} %}
+					  {% if node.iconPicker is defined and node.iconPicker is not empty %}
+							{{ node.iconPicker.inline }}
+						{% else %}
+						  {{ node.title }}
+						{% endif %}
+					{% endtag %}
+					</li>
+				{% endfor %}
+  	{% endif %}
+  </ul>
+
+	<div class="mobile-menu__notes">
+	</div>
+</focus-trap>

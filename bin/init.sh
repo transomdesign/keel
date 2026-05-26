@@ -109,10 +109,8 @@ git -C "$ROOT" init -q
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
-echo "✅ Project renamed to \"${DISPLAY}\" (${SLUG})."
+echo "🎉 ${DISPLAY} is ready."
 echo ""
-echo "Next steps:"
-echo "  ddev start"
-echo "  ddev composer install"
-echo "  ddev craft install"
-echo "  ddev launch"
+echo "  ddev start          # starts containers — composer + bun install run automatically"
+echo "  ddev craft install  # first-time Craft setup (admin account, site name)"
+echo "  make dev            # Vite dev server with hot reload"

@@ -8,6 +8,10 @@
 
 set -euo pipefail
 
+# When piped through bash (e.g. curl | bash), stdin is the pipe, not the terminal.
+# Reopen stdin from /dev/tty so interactive prompts work correctly.
+[[ -t 0 ]] || exec </dev/tty
+
 SLUG="${1:-}"
 
 if [[ -z "$SLUG" ]]; then
@@ -29,12 +33,17 @@ fi
 git clone --depth 1 "$REPO" "$TARGET_DIR"
 cd "$TARGET_DIR"
 
-# Run the init script (it will prompt for display name + prod host)
+# Rename tokens and re-init git
 bash bin/init.sh "$SLUG"
 
-echo ""
-echo "🎉 Done! Starting your dev environment..."
+# Start the dev environment (post-start hook installs composer + bun deps)
 ddev start
-ddev composer install
+
+# First-time Craft setup
 ddev craft install
-ddev launch
+
+echo ""
+echo "🎉 Your project is running at https://${SLUG}.ddev.site"
+echo ""
+echo "  cd ${SLUG}"
+echo "  make dev   # start Vite dev server with hot reload"

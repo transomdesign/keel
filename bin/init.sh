@@ -46,7 +46,7 @@ echo "  Slug:         $SLUG"
 echo "  Display name: $DISPLAY"
 echo ""
 read -rp "Proceed? [y/N] " CONFIRM
-[[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 0; }
+[[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
 
 # ── Files to rewrite ─────────────────────────────────────────────────────────
 # Explicit list of tracked text files that carry placeholder tokens.

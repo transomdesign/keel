@@ -104,13 +104,8 @@ if [[ -f "$ROOT/keel.code-workspace" ]]; then
 fi
 
 # ── Re-init git ───────────────────────────────────────────────────────────────
-echo ""
-read -rp "Remove .git history and start a fresh repo? [y/N] " REINIT_GIT
-if [[ "$REINIT_GIT" =~ ^[Yy]$ ]]; then
-  rm -rf "$ROOT/.git"
-  git -C "$ROOT" init
-  echo "✅ Fresh git repo initialised."
-fi
+rm -rf "$ROOT/.git"
+git -C "$ROOT" init -q
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""

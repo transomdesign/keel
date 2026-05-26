@@ -2,7 +2,7 @@
 # bin/init.sh — Personalise this Craft CMS starter for a new project.
 #
 # Usage:
-#   bin/init.sh [slug] ["Display Name"] [prod-host]
+#   bin/init.sh [slug] ["Display Name"]
 #
 # Arguments are optional; the script prompts for any that are missing.
 # Run once, immediately after cloning. Guard against double-runs.
@@ -26,7 +26,6 @@ fi
 # ── Gather inputs ─────────────────────────────────────────────────────────────
 SLUG="${1:-}"
 DISPLAY="${2:-}"
-PROD_HOST="${3:-}"
 
 if [[ -z "$SLUG" ]]; then
   read -rp "Project slug (lowercase, hyphens ok — used for ddev name, URLs, bucket): " SLUG
@@ -36,22 +35,15 @@ if [[ -z "$DISPLAY" ]]; then
   read -rp "Display name (e.g. \"My Client\"): " DISPLAY
 fi
 
-if [[ -z "$PROD_HOST" ]]; then
-  read -rp "Production hostname (e.g. myclient.transom.dev) [leave blank to keep placeholder]: " PROD_HOST
-fi
-
 # ── Validate slug ─────────────────────────────────────────────────────────────
 if [[ ! "$SLUG" =~ ^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$ ]]; then
   echo "❌ Slug must be lowercase letters, numbers, and hyphens only (no leading/trailing hyphens)."
   exit 1
 fi
 
-PROD_HOST="${PROD_HOST:-${SLUG}.transom.dev}"
-
 echo ""
 echo "  Slug:         $SLUG"
 echo "  Display name: $DISPLAY"
-echo "  Prod host:    $PROD_HOST"
 echo ""
 read -rp "Proceed? [y/N] " CONFIRM
 [[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 0; }
@@ -97,7 +89,6 @@ for FILE in "${FILES[@]}"; do
     "s/keel-secondary/${SLUG}-secondary/g;
      s/keel-tertiary/${SLUG}-tertiary/g;
      s/keel-fourth/${SLUG}-fourth/g;
-     s/keel\.transom\.dev/${PROD_HOST}/g;
      s/\bkeel\b/${SLUG}/g" \
     "$FILE"
   # Display name (may contain spaces — use a distinct pattern)

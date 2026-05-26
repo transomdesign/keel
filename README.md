@@ -7,7 +7,7 @@ A Transom Craft CMS 5 starter with DDEV, Vite, Tailwind 4, TypeScript, and a cur
 **One-liner (clones + renames in one go):**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/transomdesign/keel/main/bin/bootstrap.sh | bash -s -- my-project
+curl -fsSL https://raw.githubusercontent.com/transomdesign/keel/main/bin/bootstrap.sh | bash
 ```
 
 **Manual clone:**

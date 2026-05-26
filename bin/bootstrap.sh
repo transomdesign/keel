@@ -2,7 +2,7 @@
 # bin/bootstrap.sh — Clone the keel starter and initialise a new project.
 #
 # Intended for remote execution:
-#   curl -fsSL https://raw.githubusercontent.com/transomdesign/keel/main/bin/bootstrap.sh | bash -s -- my-project
+#   curl -fsSL https://raw.githubusercontent.com/transomdesign/keel/main/bin/bootstrap.sh | bash
 #
 # Or run locally after cloning the repo yourself.
 

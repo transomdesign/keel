@@ -30,16 +30,22 @@ if [[ -d "$TARGET_DIR" ]]; then
   exit 1
 fi
 
+echo "📂 Cloning keel starter..."
 git clone --depth 1 "$REPO" "$TARGET_DIR"
 cd "$TARGET_DIR"
 
 # Rename tokens and re-init git
+echo ""
 bash bin/init.sh "$SLUG"
 
 # Start the dev environment (post-start hook installs composer + bun deps)
-ddev start --yes
+echo ""
+echo "🐳 Starting DDEV (first run pulls Docker images — this can take a few minutes)..."
+ddev start -y
 
 # First-time Craft setup
+echo ""
+echo "⚙️  Running Craft install wizard..."
 ddev craft install
 
 echo ""

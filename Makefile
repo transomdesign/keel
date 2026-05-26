@@ -133,7 +133,7 @@ up:
 		echo "✅ DDEV is already running"; \
 	else \
 		echo "🚀 Starting DDEV..."; \
-		ddev start --yes; \
+		ddev start -y; \
 	fi
 
 ## 🔴 down: Stops DDEV project

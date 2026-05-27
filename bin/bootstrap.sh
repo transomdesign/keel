@@ -10,10 +10,22 @@ set -euo pipefail
 
 bootstrap() {
   SLUG="${1:-}"
+  DISPLAY="${2:-}"
 
   if [[ -z "$SLUG" ]]; then
     read -rp "Project slug (e.g. \"my-new-site\"): " SLUG </dev/tty
   fi
+
+  if [[ -z "$DISPLAY" ]]; then
+    read -rp "Display name (e.g. \"My New Site\"): " DISPLAY </dev/tty
+  fi
+
+  echo ""
+  echo "  Slug:         $SLUG"
+  echo "  Display name: $DISPLAY"
+  echo ""
+  read -rp "Proceed? [y/N] " CONFIRM </dev/tty
+  [[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
 
   REPO="https://github.com/transomdesign/keel.git"
   TARGET_DIR="./${SLUG}"
@@ -33,7 +45,7 @@ bootstrap() {
 
   # Rename tokens and re-init git
   echo ""
-  bash bin/init.sh "$SLUG"
+  bash bin/init.sh "$SLUG" "$DISPLAY" --yes
 
   # Start the dev environment (post-start hook installs composer + bun deps)
   echo ""

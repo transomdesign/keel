@@ -2,7 +2,7 @@
 # bin/init.sh — Personalise this Craft CMS starter for a new project.
 #
 # Usage:
-#   bin/init.sh [slug] ["Display Name"]
+#   bin/init.sh [slug] ["Display Name"] [--yes]
 #
 # Arguments are optional; the script prompts for any that are missing.
 # Run once, immediately after cloning. Guard against double-runs.
@@ -26,13 +26,14 @@ fi
 # ── Gather inputs ─────────────────────────────────────────────────────────────
 SLUG="${1:-}"
 DISPLAY="${2:-}"
+AUTO_CONFIRM="${3:-}"
 
 if [[ -z "$SLUG" ]]; then
-  read -rp "Project slug (lowercase, hyphens ok — used for ddev name, URLs, bucket): " SLUG
+  read -rp "Project slug (e.g. \"my-new-site\" — used for ddev name, URLs, bucket): " SLUG
 fi
 
 if [[ -z "$DISPLAY" ]]; then
-  read -rp "Display name (e.g. \"My Client\"): " DISPLAY
+  read -rp "Display name (e.g. \"My New Site\"): " DISPLAY
 fi
 
 # ── Validate slug ─────────────────────────────────────────────────────────────
@@ -44,9 +45,12 @@ fi
 echo ""
 echo "  Slug:         $SLUG"
 echo "  Display name: $DISPLAY"
-echo ""
-read -rp "Proceed? [y/N] " CONFIRM
-[[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
+
+if [[ "$AUTO_CONFIRM" != "--yes" ]]; then
+  echo ""
+  read -rp "Proceed? [y/N] " CONFIRM
+  [[ "$CONFIRM" =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
+fi
 
 # ── Files to rewrite ─────────────────────────────────────────────────────────
 # Explicit list of tracked text files that carry placeholder tokens.
